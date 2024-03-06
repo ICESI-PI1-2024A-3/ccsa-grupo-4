@@ -1,34 +1,81 @@
 # Daily No.1
 ### Martes 5 de marzo de 2024
 
-*Camilo Bueno*
+**Camilo Bueno**
 - Que hice ayer?
+
+    Avance el video de Django.
+
 - Que voy a hacer hoy?
+
+    Investigar como se estructura Django.
+
 - Que impedimentos tuve?
 
-*Daron Mercado*
+    Ninguno.
+
+
+**Daron Mercado**
 - Que hice ayer?
+    
+    Avance en el video de Django, refine
+    los mockups del proyecto, y participe en la 
+    creación de los modelos.
+
 - Que voy a hacer hoy?
+
+    Voy a seguir avanzando en video de Django.
+
 - Que impedimentos tuve?
 
+    Ninguno.
 
-*Johan Sebastian Diaz*
+
+**Johan Sebastian Diaz**
 - Que hice ayer?
+
+    Investigue como diseñar un calendario actrativo
+    para los usurios.
+
 - Que voy a hacer hoy?
+
+    Avanzar en el video de Django y practicar desarrollo
+    web.
+
 - Que impedimentos tuve?
 
+    Ninguno.
 
-*Cristian Cardona*
+
+**Cristian Cardona**
 - Que hice ayer?
+
+    Inicialice el proyecto con django.
+
 - Que voy a hacer hoy?
+
+    Avanzar en el video de Django.
+
 - Que impedimentos tuve?
 
+    Ninguno.
 
 *Santiago Arboleda Velasco*
 
 - Que hice ayer?
+
+    Presente junto a mis compañeros el documento
+    completo del proyecto y avance en video de 
+    Django.
+
 - Que voy a hacer hoy?
+
+    Practique HTML, CSS Y Javasript y estoy finalizando
+    el video de Django.
+
 - Que impedimentos tuve?
+
+    Ninguno.
 
 # Daily No.2
 ### Miercoles 6 de marzo de 2024
@@ -126,8 +173,8 @@
 - Que voy a hacer hoy?
 - Que impedimentos tuve?
 
-# Daily No.5
-### Martes 9 de marzo de 2024
+# Daily No.6
+### Sabado 9 de marzo de 2024
 
 *Camilo Bueno*
 - Que hice ayer?
