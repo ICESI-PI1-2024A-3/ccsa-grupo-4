@@ -60,7 +60,7 @@
 
     Ninguno.
 
-*Santiago Arboleda Velasco*
+**Santiago Arboleda Velasco**
 
 - Que hice ayer?
 
@@ -80,30 +80,38 @@
 # Daily No.2
 ### Miercoles 6 de marzo de 2024
 
-*Camilo Bueno*
+| Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
+|-----------|-----------|-----------|-----------|
+|*Camilo Bueno*   |  Avanzó en el video de Django.    | Investigar plugin de PEP8 y crear la rama de desarrollo de la funcionalidad    | Con los códigos de git    |
+|*Daron Mercado*     | Avancé en el video de Django    | Instalar y configurar el plugin de PEP8 y crear la rama para empezar a desarrollar la funcionalidad asignada     | Ninguno    |
+| *Johan Sebastian Diaz*     | Avanzar en el video de Django y practicar desarrollo web    | Seguir con el video de Django y crear mi rama de la funcionalidad     | Ninguno     |
+| *Cristian Cardona*   |Avancé en elc video de Django     | Avanzar en el video de Django y crear la rama de funcionalidad     | Ninguno     |
+| *Santiago Arboleda Velasco*     | Practiqué HTML, CSS Y Javasript y Avancé el video de Django.    | Avanzar en el video de Django y crear la rama de mi funcionalidad     | Ninguno     |
+
+
+
+
+
+
+
 - Que hice ayer?
 - Que voy a hacer hoy?
 - Que impedimentos tuve?
 
-*Daron Mercado*
+
+
 - Que hice ayer?
 - Que voy a hacer hoy?
 - Que impedimentos tuve?
 
 
-*Johan Sebastian Diaz*
+
 - Que hice ayer?
 - Que voy a hacer hoy?
 - Que impedimentos tuve?
 
 
-*Cristian Cardona*
-- Que hice ayer?
-- Que voy a hacer hoy?
-- Que impedimentos tuve?
 
-
-*Santiago Arboleda Velasco*
 
 - Que hice ayer?
 - Que voy a hacer hoy?
