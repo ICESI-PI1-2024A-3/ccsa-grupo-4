@@ -38,11 +38,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |      |    |    |
-|*Daron Mercado*     |   |      |     |
-| *Johan Sebastian Diaz*     |     |     |      |
-| *Cristian Cardona*   |     |      |      |
-| *Santiago Arboleda Velasco*     |     |     |      |
+|*Camilo Bueno*   | Entrar en la recta final de visualizacion del video | Seguir el tutorial del Login con registro y bootstrap   | Ninguno   |
+|*Daron Mercado*     | Seguir con la capacitacion sobre Django  | Practicar Django y seguir con el video     | Ninguno    |
+| *Johan Sebastian Diaz*     | Empezar con el desarrollo de mi funcionaldiad designada    | Practique Django   | Ninguno     |
+| *Cristian Cardona*   | Termianr el video sobre Django y hacer una primera template del proyecto    | Practicar javascript     | Ninguno     |
+| *Santiago Arboleda Velasco*     | Seguir con el aprendizaje activo sobre Django    | Finalizar el video de Django    |  Ninguno    |
 
 # Daily No.6
 ### Sabado 9 de marzo de 2024
