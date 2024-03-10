@@ -44,13 +44,13 @@
 | *Cristian Cardona*   | Termianr el video sobre Django y hacer una primera template del proyecto    | Practicar javascript     | Ninguno     |
 | *Santiago Arboleda Velasco*     | Seguir con el aprendizaje activo sobre Django    | Finalizar el video de Django    |  Ninguno    |
 
-# Daily No.6
+# Daily No.5
 ### Sabado 9 de marzo de 2024
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |      |    |    |
-|*Daron Mercado*     |   |      |     |
-| *Johan Sebastian Diaz*     |     |     |      |
-| *Cristian Cardona*   |     |      |      |
-| *Santiago Arboleda Velasco*     |     |     |      |
+|*Camilo Bueno*   |   login   | fix template   | ninguno   |
+|*Daron Mercado*     | Practicar Django y seguir con el video |  Estoy practicando lo del vídeo de Django y estudiando CSS Y HTML    |   ninguno  |
+| *Johan Sebastian Diaz*     |   Practique Django  |   Aplicando conceptos del video y estudiando CSS|    Las conexiones de diferentes clases|
+| *Cristian Cardona*   |  Practicar javascript   |  Estudiando frontend en general    |   Usar las consultas con python|
+| *Santiago Arboleda Velasco*     |   Finalizar el video de Django  |  Finalizar video css| Ninguno  |
