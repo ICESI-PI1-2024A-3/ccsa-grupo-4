@@ -1,6 +1,7 @@
 from django.db import IntegrityError
 from django.contrib.auth.models import User
 from django.shortcuts import render
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.contrib.auth import login
 from django.contrib.auth import logout
@@ -13,7 +14,11 @@ from django.contrib.auth.forms import UserCreationForm
 def home(request):
     return render(request, 'home.html')
 
-
+  
+def event_checklist(request):
+    return render(request, "event_checklist.html")
+       
+    
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {
@@ -37,12 +42,12 @@ def signup(request):
             'error': 'Password do not match',
         })
 
-
+      
 def signout(request):
     logout(request)
     return redirect('home')
 
-
+  
 def signin(request):
     if request.method == 'GET':
         return render(request, 'signin.html', {
