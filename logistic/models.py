@@ -11,3 +11,17 @@ class Event(models.Model):
     progress = models.IntegerField() #en revision
     finishDate = models.DateField()
     #bitacora = models.#####() #en revision
+
+#Single Table Inheritance:
+class User(models.Model):
+    name = models.CharField(max_length = 255)
+    id = models.AutoField(primary_key=True)
+    email = models.CharField(max_length = 255)
+    password = models.CharField(max_length = 255)
+    rol = models.CharField(max_length = 255) #with this, we don't need another table called rol
+
+class Inquiry(models.Model):
+    id = models.AutoField(primary_key=True)
+    eventName = models.CharField(max_length = 200)
+    description = models.TextField()
+    feedback = models.TextField()
