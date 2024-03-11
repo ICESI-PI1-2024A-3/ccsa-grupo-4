@@ -6,3 +6,8 @@ from django.http import HttpResponse
 def home(request):
     return HttpResponse("Home page")
 
+def event_checklist(request):
+    
+    return render(request, "event_checklist.html")
+    
+
