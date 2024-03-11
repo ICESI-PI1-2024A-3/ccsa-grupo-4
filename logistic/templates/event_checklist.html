@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Detalles del Evento</title>
+        <link rel="stylesheet" href="{% static 'styles/event_checklist.css' %}">
+    
+    </head>
+
+    <body>
+    <div class="container">
+        <h1>Detalles del Evento</h1>
+        <div class="event-checklist">
+            <div class="event-detail">
+                <h2>Información General</h2>
+                <p><strong>Fecha de registro:</strong> <span id="fechaRegistro">15/03/2024</span></p>
+                <p><strong>Nombre del evento:</strong> <span id="nombreEvento">Festival Primavera</span></p>
+                <p><strong>Fecha de ejecución:</strong> <span id="fechaEjecucion">20/03/2024</span></p>
+                <p><strong>Lugar:</strong> <span id="lugarEvento">Parque Central</span></p>
+            </div>
+            <div class="event-detail">
+                <h2>Checklist de Tareas</h2>
+                <ul>
+                    <li><input id="tarea1" name="tarea1" type="checkbox" checked> Confirmación de artistas</li>
+                    <li><input id="tarea2" name="tarea2" type="checkbox"> Montaje del escenario</li>
+                    <li><input id="tarea3" name="tarea3" type="checkbox"> Prueba de sonido</li>
+                    <!-- Agregar más tareas según sea necesario -->
+                </ul>
+            </div>
+            <div class="event-detail">
+                <h2>Servicios Adicionales</h2>
+                <p><input id="servicio1" name="servicio1" type="checkbox" checked> Catering</p>
+                <p><input id="servicio2" name="servicio2" type="checkbox"> Seguridad</p>
+                <p><input id="servicio3" name="servicio3" type="checkbox"> Limpieza</p>
+                <!-- Agregar más servicios según sea necesario -->
+            </div>
+            <div class="buttons">
+                <button type="button" onclick="guardarCambios()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
