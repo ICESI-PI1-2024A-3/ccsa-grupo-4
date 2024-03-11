@@ -8,5 +8,9 @@ def signup(request):
         "form": UserCreationForm
     })
 
+def event_checklist(request):
+    
+    return render(request, "event_checklist.html")
+       
 def home(request):
-    return render(request, "home.html",)
+    return render(request, "home.html",
