@@ -22,6 +22,7 @@ class User(models.Model):
 
 class Inquiry(models.Model):
     id = models.AutoField(primary_key=True)
-    eventName = models.CharField(max_length = 200)
+    eventName = models.CharField(max_length = 200)#Es para saber a que evento está relacionado
     description = models.TextField()
     feedback = models.TextField()
+    #event = models.ForeignKey(Event, on_delete = models.CASCADE)#Preguntar esto, se supone que es para que aparezca un id que haga referencia al evento que está relacionado
