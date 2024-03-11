@@ -2,8 +2,8 @@
 <main class="container">
   <div class="row">
     <div class="col-md-4 offset-md-4 mt-5">
-      <form action="/signup/" method="POST" class="card card-body">
-        <h1 class="text-center">SignUp</h1>
+      <form action="/signin/" method="POST" class="card card-body">
+        <h1 class="text-center">SignIn</h1>
         {{error}} {% csrf_token %}
         <div class="mb-3">
           <label for="username">Username:</label>
@@ -16,26 +16,16 @@
           />
         </div>
         <div class="mb-3">
-          <label for="password1">Password:</label>
+          <label for="password">Password:</label>
           <input
             type="password"
-            name="password1"
-            id="password1"
+            name="password"
+            id="password"
             class="form-control"
             placeholder="Write your password"
           />
         </div>
-        <div class="mb-3">
-          <label for="password2">Confirm your Password:</label>
-          <input
-            type="password"
-            name="password2"
-            id="password2"
-            class="form-control"
-            placeholder="Confirm your password"
-          />
-        </div>
-        <button class="btn btn-primary">SignUp</button>
+        <button class="btn btn-primary">SignIn</button>
       </form>
     </div>
   </div>
