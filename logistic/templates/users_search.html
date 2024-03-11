@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+</head>
+
+<body>
+    <h1 class="main-title">Search Results</h1>
+
+    <form class="search-form" method="GET" action="{% url 'search_users' %}">
+
+        <label for="name" class="search-label">Search by Name:</label>
+        <input type="text" id="name" name="name" class="search-input">
+
+
+        <label for="id" class="search-label">Search by ID:</label>
+        <input type="text" id="id" name="id" class="search-input">
+
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+    <hr class="divider">
+
+
+    <ul class="results-list">
+        {% for user in users %}
+        <li class="result-item">
+            <strong class="result-title">Name:</strong> <span class="result-value">{{ user.name }}</span><br>
+            <strong class="result-title">Username:</strong> <span class="result-value">{{ user.username }}</span><br>
+            <strong class="result-title">ID Number:</strong> <span class="result-value">{{ user.id_number }}</span><br>
+            <strong class="result-title">Role:</strong> <span class="result-value">{{ user.role }}</span><br>
+            <strong class="result-title">Department:</strong> <span class="result-value">{{ user.department
+                }}</span><br>
+        </li>
+        {% empty %}
+        <li class="no-results">No users found.</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
