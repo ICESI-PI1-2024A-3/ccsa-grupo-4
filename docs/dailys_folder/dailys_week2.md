@@ -16,11 +16,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  Ver video del crud  | Ninguno  |
-|*Daron Mercado*  |   | Dividir las incidencias con subtareas y crear el CRUD - crear usuario en la base de datos  | Ninguno  |
-| *Johan Sebastian Diaz*  |   |   Aplicar los alineamientos de HTML para poder darle ubicación a los textos e imágenes | Aplicar CSS para poder implementar movimientos con HTML  |
-| *Cristian Cardona*  |   | Avance en el video del CRUD   | Ninguno  |
-| *Santiago Arboleda Velasco*  |   |  Revisar rubrica de actividades evaluables, pensar como se va a completar todos los CRUD del proyecto teniendo tan pocos en este primer SPRINT y comenzar con el desarrollo del front de mi historia de usuario  | Ninguno  |
+|*Camilo Bueno*   |Ver el vídeo de crud  |  Ver video del crud  | Ninguno  |
+|*Daron Mercado*  |Empezar a capacitarme con el vídeo de CRUD   | Dividir las incidencias con subtareas y crear el CRUD - crear usuario en la base de datos  | Ninguno  |
+| *Johan Sebastian Diaz*  |Estuve capacitándomelo en HTML para poder hacer alineamiento con imágenes y texto   |   Aplicar los alineamientos de HTML para poder darle ubicación a los textos e imágenes | Aplicar CSS para poder implementar movimientos con HTML  |
+| *Cristian Cardona*  |Capacitarme en CRUD   | Avance en el video del CRUD   | Ninguno  |
+| *Santiago Arboleda Velasco*  |Capacitarme acerca del CRUD para integrar en el proyecto   |  Revisar rubrica de actividades evaluables, pensar como se va a completar todos los CRUD del proyecto teniendo tan pocos en este primer SPRINT y comenzar con el desarrollo del front de mi historia de usuario  | Ninguno  |
 
 
 
@@ -29,11 +29,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |    |   |
-|*Daron Mercado*  |   |    |   |
-| *Johan Sebastian Diaz*  |   |    |   |
-| *Cristian Cardona*  |   |    |   |
-| *Santiago Arboleda Velasco*  |   |    |   |
+|*Camilo Bueno*   |Ver video del crud  |Repasar el video del crud  | Ninguno  |
+|*Daron Mercado*  |Dividir las incidencias con subtareas y crear el CRUD - crear usuario en la base de datos   | Investigar cómo funciona la base de datos por defecto de Django y avanzar en el vídeo del CRUD   | Ninguno  |
+| *Johan Sebastian Diaz*  | Aplicar los alineamientos de HTML para poder darle ubicación a los textos e imágenes   | Aplicar CSS y HTML para ajustar las imágenes y textos y añadirle los colores respectivos del jira | Ninguno  |
+| *Cristian Cardona*  | Avance en el video del CRUD   | Avanzar en el video del CRUD, probarlo en la template | Usar los elementos de la BD en las templates   |
+| *Santiago Arboleda Velasco*  | Revisar rubrica de actividades evaluables, pensar como se va a completar todos los CRUD del proyecto teniendo tan pocos en este primer SPRINT y comenzar con el desarrollo del front de mi historia de usuario   |Revisar Video del Crud    |Ninguno   |
 
 
 
