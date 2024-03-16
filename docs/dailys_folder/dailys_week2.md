@@ -42,12 +42,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |    |   |
-|*Daron Mercado*  |   |    |   |
-| *Johan Sebastian Diaz*  |   |    |   |
-| *Cristian Cardona*  |   |    |   |
-| *Santiago Arboleda Velasco*  |   |    |   |
-
+|*Camilo Bueno*   | Repasar el video del crud | Revisar el proceso de base de datos del login para interiorizar conocimientos   | Ninguno  |
+|*Daron Mercado*  | Investigar cómo funciona la base de datos por defecto de Django y avanzar en el vídeo del CRUD  | Separe el HTML del CSS del loginy agregar campos para seguir con el CRUD   | Conectar CSS con HTML  |
+| *Johan Sebastian Diaz*  | Aplicar CSS y HTML para ajustar las imágenes y textos y añadirle los colores respectivos del jira  | Voy a separar HTML del CSS   | Ninguno  |
+| *Cristian Cardona*  | Avanzar en el video del CRUD, probarlo en la template  | Avanzar en video del CRUD   | Ninguno  |
+| *Santiago Arboleda Velasco*  |  Revisar Video del Crud |  Entrar en la recta final del video del Crud  | Ninguno  |
 
 
 # Daily No.5
