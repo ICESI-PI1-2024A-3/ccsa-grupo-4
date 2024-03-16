@@ -45,7 +45,7 @@ def signup(request):
       
 def signout(request):
     logout(request)
-    return redirect('home')
+    return redirect('signin ')
 
   
 def signin(request):
@@ -64,3 +64,6 @@ def signin(request):
         else:
             login(request, user)
             return redirect('home')
+        
+def admin(request):
+    return redirect(admin.site.urls)

@@ -1,24 +1,20 @@
 from django.db import models
+from django.contrib.auth.models import User
 # In here, we create the clases that later on, they turn into sql tables
 # Create your models here.
 
 class Event(models.Model):
-    registerDate = models.DateField()
+    registerDate = models.DateTimeField(auto_now_add = True)
     name = models.CharField(max_length = 200)
     executionDate = models.DateField()
     place = models.CharField(max_length = 200)
-    manager = models.CharField(max_length = 200)
     progress = models.IntegerField() #en revision
-    finishDate = models.DateField()
+    finishDate = models.DateTimeField(null= True)
+    important = models.BooleanField(default = False)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null = True)#Esto me relaciona esta tabla con la tabla de usuarios. Si quiero que cuando se elimine el usuario se elimine todo entonces uso (User, on_delete = models.CASCADE)
     #bitacora = models.#####() #en revision
-
-#Single Table Inheritance:
-class User(models.Model):
-    name = models.CharField(max_length = 255)
-    id = models.AutoField(primary_key=True)
-    email = models.CharField(max_length = 255)
-    password = models.CharField(max_length = 255)
-    rol = models.CharField(max_length = 255) #with this, we don't need another table called rol
+    def __str__(self):
+        return self.name
 
 class Inquiry(models.Model):
     id = models.AutoField(primary_key=True)
