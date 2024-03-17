@@ -54,8 +54,8 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |    |   |
-|*Daron Mercado*  |   |    |   |
-| *Johan Sebastian Diaz*  |   |    |   |
-| *Cristian Cardona*  |   |    |   |
-| *Santiago Arboleda Velasco*  |   |    |   |
+|*Camilo Bueno*   |     Repasar video del crud |  mirar video acerca de html  | ninguno  |
+|*Daron Mercado*  | Revisar el proceso de base de datos del login para interiorizar conocimientos  | Hoy voy a empezar con el crud de eventos y probablemente la pantalla también   | Ayer no pude acomodar el CSS de la pantalla de inicio de sesión  |
+| *Johan Sebastian Diaz*  | Voy a separar HTML del CSS  |  hacer las conexiones de CSS y HTML |Ninguno |
+| *Cristian Cardona*  |  Avanzar en video del CRUD |  Estoy terminando el video Scrum  | Ninguno  |
+| *Santiago Arboleda Velasco*  | Entrar en la recta final del video del Crud   |  Finalizar el video del Crud y avanzar en el diseño del template de mi Hu   |  Ninguno |
