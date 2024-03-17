@@ -8,6 +8,7 @@ from django.contrib.auth import logout
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
+from .forms import EventForm
 # Create your views here.
 
 
@@ -45,7 +46,7 @@ def signup(request):
       
 def signout(request):
     logout(request)
-    return redirect('signin ')
+    return redirect('signin')
 
   
 def signin(request):
@@ -67,3 +68,23 @@ def signin(request):
         
 def admin(request):
     return redirect(admin.site.urls)
+
+def create_event(request):
+    if request.method == 'GET':
+        return render(request, 'create_event.html', {
+        'formForEvents': EventForm
+        })
+    else:
+         try:
+            form = EventForm(request.POST)
+            newEvent = form.save(commit=False) #el commit=False es para que aún no lo guarde en la BD
+            newEvent.save()
+            return redirect("home")
+         except:
+             return render(request, "create_event.html", {
+                 "formForEvents": EventForm,
+                 'error': 'Por favor, digite valores válidos'
+             })
+
+
+    
