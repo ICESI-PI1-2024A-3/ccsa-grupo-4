@@ -1,12 +1,40 @@
-{% extends "base.html" %} {% block content %}
-<main class="container py-5">
-  <section class="card card-body">
-    <h1 class="display-1 text-center">Django App</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor illum
-      ullam inventore, at adipisci enim quae fugit. Dolorum veniam, sequi,
-      ducimus non dolor omnis deserunt fuga reiciendis consequatur soluta iusto.
-    </p>
-  </section>
-</main>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+</head>
+<body>
+
+  <h1>Eventos:</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Fecha de Registro</th>
+        <th>Nombre</th>
+        <th>Fecha de Ejecución</th>
+        <th>Lugar</th>
+        <th>Usuario</th>
+        <th>Progreso</th>
+        <th>Fecha de Finalización</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in Eventos %}
+      <tr>
+        <td style="text-align: center;">{{ event.registerDate }}</td>
+        <td style="text-align: center;">{{ event.name }}</td>
+        <td style="text-align: center;">{{ event.executionDate }}</td>
+        <td style="text-align: center;">{{ event.place }}</td>
+        <td style="text-align: center;">{{ event.user }}</td>
+        <td style="text-align: center;">{{ event.progress }}</td>
+        <td style="text-align: center;">{{ event.finishDate }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+ 
+  
+</body>
+</html>

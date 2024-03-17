@@ -9,11 +9,16 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import EventForm
+from .models import Event
 # Create your views here.
 
 
 def home(request):
-    return render(request, 'home.html')
+    if request.user.is_superuser: #Si es el admin, lista todas las tareas
+        events = Event.objects.all()
+    else: #si no es el admin, solo lista las tareas asociadas a el/ella
+        events = Event.objects.filter(user = request.user)
+    return render(request, 'home.html', {'Eventos': events})
 
   
 def event_checklist(request):
