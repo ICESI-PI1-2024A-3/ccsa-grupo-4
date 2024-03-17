@@ -13,4 +13,7 @@ def event_checklist(request):
     return render(request, "event_checklist.html")
        
 def home(request):
-    return render(request, "home.html",
+    return render(request, "home.html"),
+
+def visualitationRol(request):
+    return render(request, "visualitationRol.html")

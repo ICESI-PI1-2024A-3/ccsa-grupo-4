@@ -1,0 +1,39 @@
+
+body {
+    background-color: #A9CCE3; /* Color de fondo para todo el cuerpo */
+    margin: 0; /* Eliminar márgenes predeterminados del cuerpo */
+    padding: 0; /* Eliminar rellado predeterminado del cuerpo */
+    font-family: Arial, sans-serif; /* Establecer una fuente predeterminada */
+}
+
+.header {
+    background-color: white; /* Color de fondo para la parte superior */
+    padding: 1px; /* Añadir rellado para espacio alrededor del contenido */
+    overflow: hidden; /* Limpiar el flujo de los elementos flotantes */
+}
+
+.logo {
+    float: left; /* Alinear el logo a la izquierda */
+    margin-right: 20px; /* Añadir margen derecho para separación */
+}   
+
+.admin-info {
+    float: right; /* Alinear la información del administrador a la derecha */
+    text-align: right; /* Alinear el texto al centro */
+    margin-top: 20px; /* Añadir margen superior */
+    display: flex; /* Activar el modelo de caja flexible */
+    align-items: center; /* Alinear verticalmente al centro */
+}   
+
+.admin-info h3 {
+    margin: 0; /* Eliminar el margen del h3 para que pueda alinearse correctamente */
+}
+
+.admin-info img {
+    margin-right: 10px; /* Añadir margen derecho para separación entre la imagen y el texto */
+}
+
+h1, h3 {
+    color: black; /* Color del texto */
+    margin-right: 10px; /* Agregar espacio entre el texto y las imágenes */
+}
