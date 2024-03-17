@@ -9,7 +9,9 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import EventForm
+from .forms import TaskForm
 from .models import Event
+from .models import Task
 # Create your views here.
 
 
@@ -88,6 +90,23 @@ def create_event(request):
          except:
              return render(request, "create_event.html", {
                  "formForEvents": EventForm,
+                 'error': 'Por favor, digite valores válidos'
+             })
+
+def create_task(request):
+    if request.method == 'GET':
+        return render(request, 'create_task.html', {
+        'formForTask': TaskForm
+        })
+    else:
+         try:
+            form = TaskForm(request.POST)
+            newTask = form.save(commit=False) #el commit=False es para que aún no lo guarde en la BD
+            newTask.save()
+            return redirect("home")
+         except:
+             return render(request, "create_task.html", {
+                 "formForTask": TaskForm,
                  'error': 'Por favor, digite valores válidos'
              })
 

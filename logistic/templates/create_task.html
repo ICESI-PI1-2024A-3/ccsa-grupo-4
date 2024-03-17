@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Evento</title>
+    <title>Crear tareas</title>
 </head>
 <body>
-    <h1>Crear Evento</h1>
-    {{error}} <!--Esto es para llamar la variable error-->
+    <h1>Crear tareas</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% endif %}
     <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
         {% csrf_token %}
         
-        {{formForEvents}}
+        {{formForTask}}
 
         <button>
             save
         </button>
     </form>
-        
+    
 </body>
 </html>

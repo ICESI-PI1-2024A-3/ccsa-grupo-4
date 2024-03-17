@@ -16,6 +16,11 @@ class Event(models.Model):
     def __str__(self):
         return self.name
 
+class Task(models.Model):
+    name = models.CharField(max_length = 500)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, null = True)
+    done = models.BooleanField(default = False)
+
 class Inquiry(models.Model):
     id = models.AutoField(primary_key=True)
     eventName = models.CharField(max_length = 200)#Es para saber a que evento está relacionado
