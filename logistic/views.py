@@ -12,6 +12,7 @@ from .forms import EventForm
 from .forms import TaskForm
 from .models import Event
 from .models import Task
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 
@@ -110,5 +111,15 @@ def create_task(request):
                  'error': 'Por favor, digite valores válidos'
              })
 
-
+def edit_event(request, event_id):
+    if request.method == 'GET':
+        event = get_object_or_404(Event, pk=event_id) #Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id
+        formForEditEvent = EventForm(instance=event)
+        return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent})#El primer eventId,simplem   ente es el nombre de uan variable
+                                                                    #El segundo event es el que se obtiene. El que se llama en el html es el que va entre comillas
+    else: 
+       event = get_object_or_404(Event, pk = event_id)
+       form = EventForm(request.POST, instance= event) #Obtiene los datos del formulario
+       form.save()
+       return redirect('home')
     

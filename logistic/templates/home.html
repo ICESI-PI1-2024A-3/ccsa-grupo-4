@@ -30,6 +30,7 @@
         <td style="text-align: center;">{{ event.user }}</td>
         <td style="text-align: center;">{{ event.progress }}</td>
         <td style="text-align: center;">{{ event.finishDate }}</td>
+        <td><a href="{% url 'edit_event' event.id %}">Editar</a></td>
       </tr>
       {% endfor %}
     </tbody>
