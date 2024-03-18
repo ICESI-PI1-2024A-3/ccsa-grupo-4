@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="container" style="background-image: url('/static/images/fondoSaman.png'); background-size: cover;
+background-position: center;">
+
+  <div class="row">
+    <section>
+
+      <img src="/static/images/logo_azul.webp" class="icon">
+
+    </section>
+
+
+    <div class="col-md-4 offset-md-4 mt-5">
+      <form action="/signin/" method="POST" class="card card-body">
+        <h1 class="text-center">Inicio de Sesion</h1>
+        {{ error }} {% csrf_token %}
+        <div class="mb-3">
+          <input type="text" name="username" id="username" class="form-control" placeholder="Nombre de Usuario" />
+        </div>
+        <div class="mb-3">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Contraseña" />
+        </div>
+        <button class="btn btn-primary">Acceder</button>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}
