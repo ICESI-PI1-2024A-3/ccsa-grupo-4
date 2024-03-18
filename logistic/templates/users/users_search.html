@@ -5,41 +5,96 @@
     <meta charset="UTF-8">
     <title>Search Results</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/main.css' %}">
 </head>
 
+
 <body>
-    <h1 class="main-title">Search Results</h1>
+    <header>
+        <section class="logo_icesi">
+            <img src="{% static 'icons/icesi.png' %}" class="icon_icesi">
+        </section>
 
-    <form class="search-form" method="GET" action="{% url 'search_users' %}">
+        <section class="notification">
+            <button>
+                <img src="{% static 'icons/campana.png' %}" class="icon">
+            </button>
+        </section>
 
-        <label for="name" class="search-label">Search by Name:</label>
-        <input type="text" id="name" name="name" class="search-input">
+        <section class="user_name">
+            <span>Gabriela</span>
+            <button>
+                <img src="{% static 'icons/photo.png' %}" class="icon">
+            </button>
+        </section>
+    </header>
 
 
-        <label for="id" class="search-label">Search by ID:</label>
-        <input type="text" id="id" name="id" class="search-input">
 
-        <button type="submit" class="search-button">Search</button>
-    </form>
+    <div class="contenedor">
+        <section class="columna_izquierda">
+            <button class="menu_button">
+                <img src="{% static 'icons/menu.png' %}" alt="" width="10px">
+            </button>
 
-    <hr class="divider">
+            <ul class="menu">
+                <button>
+                    <img src="{% static 'icons/home.png' %}" alt="" class="icon">
+                    <li><a href="#">Inicio</a></li>
+                </button>
+                <button>
+                    <img src="{% static 'icons/create.png' %}" alt="" class="icon">
+                    <li><a href="#">Crear Evento</a></li>
+                </button>
+                <button>
+                    <img src="{% static 'icons/calendar.png' %}" alt="" class="icon">
+                    <li><a href="#">Calendario</a></li>
+                </button>
+                <button>
+                    <img src="{% static 'icons/trash.png' %}" alt="" class="icon">
+                    <li><a href="#">Historial</a></li>
+                </button>
+                <li><a href="#"><img src="{% static 'icons/logout.png' %}" alt=""></a></li>
+            </ul>
+
+        </section>
+
+        <section>
+
+            <form class="search-form" method="GET" action="{% url 'search_users' %}">
+
+                <label for="name" class="search-label">Search by Name:</label>
+                <input type="text" id="name" name="name" class="search-input">
+
+                <label for="id" class="search-label">Search by ID:</label>
+                <input type="text" id="id" name="id" class="search-input">
+
+                <button type="submit" class="search-button">Search</button>
+            </form>
+
+            <hr class="divider">
+
+            <ul class="results-list">
+                {% for user in users %}
+                <li class="result-item">
+                    <strong class="result-title">Name:</strong> <span>{{ user.name }}</span><br>
+                    <strong class="result-title">Username:</strong> <span>{{ user.username }}</span><br>
+                    <strong class="result-title">ID Number:</strong> <span>{{ user.id_number }}</span><br>
+                    <strong class="result-title">Role:</strong> <span>{{ user.role }}</span><br>
+                    <strong class="result-title">Department:</strong> <span>{{ user.department }}</span><br>
+                </li>
+                {% empty %}
+                <li class="no-results">No users found.</li>
+                {% endfor %}
+            </ul>
+
+            <img src="{% static 'icons/person.jpg' %}" class="user_name">
+
+        </section>
 
 
-    <ul class="results-list">
-        {% for user in users %}
-        <li class="result-item">
-            <strong class="result-title">Name:</strong> <span class="result-value">{{ user.name }}</span><br>
-            <strong class="result-title">Username:</strong> <span class="result-value">{{ user.username }}</span><br>
-            <strong class="result-title">ID Number:</strong> <span class="result-value">{{ user.id_number }}</span><br>
-            <strong class="result-title">Role:</strong> <span class="result-value">{{ user.role }}</span><br>
-            <strong class="result-title">Department:</strong> <span class="result-value">{{ user.department
-                }}</span><br>
-        </li>
-        {% empty %}
-        <li class="no-results">No users found.</li>
-        {% endfor %}
-    </ul>
+    </div>
+    <script src="{% static 'js/app.js' %}"></script>
 </body>
 
 </html>
