@@ -13,6 +13,7 @@ from .forms import TaskForm
 from .models import Event
 from .models import Task
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 # Create your views here.
 
 
@@ -133,4 +134,23 @@ def edit_event(request, event_id):
        except ValueError:
            return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent, 
             'error': "Error al intentar actualizar, intente de nuevo"})
+       
+def complete_event(request, event_id):
+    if request.user.is_superuser:
+        event = get_object_or_404(Event, pk = event_id)
+    else:
+        event= get_object_or_404(Event, pk = event_id, user = request.user)
+    if request.method == 'POST':
+        event.completed = timezone.now()
+        event.save()
+        return redirect('home')
+
     
+def delete_event(request, event_id):
+    if request.user.is_superuser:
+        event = get_object_or_404(Event, pk = event_id)
+    else:
+        event= get_object_or_404(Event, pk = event_id, user = request.user)
+    if request.method == 'POST':
+        event.delete()
+        return redirect('home')
