@@ -20,7 +20,36 @@ from django.forms import modelformset_factory
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 
-# Create your views here.
+from .models import User
+
+
+def user_detail(request):
+
+    if request.method == 'GET':
+
+        query = request.GET.get('q', '')
+        users = User.objects.filter(name__icontains=query) | User.objects.filter(
+            id_number__icontains=query)
+
+        return render(request, 'users/users.html', {'users': users})
+
+
+def search_users(request):
+
+    name_query = request.GET.get('name', None)
+    id_query = request.GET.get('id', None)
+
+    users = []
+
+    if name_query:
+
+        users = User.objects.filter(name__icontains=name_query)
+
+    elif id_query:
+
+        users = User.objects.filter(id_number=id_query)
+
+    return render(request, 'users/users_search.html', {'users': users})
 
 
 def home(request):
@@ -135,7 +164,7 @@ def create_task(request):
             newTask.save()
             return redirect("home")
 
-         except:
+        except:
              return render(request, "create_task.html", {
                  "formForTask": TaskForm,
                  'error': 'Por favor, digite valores válidos'
@@ -183,4 +212,5 @@ def delete_event(request, event_id):
     if request.method == 'POST':
         event.delete()
         return redirect('home')
+
 
