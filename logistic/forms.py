@@ -19,3 +19,9 @@ class TaskForm(ModelForm):
     class Meta:
         model = Task
         fields = ["name", "event", "done"]
+        
+
+class TaskChecklist(ModelForm):
+    class Meta:
+        model = Task
+        fields = ["done"] 

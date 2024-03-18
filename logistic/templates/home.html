@@ -24,7 +24,7 @@
       {% for event in Eventos %}
       <tr>
         <td style="text-align: center;">{{ event.registerDate }}</td>
-        <td style="text-align: center;">{{ event.name }}</td>
+        <td style="text-align: center;"><a href="{% url 'event_checklist' event.id %}">{{ event.name }}</a></td>
         <td style="text-align: center;">{{ event.executionDate }}</td>
         <td style="text-align: center;">{{ event.place }}</td>
         <td style="text-align: center;">{{ event.user }}</td>
