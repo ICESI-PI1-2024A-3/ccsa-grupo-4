@@ -10,5 +10,8 @@ urlpatterns = [
     path('', views.signin, name='signin'),
     path('event/checklist/<int:event_id>', views.event_checklist, name='event_checklist'),
     path('create/event/', views.create_event, name= 'create_event'),
-    path('create/task/', views.create_task, name= 'create_task')
+    path('create/task/', views.create_task, name= 'create_task'),
+    path('edit/event/<int:event_id>/', views.edit_event, name='edit_event'),
+    path('edit/event/<int:event_id>/complete', views.complete_event, name='event_complete'),
+    path('edit/event/<int:event_id>/delete', views.delete_event, name='event_delete'),
 ]

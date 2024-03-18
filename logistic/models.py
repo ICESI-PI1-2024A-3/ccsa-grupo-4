@@ -11,6 +11,7 @@ class Event(models.Model):
     progress = models.IntegerField() #en revision
     finishDate = models.DateTimeField(null= True)
     important = models.BooleanField(default = False)
+    completed =models.DateTimeField(null = True, blank = True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null = True)#Esto me relaciona esta tabla con la tabla de usuarios. Si quiero que cuando se elimine el usuario se elimine todo entonces uso (User, on_delete = models.CASCADE)
     #bitacora = models.#####() #en revision
     def __str__(self):
