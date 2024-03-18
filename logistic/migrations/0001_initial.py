@@ -23,17 +23,11 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+
             name='Event',
             fields=[
                 ('id', models.BigAutoField(auto_created=True,
                  primary_key=True, serialize=False, verbose_name='ID')),
-                ('registerDate', models.DateField()),
-                ('user', models.ForeignKey(
-                    on_delete=django.db.models.deletion.CASCADE, to='logistic.user')),
-
-            name='Event',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('registerDate', models.DateField()),
                 ('name', models.CharField(max_length=200)),
                 ('executionDate', models.DateField()),

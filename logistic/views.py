@@ -23,17 +23,6 @@ from django.utils import timezone
 from .models import User
 
 
-def user_detail(request):
-
-    if request.method == 'GET':
-
-        query = request.GET.get('q', '')
-        users = User.objects.filter(name__icontains=query) | User.objects.filter(
-            id_number__icontains=query)
-
-        return render(request, 'users/users.html', {'users': users})
-
-
 def search_users(request):
 
     name_query = request.GET.get('name', None)
@@ -69,10 +58,10 @@ def event_checklist(request, event_id):
         formset = TaskFormSet(request.POST, queryset=queryset)
         if formset.is_valid():
             formset.save()
-            return redirect('home') 
+            return redirect('home')
         else:
-            print(formset.errors)     
-    else: 
+            print(formset.errors)
+    else:
         formset = TaskFormSet(queryset=queryset)
 
     return render(request, "event_checklist.html", {
@@ -165,52 +154,57 @@ def create_task(request):
             return redirect("home")
 
         except:
-             return render(request, "create_task.html", {
-                 "formForTask": TaskForm,
-                 'error': 'Por favor, digite valores válidos'
-             })
+            return render(request, "create_task.html", {
+                "formForTask": TaskForm,
+                'error': 'Por favor, digite valores válidos'
+            })
+
 
 def edit_event(request, event_id):
     if request.method == 'GET':
         if request.user.is_superuser:
-            event = get_object_or_404(Event, pk=event_id) #Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id
+            # Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id
+            event = get_object_or_404(Event, pk=event_id)
             formForEditEvent = EventForm(instance=event)
         else:
-            event = get_object_or_404(Event, pk=event_id, user = request.user) #Si no es el admin, se hace filtro para que no pueda editar las otros eventos
+            # Si no es el admin, se hace filtro para que no pueda editar las otros eventos
+            event = get_object_or_404(Event, pk=event_id, user=request.user)
             formForEditEvent = EventForm(instance=event)
-        return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent})#El primer eventId,simplem   ente es el nombre de uan variable. El segundo event es el que se obtiene. El que se llama en el html es el que va entre comillas
-    else: 
-       try:
+        # El primer eventId,simplem   ente es el nombre de uan variable. El segundo event es el que se obtiene. El que se llama en el html es el que va entre comillas
+        return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent})
+    else:
+        try:
             if request.user.is_superuser:
-                event = get_object_or_404(Event, pk = event_id)
-                form = EventForm(request.POST, instance= event) #Obtiene los datos del formulario
+                event = get_object_or_404(Event, pk=event_id)
+                # Obtiene los datos del formulario
+                form = EventForm(request.POST, instance=event)
             else:
-                event = get_object_or_404(Event, pk = event_id, user = request.user)
-                form = EventForm(request.POST, instance= event)
+                event = get_object_or_404(
+                    Event, pk=event_id, user=request.user)
+                form = EventForm(request.POST, instance=event)
             form.save()
             return redirect('home')
-       except ValueError:
-           return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent, 
-            'error': "Error al intentar actualizar, intente de nuevo"})
-       
+        except ValueError:
+            return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent,
+                                                       'error': "Error al intentar actualizar, intente de nuevo"})
+
+
 def complete_event(request, event_id):
     if request.user.is_superuser:
-        event = get_object_or_404(Event, pk = event_id)
+        event = get_object_or_404(Event, pk=event_id)
     else:
-        event= get_object_or_404(Event, pk = event_id, user = request.user)
+        event = get_object_or_404(Event, pk=event_id, user=request.user)
     if request.method == 'POST':
         event.completed = timezone.now()
         event.save()
         return redirect('home')
 
-    
+
 def delete_event(request, event_id):
     if request.user.is_superuser:
-        event = get_object_or_404(Event, pk = event_id)
+        event = get_object_or_404(Event, pk=event_id)
     else:
-        event= get_object_or_404(Event, pk = event_id, user = request.user)
+        event = get_object_or_404(Event, pk=event_id, user=request.user)
     if request.method == 'POST':
         event.delete()
         return redirect('home')
-
-

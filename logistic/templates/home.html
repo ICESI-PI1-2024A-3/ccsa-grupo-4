@@ -1,13 +1,24 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
 </head>
+
 <body>
 
   <h1>Eventos:</h1>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'create_event' %}">Crear un evento</a></li>
+        <li><a href="{% url 'create_task' %}">Crear una tarea</a></li>
+      </ul>
+    </nav>
+  </header>
   <table>
     <thead>
       <tr>
@@ -35,6 +46,7 @@
       {% endfor %}
     </tbody>
   </table>
-  
+
 </body>
+
 </html>
