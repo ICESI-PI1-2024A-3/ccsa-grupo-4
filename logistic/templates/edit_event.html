@@ -8,6 +8,7 @@
 <body>
     <h1>Editar Evento</h1>
     <p>{{eventId.name}}</p>
+    {{error}}
     <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
         {% csrf_token %}
         
