@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Evento</title>
+</head>
+<body>
+    <h1>Editar Evento</h1>
+    <p>{{eventId.name}}</p>
+    {{error}}
+    <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
+        {% csrf_token %}
+        
+        {{form}}
+
+        <button>
+            update
+        </button>
+    </form>
+   
+    <form action="{% url 'event_complete' eventId.id %}"  method="POST">
+        {% csrf_token %}
+        <button>
+            Completado
+        </button>
+    </form>
+
+    <form action="{% url 'event_delete' eventId.id %}"  method="POST">
+        {% csrf_token %}
+        <button>
+            Eliminar
+        </button>
+    </form>
+    
+</body>
+</html>

@@ -1,7 +1,8 @@
-*{
+* {
 
     margin: 0px;
-    padding: 0px; /*Reseteo los estilos que vienen por defecto*/
+    padding: 0px;
+    /*Reseteo los estilos que vienen por defecto*/
 }
 
 body {
@@ -14,12 +15,23 @@ body {
 .container {
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 90%;
     max-width: 600px;
     margin: auto;
 }
+
+.icon {
+    width: 10px;
+    height: 10px;
+    background-image: url('/static/images/icesi_logo.png');
+    background-size: 10px 10px;
+    /* Explicitly set image dimensions */
+}
+
+
+
 
 h1 {
     text-align: center;
