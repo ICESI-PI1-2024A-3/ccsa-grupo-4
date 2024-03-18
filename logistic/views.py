@@ -1,32 +1,54 @@
 from django.db import IntegrityError
-from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
 from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import EventForm
 from .forms import TaskForm
+from .forms import TaskChecklist
 from .models import Event
 from .models import Task
+from django.forms import modelformset_factory
 # Create your views here.
 
 
 def home(request):
-    if request.user.is_superuser: #Si es el admin, lista todas las tareas
+    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
         events = Event.objects.all()
-    else: #si no es el admin, solo lista las tareas asociadas a el/ella
-        events = Event.objects.filter(user = request.user)
+    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+        events = Event.objects.filter(user=request.user)
     return render(request, 'home.html', {'Eventos': events})
 
-  
-def event_checklist(request):
-    return render(request, "event_checklist.html")
-       
-    
+
+def event_checklist(request, event_id):
+    event = get_object_or_404(Event, id=event_id, user=request.user)
+    TaskFormSet = modelformset_factory(Task, form=TaskChecklist, extra=0)
+    queryset = Task.objects.filter(event=event)
+
+    if request.method == 'POST':
+        formset = TaskFormSet(request.POST, queryset=queryset)
+        if formset.is_valid():
+            formset.save()
+            return redirect('home') 
+        else:
+            print(formset.errors)     
+    else: 
+        formset = TaskFormSet(queryset=queryset)
+
+    return render(request, "event_checklist.html", {
+        'formset': formset,
+        'event': event
+    })
+
+
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {
@@ -50,12 +72,12 @@ def signup(request):
             'error': 'Password do not match',
         })
 
-      
+
 def signout(request):
     logout(request)
     return redirect('signin')
 
-  
+
 def signin(request):
     if request.method == 'GET':
         return render(request, 'signin.html', {
@@ -72,43 +94,45 @@ def signin(request):
         else:
             login(request, user)
             return redirect('home')
-        
+
+
 def admin(request):
     return redirect(admin.site.urls)
+
 
 def create_event(request):
     if request.method == 'GET':
         return render(request, 'create_event.html', {
-        'formForEvents': EventForm
+            'formForEvents': EventForm
         })
     else:
-         try:
+        try:
             form = EventForm(request.POST)
-            newEvent = form.save(commit=False) #el commit=False es para que aún no lo guarde en la BD
+            # el commit=False es para que aún no lo guarde en la BD
+            newEvent = form.save(commit=False)
             newEvent.save()
             return redirect("home")
-         except:
-             return render(request, "create_event.html", {
-                 "formForEvents": EventForm,
-                 'error': 'Por favor, digite valores válidos'
-             })
+        except:
+            return render(request, "create_event.html", {
+                "formForEvents": EventForm,
+                'error': 'Por favor, digite valores válidos'
+            })
+
 
 def create_task(request):
     if request.method == 'GET':
         return render(request, 'create_task.html', {
-        'formForTask': TaskForm
+            'formForTask': TaskForm
         })
     else:
-         try:
+        try:
             form = TaskForm(request.POST)
-            newTask = form.save(commit=False) #el commit=False es para que aún no lo guarde en la BD
+            # el commit=False es para que aún no lo guarde en la BD
+            newTask = form.save(commit=False)
             newTask.save()
             return redirect("home")
-         except:
-             return render(request, "create_task.html", {
-                 "formForTask": TaskForm,
-                 'error': 'Por favor, digite valores válidos'
-             })
-
-
-    
+        except:
+            return render(request, "create_task.html", {
+                "formForTask": TaskForm,
+                'error': 'Por favor, digite valores válidos'
+            })
