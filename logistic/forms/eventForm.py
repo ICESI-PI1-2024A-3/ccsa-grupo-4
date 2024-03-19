@@ -1,9 +1,7 @@
 from django.forms import ModelForm
 from django.forms import ModelChoiceField
 from django.contrib.auth.models import User
-from .models import Event
-from .models import Task
-
+from ..models import Event
 
 
 class EventForm(ModelForm):
@@ -13,15 +11,3 @@ class EventForm(ModelForm):
         model = Event
         fields = ["name", "executionDate", "place", "progress", "finishDate", "important", "user"]
 
-class TaskForm(ModelForm):
-    event = ModelChoiceField(queryset=Event.objects.all())
-
-    class Meta:
-        model = Task
-        fields = ["name", "event", "done"]
-        
-
-class TaskChecklist(ModelForm):
-    class Meta:
-        model = Task
-        fields = ["done"] 

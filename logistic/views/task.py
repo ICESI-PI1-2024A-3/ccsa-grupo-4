@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render
 from django.shortcuts import redirect
-from ..forms import TaskForm
+from ..forms.taskForm import TaskForm
 from ..models import Event
 
 def create_task(request):

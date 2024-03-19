@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-from ..forms import EventForm
-from ..forms import TaskChecklist
+from ..forms.eventForm import EventForm
+from ..forms.taskForm import TaskChecklist
 from ..models import Event
 from ..models import Task
 from django.forms import modelformset_factory
