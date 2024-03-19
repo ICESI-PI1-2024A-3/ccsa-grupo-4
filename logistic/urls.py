@@ -1,10 +1,13 @@
 from django.urls import path
 from django.contrib import admin
-from . import views
+from .views import views ####
+from .views import task
+from .views import event
+from .views import user
 
 urlpatterns = [
     path('admin/', views.admin, name='admin'),
-    path('home/', views.home, name='home'),
+    path('home/', user.home, name='home'),
     path('signup/', views.signup, name='signup'),
     path('logout/', views.signout, name='logout'),
     path('', views.signin, name='signin'),
