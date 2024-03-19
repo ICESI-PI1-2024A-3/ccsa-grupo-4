@@ -50,7 +50,10 @@ def home(request):
 
 
 def event_checklist(request, event_id):
-    event = get_object_or_404(Event, id=event_id, user=request.user)
+    if request.user.is_superuser:
+        event = get_object_or_404(Event, id=event_id)
+    else:
+        event = get_object_or_404(Event, id=event_id, user=request.user)
     TaskFormSet = modelformset_factory(Task, form=TaskChecklist, extra=0)
     queryset = Task.objects.filter(event=event)
 
@@ -142,17 +145,30 @@ def create_event(request):
 
 def create_task(request):
     if request.method == 'GET':
-        return render(request, 'create_task.html', {
-            'formForTask': TaskForm
-        })
+        if request.user.is_superuser:
+            user_events = Event.objects.all()
+        else:
+            # Obtener los eventos asociados al usuario actual
+            user_events = Event.objects.filter(user=request.user)
+        # Crear el formulario de tarea y filtrar los eventos asociados al usuario
+        form = TaskForm()
+        form.fields['event'].queryset = user_events
+        return render(request, 'create_task.html', 
+                      {'formForTask': form})
     else:
         try:
+            if request.user.is_superuser:
+                user_events = Event.objects.all()
+            else:
+                # Obtener los eventos asociados al usuario actual
+                user_events = Event.objects.filter(user=request.user)
             form = TaskForm(request.POST)
-            # el commit=False es para que aún no lo guarde en la BD
-            newTask = form.save(commit=False)
-            newTask.save()
-            return redirect("home")
-
+            # Aplicar el filtro a los eventos en el formulario
+            form.fields['event'].queryset = user_events
+            if form.is_valid():
+                new_task = form.save(commit=False)
+                new_task.save()
+                return redirect("home")
         except:
             return render(request, "create_task.html", {
                 "formForTask": TaskForm,
