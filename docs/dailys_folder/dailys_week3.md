@@ -15,11 +15,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*  |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   | Ver videos de css | Hoy ví más tutoriales de css | Ninguno |
+|*Daron Mercado*  | Separé los archivos forms y views para mantener un mejor orden en la estructura de los archivos, también iniciaré con el update y delete de las tareas | Avanzar en el update y el delete de Tareas | Ninguno |
+| *Johan Sebastian Diaz*  | Terminar de ver el video para aplicarlo en el proyecto | Hacer ejemplos de base de datos de Django para ir practicando, aprendiendo y poder aplicarlo en el trabajo  | Ninguno |
+| *Cristian Cardona*  | Estudiar CSS y JS | Hoy no trabaje en el proyecto | Ninguno |
+| *Santiago Arboleda Velasco*  | Estudiar diversos conceptos relacionados a CSS, Booststrap y JS | Empezar con el diseño de la template home | Ninguno |
 
 
 # Daily No.3
