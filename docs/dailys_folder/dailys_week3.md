@@ -27,11 +27,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*  |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   |Hoy ví más tutoriales de css  |Ver videos de css  |Ninguno  |
+|*Daron Mercado*  |Avanzar en el update y el delete de Tareas  |Seguir trabajando en el update y el delete de las tareas  |Ninguno  |
+| *Johan Sebastian Diaz*  |Hacer ejemplos de base de datos de Django para ir practicando, aprendiendo y poder aplicarlo en el trabajo  |Hago varios ejemplos para practicar |Al cambiar el nombre de un ususrio ya registrado  |
+| *Cristian Cardona*  |Estudiar CSS y JS  |Practicar frontend |Ninguno  |
+| *Santiago Arboleda Velasco*  |Empezar con el diseño de la template home  |Continuar con el desarrollo de la template home, adicionalmente revisar documentacion de css, bostrap y JS  | Ninguno  |
 
 
 # Daily No.4
