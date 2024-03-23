@@ -39,11 +39,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*  |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   | Ver videos de css  | Organizar agenda para seguir trabajando en el proyecto | Ninguno |
+|*Daron Mercado*  | Avanzar en el update y el delete de Tareas | Hoy no pude trabajar en el proyecto | Tiempo |
+| *Johan Sebastian Diaz*  | Hago varios ejemplos para practicar  | No pude trabajar en el proyecto | Por parciales |
+| *Cristian Cardona*  | Practicar frontend | Mirar la creacion de tablas con Django y JS | NNinguno |
+| *Santiago Arboleda Velasco*  | Continuar con el desarrollo de la template home, adicionalmente revisar documentacion de css, bostrap y JS | Avanzar poco en el template | Poco tiepo |
 
 
 # Daily No.5
