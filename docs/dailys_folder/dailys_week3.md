@@ -51,8 +51,8 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*  |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   |  Organizar agenda para seguir trabajando en el proyecto  | explorar paleta de colores para ccs | Ninguno |
+|*Daron Mercado*  | Hoy no pude trabajar en el proyecto | Seguir desarrollando el crud de tareas | Ninguno |
+| *Johan Sebastian Diaz*  | No pude trabajar en el proyecto | Volver a ver el video de base de datos porque tuve un error | Ninguno |
+| *Cristian Cardona*  | Mirar la creacion de tablas con Django y JS  | Estoy organizando los estilos de del significa | Usar el CSS bien en conjunto con el navegador base |
+| *Santiago Arboleda Velasco*  |  Avanzar poco en el template | Avanzar en el témplate de home | Ninguno |
