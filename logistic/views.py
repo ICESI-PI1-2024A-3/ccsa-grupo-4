@@ -85,7 +85,7 @@ def signin(request):
             })
         else:
             login(request, user)
-            return redirect('home', username=user.username)
+            return redirect('home')
 
 
 def home(request):
