@@ -41,35 +41,6 @@ def search_users(request):
     return render(request, 'users/users_search.html', {'users': users})
 
 
-def home(request):
-    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
-        events = Event.objects.all()
-    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
-        events = Event.objects.filter(user=request.user)
-    return render(request, 'home.html', {'Eventos': events})
-
-
-def event_checklist(request, event_id):
-    event = get_object_or_404(Event, id=event_id, user=request.user)
-    TaskFormSet = modelformset_factory(Task, form=TaskChecklist, extra=0)
-    queryset = Task.objects.filter(event=event)
-
-    if request.method == 'POST':
-        formset = TaskFormSet(request.POST, queryset=queryset)
-        if formset.is_valid():
-            formset.save()
-            return redirect('home')
-        else:
-            print(formset.errors)
-    else:
-        formset = TaskFormSet(queryset=queryset)
-
-    return render(request, "event_checklist.html", {
-        'formset': formset,
-        'event': event
-    })
-
-
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {
@@ -114,7 +85,36 @@ def signin(request):
             })
         else:
             login(request, user)
+            return redirect('home', username=user.username)
+
+
+def home(request):
+    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
+        events = Event.objects.all()
+    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+        events = Event.objects.filter(user=request.user)
+    return render(request, 'home/home.html', {'Eventos': events})
+
+
+def event_checklist(request, event_id):
+    event = get_object_or_404(Event, id=event_id, user=request.user)
+    TaskFormSet = modelformset_factory(Task, form=TaskChecklist, extra=0)
+    queryset = Task.objects.filter(event=event)
+
+    if request.method == 'POST':
+        formset = TaskFormSet(request.POST, queryset=queryset)
+        if formset.is_valid():
+            formset.save()
             return redirect('home')
+        else:
+            print(formset.errors)
+    else:
+        formset = TaskFormSet(queryset=queryset)
+
+    return render(request, "event_checklist.html", {
+        'formset': formset,
+        'event': event
+    })
 
 
 def admin(request):

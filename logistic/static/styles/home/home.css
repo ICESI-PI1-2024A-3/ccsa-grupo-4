@@ -1,0 +1,25 @@
+.user-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.user-image img {
+    width: 50px;
+    /* Ajusta el tamaño según sea necesario */
+    height: 50px;
+    /* Ajusta el tamaño según sea necesario */
+    border-radius: 50%;
+    /* Para redondear la imagen */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-info p {
+    margin-right: 10px;
+    /* Espacio entre el nombre de usuario y la imagen de perfil */
+}

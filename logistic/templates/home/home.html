@@ -6,9 +6,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/home/home.css' %}">
+
 </head>
 
 <body>
+  <section class="user-container">
+    <div class="user-info">
+      <p>{{ request.user.username }}</p>
+    </div>
+
+    <div class="user-image">
+      <img src="/static/images/profile.jpg">
+
+    </div>
+
+  </section>
 
   <h1>Eventos:</h1>
   <header>
