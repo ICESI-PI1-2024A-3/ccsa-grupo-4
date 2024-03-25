@@ -2,24 +2,41 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    border: 5px black s
+}
+
+.logo img {
+    cursor: pointer;
 }
 
 .user-image img {
     width: 50px;
-    /* Ajusta el tamaño según sea necesario */
     height: 50px;
-    /* Ajusta el tamaño según sea necesario */
     border-radius: 50%;
-    /* Para redondear la imagen */
+    cursor: pointer;
 }
 
 .user-info {
     display: flex;
     align-items: center;
+    margin-left: auto;
 }
 
 .user-info p {
     margin-right: 10px;
-    /* Espacio entre el nombre de usuario y la imagen de perfil */
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    margin-left: 890px;
+}
+
+.notification img {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+img:hover {
+    transform: scale(1.05);
 }
