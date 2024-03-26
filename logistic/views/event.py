@@ -16,6 +16,7 @@ def event_checklist(request, event_id):
         event = get_object_or_404(Event, id=event_id)
     else:
         event = get_object_or_404(Event, id=event_id, user=request.user)
+
     TaskFormSet = modelformset_factory(Task, form=TaskChecklist, extra=0)
     queryset = Task.objects.filter(event=event)
 
@@ -92,8 +93,8 @@ def complete_event(request, event_id):
         event.completed = timezone.now()
         event.save()
         return redirect('home')
-    
-    
+
+
 def delete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)

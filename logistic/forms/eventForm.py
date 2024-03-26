@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+from django.forms import DateTimeInput
 from django.forms import ModelChoiceField
 from django.contrib.auth.models import User
 from ..models import Event
@@ -10,4 +11,13 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         fields = ["name", "executionDate", "place", "progress", "finishDate", "important", "user"]
+        widgets = {
+            'executionDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+            'finishDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(EventForm, self).__init__(*args, **kwargs)
+        self.fields['executionDate'].input_formats = ('%Y-%m-%dT%H:%M',)
+        self.fields['finishDate'].input_formats = ('%Y-%m-%dT%H:%M',)
 
