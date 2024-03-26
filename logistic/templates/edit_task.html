@@ -18,6 +18,12 @@
             Actualizar
         </button>
     </form>
-
+    
+    <form action="{% url 'task_delete' form.instance.id %}"  method="POST">
+        {% csrf_token %}
+        <button>
+            Eliminar
+        </button>
+    </form>
 </body>
 </html>

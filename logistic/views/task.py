@@ -65,3 +65,12 @@ def edit_task(request, task_id):
             return render(request, "edit_task.html", {'tasktId': task, 'form': formForEditTask,
                                                        'error': "Error al intentar actualizar, intente de nuevo"})
 
+def delete_task(request, task_id):
+    if request.user.is_superuser:
+        task = get_object_or_404(Task, pk=task_id)
+    else:
+        task = get_object_or_404(Task, pk=task_id, user=request.user)
+    if request.method == 'POST':
+        task.delete()
+        return redirect('event_checklist', event_id = task.event.id)
+
