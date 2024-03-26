@@ -18,5 +18,5 @@ urlpatterns = [
     path('edit/event/<int:event_id>/delete',
          views.delete_event, name='event_delete'),
     path('signin/', views.signin, name='signin'),
-    path('home/search/', views.search_users, name='users_search')
+    path('home/search/', views.search_user, name='users_search')
 ]

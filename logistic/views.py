@@ -23,24 +23,6 @@ from django.utils import timezone
 from .models import User
 
 
-def search_users(request):
-
-    name_query = request.GET.get('name', None)
-    id_query = request.GET.get('id', None)
-
-    users = []
-
-    if name_query:
-
-        users = User.objects.filter(name__icontains=name_query)
-
-    elif id_query:
-
-        users = User.objects.filter(id_number=id_query)
-
-    return render(request, 'users/users_search.html', {'users': users})
-
-
 def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html', {
@@ -208,3 +190,15 @@ def delete_event(request, event_id):
     if request.method == 'POST':
         event.delete()
         return redirect('home')
+
+
+def search_user(request):
+    if request.method == 'GET':
+        return render(request, 'users_search.html')
+    elif request.method == 'POST':
+        search_query = request.POST.get('search_query')
+        if search_query.isdigit():  # Si la consulta es un número, buscar por ID
+            users = User.objects.filter(id=search_query)
+        else:  # De lo contrario, buscar por nombre de usuario
+            users = User.objects.filter(username__icontains=search_query)
+        return render(request, 'users_search.html', {'users': users})
