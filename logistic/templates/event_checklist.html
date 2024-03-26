@@ -30,7 +30,7 @@
                         {% for form in formset %}
                             <li>
                                 {{ form.id }}
-                                {{ form.instance.name }}: {{ form.done }}  <!-- Muestra el nombre y el checkbox -->
+                                <a href="{% url 'edit_task' form.instance.id %}">{{ form.instance.name }}</a>: {{ form.done }}  <!-- Muestra el nombre y el checkbox -->
                                 {% if form.done.errors %}  <!-- Errores de validación si existen -->
                                 <div class="errors">{{ form.done.errors }}</div>
                                 {% endif %}
