@@ -47,12 +47,12 @@ body.dark {
 .user-container {
     display: flex;
     align-items: center;
-    border: 5px black s;
-    background-color: white;
+    border-bottom: 1px solid #000;
+    /* Add bottom border */
     width: calc(100% - 80px);
-    /* Subtract the sidebar width and margin-left from the body width */
     margin: 0 0 0 80px;
-    /* Remove the top and right margins and adjust the left and bottom margins */
+    position: relative;
+    /* Add positioning */
 }
 
 .icesi img {
@@ -478,5 +478,97 @@ td:nth-child(5) {
     th:nth-child(4),
     td:nth-child(4) {
         width: 40%;
+    }
+}
+
+.section-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-title {
+    margin: 0;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 30px;
+    padding: 10px 20px;
+    width: 22%;
+}
+
+.search-icon {
+    height: 20px;
+    width: 20px;
+    fill: #5e5e5e;
+}
+
+.search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    margin-left: 10px;
+    color: #5e5e5e;
+    width: 70%;
+}
+
+.search-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-button:hover .search-icon {
+    fill: #007bff;
+}
+
+/* For tablet and mobile view adjustments */
+@media screen and (max-width: 900px) {
+    .section-title-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .section-title {
+        margin: 0 0 10px;
+    }
+
+    .search-container {
+        order: -1;
+        margin: 10px 0;
+    }
+}
+
+/* For mobile view adjustments */
+@media screen and (max-width: 400px) {
+    .search-container {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+        margin: 0;
+        text-align: left;
+    }
+
+    .search-icon {
+        height: 15px;
+        width: 15px;
+    }
+
+    .search-input {
+        order: 1;
+        flex-grow: 1;
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    .search-button {
+        order: 2;
+        flex-grow: 1;
+        text-align: right;
     }
 }
