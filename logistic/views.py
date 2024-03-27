@@ -75,7 +75,7 @@ def home(request):
         events = Event.objects.all()
     else:  # si no es el admin, solo lista las tareas asociadas a el/ella
         events = Event.objects.filter(user=request.user)
-    return render(request, 'home/home.html', {'Eventos': events})
+    return render(request, 'home.html', {'Eventos': events})
 
 
 def event_checklist(request, event_id):
