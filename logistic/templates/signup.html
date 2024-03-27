@@ -1,11 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 <main class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4 mt-5">
+    <section class="col-md-4 offset-md-4 mt-5">
       <form action="/signup/" method="POST" class="card card-body">
         <h1 class="text-center">SignUp</h1>
         {{error}} {% csrf_token %}
-        <div class="mb-3">
+        <article class="mb-3">
           <label for="username">Username:</label>
           <input
             type="text"
@@ -14,8 +14,18 @@
             class="form-control"
             placeholder="Write your username"
           />
-        </div>
-        <div class="mb-3">
+        </article>
+        <article class="mb-3">
+          <label for="email">Email:</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            class="form-control"
+            placeholder="Write your email"
+          />
+        </article>
+        <article class="mb-3">
           <label for="password1">Password:</label>
           <input
             type="password"
@@ -24,8 +34,8 @@
             class="form-control"
             placeholder="Write your password"
           />
-        </div>
-        <div class="mb-3">
+        </article>
+        <article class="mb-3">
           <label for="password2">Confirm your Password:</label>
           <input
             type="password"
@@ -34,10 +44,10 @@
             class="form-control"
             placeholder="Confirm your password"
           />
-        </div>
+        </article>
         <button class="btn btn-primary">SignUp</button>
       </form>
-    </div>
+    </section>
   </div>
 </main>
 {% endblock %}
