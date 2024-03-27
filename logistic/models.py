@@ -23,6 +23,7 @@ class Task(models.Model):
     name = models.CharField(max_length=500)
     event = models.ForeignKey(Event, on_delete=models.CASCADE, null=True)
     done = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null = True)
 
 
 class Inquiry(models.Model):

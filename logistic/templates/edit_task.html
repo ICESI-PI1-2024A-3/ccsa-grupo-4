@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Tarea</title>
+</head>
+<body>
+    <h1>Editar Tarea</h1>
+    <p>{{tareaId.name}}</p>
+    {{error}}
+    <form action="{% url 'edit_task' form.instance.id  %}" method="POST"> 
+        {% csrf_token %}
+        
+        {{form}}
+
+        <button>
+            Actualizar
+        </button>
+    </form>
+    
+    <form action="{% url 'task_delete' form.instance.id  %}"  method="POST">
+        {% csrf_token %}
+        <button>
+            Eliminar
+        </button>
+    </form>
+</body>
+</html>
