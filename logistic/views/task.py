@@ -29,6 +29,7 @@ def create_task(request):
             form.fields['event'].queryset = user_events
             if form.is_valid():
                 new_task = form.save(commit=False)
+                new_task.user = new_task.event.user
                 new_task.save()
                 return redirect("home")
         except:
@@ -41,14 +42,19 @@ def edit_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     
     if request.method == 'GET':
-        form = TaskForm(instance=task, is_superuser=request.user.is_superuser)
+        if request.user.is_superuser:
+            form = TaskForm(instance=task)
+        else:
+            user_events = Event.objects.filter(user=request.user)
+            form = TaskForm(instance=task)
+            form.fields['event'].queryset = user_events
     else:
-        form = TaskForm(request.POST, instance=task, is_superuser=request.user.is_superuser)
+        form = TaskForm(request.POST, instance=task)
         if form.is_valid():
+            task = form.save(commit=False)
             if not request.user.is_superuser:
                 # Si el usuario no es superusuario, asigna la tarea al usuario actual automáticamente
                 task.user = request.user
-            task = form.save(commit=False)
             task.save()
             return redirect('event_checklist', event_id=task.event.id)
         else:
