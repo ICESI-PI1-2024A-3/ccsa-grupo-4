@@ -1,11 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear tareas</title>
+    <link rel="stylesheet" href="{% static 'styles/create_task.css' %}"> <!-- Ajusta la ruta según sea necesario -->
 </head>
 <body>
+<div class="container">
     <h1>Crear tareas</h1>
     {% if error %}
         <p>{{ error }}</p>
@@ -13,12 +16,12 @@
     <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
         {% csrf_token %}
         
-        {{formForTask}}
+        {{ formForTask }}
 
-        <button>
-            save
+        <button type="submit">
+            Guardar
         </button>
     </form>
-    
+</div>
 </body>
 </html>

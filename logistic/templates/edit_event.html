@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,37 +6,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Evento</title>
+    <link rel="stylesheet" href="{% static 'styles/edit_event.css' %}">
 </head>
 
 <body>
-    <h1>Editar Evento</h1>
-    <p>{{eventId.name}}</p>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}" alt="Logo">
+        </div>
+        <div class="user-info">
+            <!-- Información del usuario aquí -->
+            <!-- Ejemplo: {{ user.get_full_name }} -->
+        </div>
+    </header>
+    <div class="container">
+        <h1>Editar Evento</h1>
+        <H2>Event: {{eventId.name}}</H2>
+        {{error}}
+        <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
+            {% csrf_token %}
+            {{form}}
+            <button class="btn btn-update">
+                Update
+            </button>
+        </form>
 
-    {{error}}
-    <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
-        {% csrf_token %}
+        <form action="{% url 'event_delete' eventId.id %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-delete">
+                Delete
+            </button>
+        </form>
 
-        {{form}}
-
-        <button>
-            Actualizar
-        </button>
-    </form>
-
-    <form action="{% url 'event_complete' eventId.id %}" method="POST">
-        {% csrf_token %}
-        <button>
-            Completado
-        </button>
-    </form>
-
-    <form action="{% url 'event_delete' eventId.id %}" method="POST">
-        {% csrf_token %}
-        <button>
-            Eliminar
-        </button>
-    </form>
-
+        <form action="{% url 'event_complete' eventId.id %}" method="POST">
+            {% csrf_token %}
+            <button class="btn btn-complete btn-wide">
+                Complete
+            </button>
+        </form>
+    </div>
 </body>
 
 </html>

@@ -21,6 +21,8 @@
                 <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
             </div>
 
+            <a href="">Crear tarea</a>
+            
             <form method="POST" action="{% url 'event_checklist' event.id %}">
                 {% csrf_token %}
                 <div class="event-detail">

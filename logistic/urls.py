@@ -1,22 +1,24 @@
 from django.urls import path
 from django.contrib import admin
-from . import views
+from .views import task
+from .views import event
+from .views import user
 
 urlpatterns = [
-    path('admin/', views.admin, name='admin'),
-    path('home/', views.home, name='home'),
-    path('signup/', views.signup, name='signup'),
-    path('logout/', views.signout, name='logout'),
-    path('', views.signin, name='signin'),
+    path('admin/', user.admin, name='admin'),
+    path('home/', user.home, name='home'),
+    path('signup/', user.signup, name='signup'),
+    path('logout/', user.signout, name='logout'),
+    path('', user.signin, name='signin'),
+    path('signin/', user.signin, name='signin'),
     path('event/checklist/<int:event_id>',
-         views.event_checklist, name='event_checklist'),
-    path('create/event/', views.create_event, name='create_event'),
-    path('create/task/', views.create_task, name='create_task'),
-    path('edit/event/<int:event_id>/', views.edit_event, name='edit_event'),
+         event.event_checklist, name='event_checklist'),
+    path('create/event/', event.create_event, name='create_event'),
+    path('create/task/', task.create_task, name='create_task'),
+    path('edit/event/<int:event_id>/', event.edit_event, name='edit_event'),
     path('edit/event/<int:event_id>/complete',
-         views.complete_event, name='event_complete'),
+         event.complete_event, name='event_complete'),
     path('edit/event/<int:event_id>/delete',
-         views.delete_event, name='event_delete'),
-    path('signin/', views.signin, name='signin'),
-    path('home/search/', views.search_user, name='users_search')
+         event.delete_event, name='event_delete'),
+    path('home/search/', user.search_user, name='users_search')
 ]
