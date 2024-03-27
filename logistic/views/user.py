@@ -35,7 +35,7 @@ def signup(request):
         if request.POST['password1'] == request.POST['password2']:
             try:
                 user = User.objects.create_user(
-                    username=request.POST['username'], password=request.POST['password1'])
+                    username=request.POST['username'], email=request.POST['email'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect('home')
@@ -72,20 +72,14 @@ def signin(request):
             login(request, user)
             return redirect('home')
 
-        
-def search_users(request):
 
-    name_query = request.GET.get('name', None)
-    id_query = request.GET.get('id', None)
-
-    users = []
-
-    if name_query:
-
-        users = User.objects.filter(name__icontains=name_query)
-
-    elif id_query:
-
-        users = User.objects.filter(id_number=id_query)
-
-    return render(request, 'users/users_search.html', {'users': users})
+def search_user(request):
+    if request.method == 'GET':
+        return render(request, 'users_search.html')
+    elif request.method == 'POST':
+        search_query = request.POST.get('search_query')
+        if search_query.isdigit():  # Si la consulta es un número, buscar por ID
+            users = User.objects.filter(id=search_query)
+        else:  # De lo contrario, buscar por nombre de usuario
+            users = User.objects.filter(username__icontains=search_query)
+        return render(request, 'users_search.html', {'users': users})

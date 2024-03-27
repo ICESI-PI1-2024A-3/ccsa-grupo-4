@@ -38,32 +38,23 @@ def create_task(request):
             })
 
 def edit_task(request, task_id):
+    task = get_object_or_404(Task, pk=task_id)
+    
     if request.method == 'GET':
-        if request.user.is_superuser:
-            # Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id
-            task = get_object_or_404(Task, pk=task_id)
-            formForEditTask = TaskForm(instance=task)
-        else:
-            # Si no es el admin, se hace filtro para que no pueda editar las otras tasks
-            task = get_object_or_404(Task, pk=task_id, user=request.user)
-            formForEditTask = TaskForm(instance=task)
-        # El primer eventId,simplem   ente es el nombre de uan variable. El segundo task es el que se obtiene. El que se llama en el html es el que va entre comillas
-        return render(request, "edit_task.html", {'taskId': task, 'form': formForEditTask})
+        form = TaskForm(instance=task, is_superuser=request.user.is_superuser)
     else:
-        try:
-            if request.user.is_superuser:
-                task = get_object_or_404(Task, pk=task_id)
-                # Obtiene los datos del formulario
-                form = TaskForm(request.POST, instance=task)
-            else:
-                task = get_object_or_404(
-                    Task, pk=task_id, user=request.user)
-                form = TaskForm(request.POST, instance=task)
-            form.save()
-            return redirect('event_checklist', event_id = task.event.id)
-        except ValueError:
-            return render(request, "edit_task.html", {'tasktId': task, 'form': formForEditTask,
-                                                       'error': "Error al intentar actualizar, intente de nuevo"})
+        form = TaskForm(request.POST, instance=task, is_superuser=request.user.is_superuser)
+        if form.is_valid():
+            if not request.user.is_superuser:
+                # Si el usuario no es superusuario, asigna la tarea al usuario actual automáticamente
+                task.user = request.user
+            task = form.save(commit=False)
+            task.save()
+            return redirect('event_checklist', event_id=task.event.id)
+        else:
+            return render(request, "edit_task.html", {'taskId': task, 'form': form, 'error': "Error al intentar actualizar, intente de nuevo"})
+
+    return render(request, "edit_task.html", {'taskId': task, 'form': form})
 
 def delete_task(request, task_id):
     if request.user.is_superuser:
