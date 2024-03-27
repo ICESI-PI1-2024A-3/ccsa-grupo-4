@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -130,7 +131,17 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# settings.py
+
+# Tiempo de vencimiento de la sesión en segundos (e.g., 1800 segundos = 30 minutos)
+#SESSION_COOKIE_AGE = 1800
+
+# Define si la sesión debe expirar cuando el usuario cierra el navegador
+#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+

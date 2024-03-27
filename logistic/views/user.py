@@ -1,24 +1,29 @@
 from django.db import IntegrityError
-from django.contrib.auth.models import User
 from django.shortcuts import render
-from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render
 from django.shortcuts import redirect
+from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import logout
 from django.contrib.auth import authenticate
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
-
-# Create your views here.
+from ..models import Event
+from ..models import User
 
 
 def home(request):
-    return render(request, "home.html")
+    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
+        events = Event.objects.all()
+    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+        events = Event.objects.filter(user=request.user)
+    return render(request, 'home.html', {'Eventos': events})
 
 
-def event_checklist(request):
-    return render(request, "event_checklist.html")
+def admin(request):
+    return redirect(admin.site.urls)
 
 
 def signup(request):
@@ -34,10 +39,7 @@ def signup(request):
         if request.POST["password1"] == request.POST["password2"]:
             try:
                 user = User.objects.create_user(
-                    username=request.POST["username"],
-                    email=request.POST["email"],
-                    password=request.POST["password1"],
-                )
+                    username=request.POST['username'], email=request.POST['email'], password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect("home")
@@ -60,9 +62,10 @@ def signup(request):
         )
 
 
+
 def signout(request):
     logout(request)
-    return redirect("home")
+    return redirect('signin')
 
 
 def signin(request):
@@ -85,4 +88,16 @@ def signin(request):
             )
         else:
             login(request, user)
-            return redirect("home")
+            return redirect('home')
+
+
+def search_user(request):
+    if request.method == 'GET':
+        return render(request, 'users_search.html')
+    elif request.method == 'POST':
+        search_query = request.POST.get('search_query')
+        if search_query.isdigit():  # Si la consulta es un número, buscar por ID
+            users = User.objects.filter(id=search_query)
+        else:  # De lo contrario, buscar por nombre de usuario
+            users = User.objects.filter(username__icontains=search_query)
+        return render(request, 'users_search.html', {'users': users})
