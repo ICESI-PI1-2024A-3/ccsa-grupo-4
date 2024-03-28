@@ -25,11 +25,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado*  | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Hacer merge con el proyecto en la rama dev |Seguir en proceso de implementación del delete de usuario |Ninguno |
+|*Daron Mercado*  |Solucioné algunos errores para la el update de tareas y ayudé a solucionar errores al momento de unificar las rama |Voy a crear una nueva rama y empezar a desarrollar el crud completo de las bitácoras |Ninguno |
+| *Johan Sebastian Diaz*  |-- |Seguir con el proceso de implementación de base de datos |Ninguno |
+| *Cristian Cardona*  |Voy a hacer ahora los estilos para la pantalla editar tarea y crear tarea |Seguiré implementado los estilos a las templates |Ninguno |
+| *Santiago Arboleda Velasco*  |Hice merge con la clase Dev y corregí unos errores además de hacer el menú hamburger |Agregar el menu desplegable a las pantallas disponibles y empezar con el diseño responsive |Ninguno |
 
 # Daily No.4
 ### Viernes 29 de marzo de 2024
