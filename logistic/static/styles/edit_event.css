@@ -37,11 +37,23 @@ h1 {
     color: #333;
 }
 
+h2 {
+    text-align: center;
+    color: #555;
+}
+
 form {
     background-color: #f9f9f9;
     border-radius: 5px;
     padding: 15px;
     margin-top: 20px;
+}
+
+.form-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .error, .errorlist {
@@ -62,20 +74,10 @@ select {
     border-radius: 4px;
 }
 
-.form-actions {
+.button-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
     margin-top: 10px;
-}
-
-.btn {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.btn-wide {
-    width: 100%;
 }
 
 .btn {
@@ -84,7 +86,11 @@ select {
     border-radius: 4px;
     text-decoration: none;
     cursor: pointer;
-    margin-top: 10px;
+    
+}
+
+.btn-wide {
+    width: 100%;
 }
 
 .btn-update {
@@ -97,18 +103,16 @@ select {
     background-color: #d9534f;
     color: white;
     border: none;
-    
 }
 
 .btn-complete {
     background-color: #337ab7;
     color: white;
     border: none;
-    
 }
 
 .btn:hover {
-    background-color: #e0e0e0;
+    opacity: 0.8;
 }
 
 .errorlist li {

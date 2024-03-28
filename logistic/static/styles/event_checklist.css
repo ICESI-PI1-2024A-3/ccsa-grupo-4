@@ -1,15 +1,22 @@
-* {
-
-    margin: 0px;
-    padding: 0px;
-    /*Reseteo los estilos que vienen por defecto*/
-}
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #C6E0FF; /* Color de fondo actualizado */
     margin: 0;
-    padding: 20px;
+    padding: 0;
+}
+
+.header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    /* Estilos para la información del usuario */
 }
 
 .container {
@@ -19,19 +26,12 @@ body {
     padding: 20px;
     width: 90%;
     max-width: 600px;
-    margin: auto;
+    margin: 20px auto;
 }
 
-.icon {
-    width: 10px;
-    height: 10px;
-    background-image: url('/static/images/icesi_logo.png');
-    background-size: 10px 10px;
-    /* Explicitly set image dimensions */
+.logo img {
+    height: 50px; /* Ajusta esto según el tamaño de tu logo */
 }
-
-
-
 
 h1 {
     text-align: center;
@@ -67,21 +67,38 @@ input[type="checkbox"] {
     margin-right: 10px;
 }
 
-.buttons {
-    text-align: center;
-    margin-top: 20px;
+.form-actions {
+    display: flex;
+    justify-content: space-between; /* Esto alineará los botones como en la imagen */
+    margin-top: 10px;
 }
 
-.buttons button {
+.btn {
     padding: 10px 15px;
-    border: none;
+    font-size: 16px;
     border-radius: 4px;
+    text-decoration: none; /* Remover el subrayado de los enlaces */
+    display: inline-block; /* Para que los enlaces se comporten como botones */
+}
+
+.btn-save {
+    border: none;
     background-color: #5cb85c;
     color: white;
     cursor: pointer;
-    font-size: 16px;
 }
 
-.buttons button:hover {
+.btn-save:hover {
     background-color: #4cae4c;
+}
+
+.btn-cancel {
+    background-color: #f0f0f0;
+    color: #333;
+    cursor: pointer;
+    border: 1px solid #ccc; /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
+}
+
+.btn-cancel:hover {
+    background-color: #e0e0e0;
 }
