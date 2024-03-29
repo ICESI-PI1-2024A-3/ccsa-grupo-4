@@ -26,6 +26,11 @@ def admin(request):
     return redirect(admin.site.urls)
 
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.db import IntegrityError
+
 def signup(request):
     if request.method == "GET":
         return render(
@@ -37,9 +42,19 @@ def signup(request):
         )
     else:
         if request.POST["password1"] == request.POST["password2"]:
+            email = request.POST['email']
+            if User.objects.filter(email=email).exists():  # Verifica si el correo ya existe
+                return render(
+                    request,
+                    "signup.html",
+                    {
+                        "form": UserCreationForm,
+                        "error": "Email already exists",
+                    },
+                )
             try:
                 user = User.objects.create_user(
-                    username=request.POST['username'], email=request.POST['email'], password=request.POST['password1'])
+                    username=request.POST['username'], email=email, password=request.POST['password1'])
                 user.save()
                 login(request, user)
                 return redirect("home")
@@ -60,6 +75,7 @@ def signup(request):
                 "error": "Password do not match",
             },
         )
+
 
 
 
