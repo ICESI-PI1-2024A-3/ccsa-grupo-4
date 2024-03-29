@@ -42,20 +42,19 @@ body.dark {
 }
 
 
-
-
 .user-container {
+    background-color: #fff;
+    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #000;
-    width: calc(100% - 80px);
-    margin: 0 0 0 80px;
-    position: relative;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
 }
 
 .icesi img {
     cursor: pointer;
+    height: 50px;
 }
 
 .user-image img {
@@ -134,15 +133,16 @@ img:hover {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: -35px;
     left: 0;
-    height: 100%;
-    width: 100%;
-    padding: 10px 14px;
+    height: calc(100vh - 50px);
+    width: 500px;
+    padding: 10px 10px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
     overflow: hidden;
+    margin-top: 100px;
 }
 
 .sidebar.close {
@@ -360,12 +360,6 @@ body.dark .switch::before {
     left: 20px;
 }
 
-
-
-
-
-
-
 .home {
     background-color: var(--primary-color);
     min-height: 100vh;
@@ -376,7 +370,7 @@ body.dark .switch::before {
     top: 0;
     left: 250px;
     height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
 }

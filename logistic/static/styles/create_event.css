@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #C6E0FF; /* Color de fondo actualizado */
+    background-color: #C6E0FF;
     margin: 0;
     padding: 0;
 }
@@ -15,7 +23,8 @@ body {
 }
 
 .logo img {
-    height: 50px; /* Ajusta esto según el tamaño de tu logo */
+    height: 50px;
+    /* Ajusta esto según el tamaño de tu logo */
 }
 
 .user-info {
@@ -29,7 +38,8 @@ body {
     padding: 20px;
     width: 90%;
     max-width: 600px;
-    margin: 20px auto; /* Se ajustó para añadir espacio arriba y abajo */
+    margin: 20px auto;
+    /* Se ajustó para añadir espacio arriba y abajo */
 }
 
 h1 {
@@ -44,7 +54,8 @@ form {
     margin-top: 20px;
 }
 
-.error, .errorlist {
+.error,
+.errorlist {
     color: #d9534f;
     margin-bottom: 15px;
 }
@@ -64,7 +75,8 @@ select {
 
 .form-actions {
     display: flex;
-    justify-content: space-between; /* Esto alineará los botones como en la imagen */
+    justify-content: space-between;
+    /* Esto alineará los botones como en la imagen */
     margin-top: 10px;
 }
 
@@ -72,8 +84,10 @@ select {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 4px;
-    text-decoration: none; /* Remover el subrayado de los enlaces */
-    display: inline-block; /* Para que los enlaces se comporten como botones */
+    text-decoration: none;
+    /* Remover el subrayado de los enlaces */
+    display: inline-block;
+    /* Para que los enlaces se comporten como botones */
 }
 
 .btn-save {
@@ -91,7 +105,8 @@ select {
     background-color: #f0f0f0;
     color: #333;
     cursor: pointer;
-    border: 1px solid #ccc; /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
+    border: 1px solid #ccc;
+    /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
 }
 
 .btn-cancel:hover {
@@ -104,12 +119,16 @@ select {
 
 /* Clase para el campo de checkbox, para manejar el alineamiento de la etiqueta */
 .checkbox-label {
-    text-align: left; /* Asegura que la etiqueta de checkbox esté alineada a la derecha */
+    text-align: left;
+    /* Asegura que la etiqueta de checkbox esté alineada a la derecha */
 }
 
 /* No se necesita flexbox aquí ya que ahora todo se apilará verticalmente */
 input[type="checkbox"] {
-    width: auto; /* Asegura que el checkbox no se estire */
-    margin-top: 5px; /* Espacio adicional arriba del checkbox, si es necesario */
-    display: inline-block; /* Para que el checkbox no tome el ancho completo de su contenedor */
+    width: auto;
+    /* Asegura que el checkbox no se estire */
+    margin-top: 5px;
+    /* Espacio adicional arriba del checkbox, si es necesario */
+    display: inline-block;
+    /* Para que el checkbox no tome el ancho completo de su contenedor */
 }
