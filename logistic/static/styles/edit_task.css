@@ -37,11 +37,23 @@ h1 {
     color: #333;
 }
 
+h2 {
+    text-align: center;
+    color: #555;
+}
+
 form {
     background-color: #f9f9f9;
     border-radius: 5px;
     padding: 15px;
     margin-top: 20px;
+}
+
+.form-reset {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }
 
 .error, .errorlist {
@@ -62,9 +74,16 @@ select {
     border-radius: 4px;
 }
 
-.form-actions {
+/* No se necesita flexbox aquí ya que ahora todo se apilará verticalmente */
+input[type="checkbox"] {
+    width: auto; /* Asegura que el checkbox no se estire */
+    margin-top: 5px; /* Espacio adicional arriba del checkbox, si es necesario */
+    display: inline-block; /* Para que el checkbox no tome el ancho completo de su contenedor */
+}
+
+.button-container {
     display: flex;
-    justify-content: space-between; /* Esto alineará los botones como en la imagen */
+    justify-content: space-between;
     margin-top: 10px;
 }
 
@@ -72,44 +91,23 @@ select {
     padding: 10px 15px;
     font-size: 16px;
     border-radius: 4px;
-    text-decoration: none; /* Remover el subrayado de los enlaces */
-    display: inline-block; /* Para que los enlaces se comporten como botones */
+    text-decoration: none;
+    cursor: pointer;
+    
 }
 
-.btn-save {
-    border: none;
+.btn-wide {
+    width: 100%;
+}
+
+.btn-update {
     background-color: #5cb85c;
     color: white;
-    cursor: pointer;
+    border: none;
 }
 
-.btn-save:hover {
-    background-color: #4cae4c;
-}
-
-.btn-cancel {
-    background-color: #f0f0f0;
-    color: #333;
-    cursor: pointer;
-    border: 1px solid #ccc; /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
-}
-
-.btn-cancel:hover {
-    background-color: #e0e0e0;
-}
-
-.errorlist li {
-    list-style-type: none;
-}
-
-/* Clase para el campo de checkbox, para manejar el alineamiento de la etiqueta */
-.checkbox-label {
-    text-align: left; /* Asegura que la etiqueta de checkbox esté alineada a la derecha */
-}
-
-/* No se necesita flexbox aquí ya que ahora todo se apilará verticalmente */
-input[type="checkbox"] {
-    width: auto; /* Asegura que el checkbox no se estire */
-    margin-top: 5px; /* Espacio adicional arriba del checkbox, si es necesario */
-    display: inline-block; /* Para que el checkbox no tome el ancho completo de su contenedor */
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+    border: none;
 }
