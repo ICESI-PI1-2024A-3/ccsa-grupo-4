@@ -11,6 +11,17 @@
     </head>
 
     <body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}" alt="Logo">
+        </div>
+        <div class="user-info">
+            <!-- Información del usuario aquí -->
+            <!-- Ejemplo: {{ user.get_full_name }} -->
+        </div>
+    </header>
+
     <div class="container">
         <h1>Detalles del Evento</h1>
         <div class="event-checklist">
@@ -20,8 +31,6 @@
                 <p><strong>Fecha de ejecución:</strong> <span id="executionDate">{{event.executionDate}}</span></p>
                 <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
             </div>
-
-            <a href="">Crear tarea</a>
             
             <form method="POST" action="{% url 'event_checklist' event.id %}">
                 {% csrf_token %}
@@ -40,8 +49,9 @@
                         {% endfor %}
                     </ul>
                 </div>
-                <div class="buttons">
-                    <button type="submit">Guardar Cambios</button>
+                <div class="form-actions">
+                    <button class="btn btn-save" type="submit">Guardar Cambios</button>
+                    <a href="{% url 'home' %}" class=" btn btn-cancel">Cancelar</a>
                 </div>
             </form>
             

@@ -1,0 +1,39 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #C6E0FF; 
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 50px; /* Ajusta esto según el tamaño de tu logo */
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto; /* Se ajustó para añadir espacio arriba y abajo */
+    
+}
+
+.container img {
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que el contenedor */
+    max-height: 200px; /* Ajusta la altura máxima según tus necesidades */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio asignado sin perder proporción */
+    display: block; /* Elimina el espacio extra debajo de la imagen */
+    margin: 0 auto 20px; /* Centra la imagen y añade espacio debajo */
+    border-radius: 50%; /* Opcional: para hacer la imagen circular */
+}

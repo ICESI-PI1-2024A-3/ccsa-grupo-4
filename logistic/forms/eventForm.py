@@ -6,7 +6,7 @@ from ..models import Event
 
 
 class EventForm(ModelForm):
-    user = ModelChoiceField(queryset=User.objects.all()) #Esto agrega un campo de seleccon para el usuario, de lo contrario arroja error de validacion
+    user = ModelChoiceField(queryset=User.objects.all(), label="Usuario") #Esto agrega un campo de seleccon para el usuario, de lo contrario arroja error de validacion
 
     class Meta:
         model = Event
@@ -14,6 +14,15 @@ class EventForm(ModelForm):
         widgets = {
             'executionDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
             'finishDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+        }
+        labels = {
+            'name': 'Nombre',
+            'executionDate': 'Fecha de Ejecución',
+            'place': 'Lugar',
+            'progress': 'Progreso',
+            'finishDate': 'Fecha de Finalización',
+            'important': 'Importante',
+            'user': 'Usuario'
         }
 
     def __init__(self, *args, **kwargs):

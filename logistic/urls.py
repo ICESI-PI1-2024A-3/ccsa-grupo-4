@@ -19,6 +19,7 @@ urlpatterns = [
     path('edit/event/<int:event_id>/complete', event.complete_event, name='event_complete'),
     path('edit/event/<int:event_id>/delete', event.delete_event, name='event_delete'),
     path('home/search/', user.search_user, name='users_search'),
+    path('home/profile', user.user_profile, name='user_profile'),
     path('edit/task/<int:task_id>/', task.edit_task, name='edit_task'),
     path('edit/task/<int:task_id>/delete', task.delete_task, name='task_delete'),
 ]
