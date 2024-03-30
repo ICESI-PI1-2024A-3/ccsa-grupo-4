@@ -20,6 +20,14 @@
         <img src="/static/images/profile.jpg">
         <p><strong>Nombre:</strong> {{ user.username }}</p>
         <p><strong>Correo Electronico:</strong> {{ user.email }}</p>
+         
+        {% if user.is_superuser %}
+            <p><strong>Rol:</strong> administrador</p>
+        {% else %}
+            <p><strong>Rol:</strong> gestor</p>
+        {% endif %}
+        <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
+
     </div>
 </body>
 </html>
