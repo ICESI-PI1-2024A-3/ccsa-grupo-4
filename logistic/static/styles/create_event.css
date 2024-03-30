@@ -392,23 +392,6 @@ body.dark .home .text {
 
 
 
-.header {
-    background-color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.logo img {
-    height: 50px;
-    /* Ajusta esto según el tamaño de tu logo */
-}
-
-.user-info {
-    /* Estilos para la información del usuario */
-}
 
 .container {
     background-color: var(--primary-color);
