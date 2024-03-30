@@ -23,7 +23,6 @@
 }
 
 body {
-    /* background-color: var(--body-color); */
     min-height: 100vh;
     transition: var(--tran-05);
     overflow: hidden;
@@ -68,25 +67,20 @@ body.dark {
 .user-info {
     display: flex;
     align-items: center;
-    margin-left: auto;
-}
-
-.user-info p {
     margin-right: 10px;
 }
+
 
 .notification {
-    margin: 0;
-    /* Remove the right margin */
+    display: flex;
     margin-left: auto;
-    margin-right: -800px;
-    /* Align the notification to the right side */
-}
-
-.notification img {
     margin-right: 10px;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
 }
+
 
 img:hover {
     transform: scale(1.05);
@@ -516,4 +510,20 @@ input[type="checkbox"] {
     /* Espacio adicional arriba del checkbox, si es necesario */
     display: inline-block;
     /* Para que el checkbox no tome el ancho completo de su contenedor */
+}
+
+@media only screen and (max-width: 768px) {
+    .user-info {
+        flex-direction: column;
+        /* Apila los elementos verticalmente en pantallas más pequeñas */
+        align-items: center;
+        /* Centra los elementos en pantallas más pequeñas */
+    }
+
+    .notification {
+        margin-top: 10px;
+        /* Añade espacio entre el nombre de usuario y el icono de notificación en pantallas más pequeñas */
+        margin-right: 0;
+        /* Elimina el margen derecho para que el icono de notificación esté alineado correctamente */
+    }
 }
