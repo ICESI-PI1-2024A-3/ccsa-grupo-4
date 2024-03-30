@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 {% load i18n %}
 
-
 <html lang="en">
 
 <head>
@@ -30,7 +29,9 @@
     </div>
 
     <div class="user-image">
-      <img src="/static/images/profile.jpg">
+      <a href="{% url 'user_profile' %}">
+        <img src="/static/images/profile.jpg">
+      </a>
     </div>
   </section>
 
