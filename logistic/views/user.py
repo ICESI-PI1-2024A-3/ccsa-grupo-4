@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from ..models import Event
 from ..models import User
 
@@ -83,3 +84,7 @@ def search_user(request):
         else:  # De lo contrario, buscar por nombre de usuario
             users = User.objects.filter(username__icontains=search_query)
         return render(request, 'users_search.html', {'users': users})
+    
+@login_required  
+def user_profile(request):
+    return render(request, 'user_profile.html', {'user': request.user})
