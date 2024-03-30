@@ -36,11 +36,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado*  | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   | Seguir en proceso de implementación del delete de usuario | Implementarcion de delete user y css | Ninguno |
+|*Daron Mercado*  | Voy a crear una nueva rama y empezar a desarrollar el crud completo de las bitácoras|Me di cuenta que las bitacoras y feedback pertenece al siguiente Sprint, ademas de que no se puede sacar un crud completo de ellas, asi que hoy estoy añadiendo las evidencias de finalizacion al informe, ayudando a terminar el crud de usuarios y preparar todo para empezar las pruebas | Ninguna|
+| *Johan Sebastian Diaz*  |Seguir con el proceso de implementación de base de datos | Empezare hacer la visualizacion de los datos del usuario| Problemas con el instalador de base de datos porque no estoy usando mi computador personal|
+| *Cristian Cardona*  | Seguiré implementado los estilos a las templates |Hoy no trabaje en el proyecto |-- |
+| *Santiago Arboleda Velasco*  | Agregar el menu desplegable a las pantallas disponibles y empezar con el diseño responsive|Organizar el menu en las demas templates | Ninguno |
 
 # Daily No.5
 ### Sabado 30 de marzo de 2024
