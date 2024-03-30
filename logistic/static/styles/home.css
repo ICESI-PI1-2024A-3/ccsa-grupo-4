@@ -540,6 +540,7 @@ td:nth-child(5) {
     margin: 0 auto;
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .editar-image {
