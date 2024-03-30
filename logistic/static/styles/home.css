@@ -56,6 +56,9 @@ body.dark {
 .icesi img {
     cursor: pointer;
     height: 50px;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .user-image img {
@@ -63,6 +66,7 @@ body.dark {
     height: 50px;
     border-radius: 50%;
     cursor: pointer;
+    margin-left: 20px;
 }
 
 .user-info {
@@ -76,17 +80,13 @@ body.dark {
 }
 
 .notification {
-    margin: 0;
-    /* Remove the right margin */
-    margin-left: auto;
-    margin-right: -800px;
-    /* Align the notification to the right side */
-}
-
-.notification img {
-    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    margin-left: 1150px;
     cursor: pointer;
 }
+
+
 
 img:hover {
     transform: scale(1.05);
@@ -96,6 +96,7 @@ img:hover {
     margin-left: 20px;
     margin-right: 20px;
     display: flex;
+    align-items: center;
     justify-content: flex-start;
 }
 
@@ -103,6 +104,7 @@ img:hover {
     margin-left: auto;
     margin-right: 0;
     display: flex;
+    align-items: center;
     justify-content: flex-end;
 }
 
@@ -130,6 +132,8 @@ img:hover {
     width: 24px;
 
 }
+
+
 
 
 .sidebar {
@@ -537,6 +541,44 @@ td:nth-child(5) {
         margin: 10px 0;
     }
 }
+
+.edit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    margin: 0 auto;
+    background-color: transparent;
+    border: none;
+}
+
+.editar-image {
+    height: 24px;
+    width: 24px;
+}
+
+.new-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+    border-radius: 0%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.nueva-tarea {
+    height: 30px;
+    width: 30px;
+}
+
+
+
 
 /* Para celular */
 @media screen and (max-width: 400px) {

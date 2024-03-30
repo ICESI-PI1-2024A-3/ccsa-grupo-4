@@ -5,7 +5,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Inicio</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 
@@ -161,15 +161,28 @@
           <td style="text-align: center;">{{ event.user }}</td>
           <td style="text-align: center;">{{ event.progress }}</td>
           <td style="text-align: center;">{{ event.finishDate }}</td>
-          <td><a href="{% url 'edit_event' event.id %}">Editar</a></td>
-          <td><a href="{% url 'create_task' %}">Crear tarea</a></td>
+
+          <td>
+            <a href="{% url 'edit_event' event.id %}">
+              <button class="edit-button">
+                <img src="{% static 'icons/editar.png' %}" class="editar-image">
+              </button>
+            </a>
+          </td>
+
+          <td>
+            <a href="{% url 'create_task' %}">
+              <button class="new-task">
+                <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
+              </button>
+            </a>
+          </td>
+
         </tr>
         {% endfor %}
       </tbody>
     </table>
-
   </section>
-
   <script src="{% static 'js/home.js' %}"></script>
 </body>
 
