@@ -55,3 +55,11 @@ class test_Event(TestCase):
         event_id_non_exist = 123
         response = self.client.post(reverse('edit_event', args=[event_id_non_exist]), {'name': 'Updated Event That Not Exist', 'executionDate': timezone.now() + timedelta(days=7), 'place': 'Updated Place 2', 'progress': 80 })
         self.assertEqual(response.status_code, 404)
+
+    def test_complete_event(self):
+        """Test for: mark an event as completed
+        - The response of this would be 302, which means is redirected to another page temporally
+        """
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('event_complete', args=[self.event.id]))
+        self.assertEqual(response.status_code, 302)
