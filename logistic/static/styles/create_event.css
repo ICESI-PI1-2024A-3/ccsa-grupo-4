@@ -290,7 +290,6 @@ body.dark .sidebar li a:hover .text {
 
 .sidebar .menu-bar .mode {
     border-radius: 6px;
-
     position: relative;
     transition: var(--tran-05);
 }

@@ -1,4 +1,14 @@
-body, html {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -64,10 +74,14 @@ body, html {
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
-    display: block; /* Esto asegura que el botón se comporte como un bloque y pueda ser centrado */
-    width: 60%; /* Ancho del botón ajustado a 60% */
-    margin: 1rem auto; /* Centra el botón horizontalmente y agrega margen superior e inferior */
-    box-sizing: border-box; /* Incluye el padding y el borde en el ancho total del botón */
+    display: block;
+    /* Esto asegura que el botón se comporte como un bloque y pueda ser centrado */
+    width: 60%;
+    /* Ancho del botón ajustado a 60% */
+    margin: 1rem auto;
+    /* Centra el botón horizontalmente y agrega margen superior e inferior */
+    box-sizing: border-box;
+    /* Incluye el padding y el borde en el ancho total del botón */
 }
 
 .login-button:hover {
