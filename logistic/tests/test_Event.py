@@ -63,3 +63,12 @@ class test_Event(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('event_complete', args=[self.event.id]))
         self.assertEqual(response.status_code, 302)
+
+    def test_complete_event2(self):
+        """Test for: mark an event that doesn't exist as completed
+        - The response of this would be 404, which means that the event wasn't found
+        """
+        self.client.force_login(self.user)
+        event_id_non_exist = 123
+        response = self.client.post(reverse('event_complete', args=[event_id_non_exist]))
+        self.assertEqual(response.status_code, 404)
