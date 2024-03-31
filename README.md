@@ -8,10 +8,11 @@
 ## All the proyect will be develop in English
 
 ### Commit Types:
-We will use the types defined by Conventional Commits: Feat, Fix, Task
-  - Feat: Indicates the development of a new feature
-  - Fix: Indicates the fixing of a bug or issue within the program
-  - Task: Represents a small task performed by a team member
+We will use the types defined by Conventional Commits: feat, fix, task, test
+  - feat: Indicates the development of a new feature
+  - fix: Indicates the fixing of a bug or issue within the program
+  - task: Represents a small task performed by a team member
+  - test: Indicates everything related to the tests for de modules.
 
 ### Description:
 Short descriptive messages of the changes made, starting with an infinitive verb and all will be in lowercase.
