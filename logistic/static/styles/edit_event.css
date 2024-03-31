@@ -458,25 +458,30 @@ select {
 }
 
 .btn-wide {
-    width: 100%;
+    width: 102%;
+
 }
 
 .btn-update {
     background-color: #5cb85c;
     color: white;
     border: none;
+    margin-left: 11px;
 }
 
 .btn-delete {
     background-color: #d9534f;
     color: white;
     border: none;
+    margin-right: 20px;
 }
 
 .btn-complete {
     background-color: #337ab7;
     color: white;
     border: none;
+    margin-top: -30px;
+    margin-left: -15px;
 }
 
 .btn:hover {

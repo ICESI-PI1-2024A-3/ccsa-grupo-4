@@ -473,6 +473,7 @@ select {
     color: #333;
     cursor: pointer;
     border: 1px solid #ccc;
+    margin-right: 10px;
     /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
 }
 

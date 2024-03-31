@@ -462,6 +462,7 @@ input[type="checkbox"] {
     background-color: #5cb85c;
     color: white;
     cursor: pointer;
+    margin-left: 20px;
 }
 
 .btn-save:hover {
@@ -473,6 +474,7 @@ input[type="checkbox"] {
     color: #333;
     cursor: pointer;
     border: 1px solid #ccc;
+    margin-right: 30px;
     /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
 }
 
