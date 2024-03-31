@@ -45,3 +45,13 @@ class test_Event(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('edit_event', args=[self.event.id]), {'name': 'Updated Event', 'executionDate': timezone.now() + timedelta(days=14), 'place': 'Updated Place', 'progress': 50})
         self.assertEqual(response.status_code, 200)
+
+    def test_edit_event2(self):
+        """Test for: edit an event that doesn't exit
+        - We use and Id that does not correspond to any event.
+        - The response of this would be 404, page not found, because the event does not exit
+        """
+        self.client.force_login(self.user)
+        event_id_non_exist = 123
+        response = self.client.post(reverse('edit_event', args=[event_id_non_exist]), {'name': 'Updated Event That Not Exist', 'executionDate': timezone.now() + timedelta(days=7), 'place': 'Updated Place 2', 'progress': 80 })
+        self.assertEqual(response.status_code, 404)
