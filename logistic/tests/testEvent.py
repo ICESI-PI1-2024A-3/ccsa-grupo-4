@@ -114,3 +114,16 @@ class testEvent(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('edit_event', args=[other_user_event.id]), {'name': 'Updated Event', 'executionDate': timezone.now() + timedelta(days=14), 'place': 'Updated Place', 'progress': 50})
         self.assertEqual(response.status_code, 404)
+
+    def test_delete_event3(self):
+        """Test for: Delete event twice
+        - We are going to delete an event once
+        - The, we'll try to delete it again
+        - The first response should be 302, which means that the user was redirected to home
+        - The second response should be 404, which means that couldn't find the event, because was already deleted
+        """
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('event_delete', args=[self.event.id]))
+        self.assertEqual(response.status_code, 302)
+        response = self.client.post(reverse('event_delete', args=[self.event.id]))
+        self.assertEqual(response.status_code, 404)
