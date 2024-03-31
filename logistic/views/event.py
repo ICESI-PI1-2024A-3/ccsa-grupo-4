@@ -56,6 +56,7 @@ def create_event(request):
 
 
 def edit_event(request, event_id):
+    formForEditEvent = None
     if request.method == 'GET':
         if request.user.is_superuser:
             # Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id

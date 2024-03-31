@@ -37,3 +37,11 @@ class test_Event(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('create_event'), {'name': 'New Event2', 'executionDate': "valorNoValido", 'place': 'Hall de auditorios', "progress": 20 })
         self.assertEqual(response.status_code, 200)
+
+    def test_edit_event(self):
+        """ Test for: edit an event already created
+        - The response of this would be 200, since the edit was made succesfully
+        """
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('edit_event', args=[self.event.id]), {'name': 'Updated Event', 'executionDate': timezone.now() + timedelta(days=14), 'place': 'Updated Place', 'progress': 50})
+        self.assertEqual(response.status_code, 200)
