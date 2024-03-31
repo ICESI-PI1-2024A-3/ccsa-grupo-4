@@ -5,7 +5,7 @@ from logistic.models import Event
 from django.contrib.auth.models import User
 from datetime import timedelta
 
-class test_Event(TestCase):
+class testEvent(TestCase):
     #Creamos un usuario y evento para probar los métodos
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
@@ -103,3 +103,14 @@ class test_Event(TestCase):
         response = self.client.post(reverse('event_delete', args=[event_id_non_exist]))
         self.assertEqual(response.status_code, 404)
         
+    def test_access_other_user_event(self):
+        """Test for: Validate that no user can access to an event that does not correspond to him/her
+        - The respond of this would be 404, since the user has no access to it and teh method return error 404
+        - For this, we have to add another user and another event to that user
+        - The user that is in the BD is going to try to acces to the event that belongs to "other_user"
+        """
+        other_user = User.objects.create_user(username='otheruser', password='12345')
+        other_user_event = Event.objects.create(name='Other User Event', executionDate=timezone.now() + timedelta(days=7), place='Test Place', progress=0, user=other_user)
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('edit_event', args=[other_user_event.id]), {'name': 'Updated Event', 'executionDate': timezone.now() + timedelta(days=14), 'place': 'Updated Place', 'progress': 50})
+        self.assertEqual(response.status_code, 404)
