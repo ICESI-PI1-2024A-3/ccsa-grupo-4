@@ -11,9 +11,9 @@
 
 <body>
 
-    <section class="user-container">
+    <header class="user-container">
         <div class="icesi aling-left">
-            <img src="/static/images/logo.png">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
         <div class="notification aling-right">
@@ -26,9 +26,11 @@
         </div>
 
         <div class="user-image">
-            <img src="/static/images/profile.jpg">
+            <a href="{% url 'user_profile' %}">
+                <img src="/static/images/profile.jpg">
+            </a>
         </div>
-    </section>
+    </header>
 
     <nav class="sidebar close">
 

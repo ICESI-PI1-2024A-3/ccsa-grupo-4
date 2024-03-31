@@ -23,9 +23,9 @@
 }
 
 body {
-    /* background-color: var(--body-color); */
     min-height: 100vh;
     transition: var(--tran-05);
+    overflow: hidden;
 }
 
 ::selection {
@@ -42,20 +42,19 @@ body.dark {
 }
 
 
-
-
 .user-container {
+    background-color: #fff;
+    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #000;
-    width: calc(100% - 80px);
-    margin: 0 0 0 80px;
-    position: relative;
-
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
 }
 
 .icesi img {
     cursor: pointer;
+    height: 50px;
 }
 
 .user-image img {
@@ -68,25 +67,20 @@ body.dark {
 .user-info {
     display: flex;
     align-items: center;
-    margin-left: auto;
-}
-
-.user-info p {
     margin-right: 10px;
 }
+
 
 .notification {
-    margin: 0;
-    /* Remove the right margin */
+    display: flex;
     margin-left: auto;
-    margin-right: -800px;
-    /* Align the notification to the right side */
-}
-
-.notification img {
     margin-right: 10px;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
 }
+
 
 img:hover {
     transform: scale(1.05);
@@ -119,7 +113,6 @@ img:hover {
 }
 
 
-
 .bottom-content img {
     height: 24px;
     width: 24px;
@@ -134,15 +127,16 @@ img:hover {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: -35px;
     left: 0;
-    height: 100%;
-    width: 100%;
-    padding: 10px 14px;
+    height: calc(100vh - 50px);
+    width: 500px;
+    padding: 10px 10px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
     overflow: hidden;
+    margin-top: 100px;
 }
 
 .sidebar.close {
@@ -284,7 +278,7 @@ body.dark .sidebar li a:hover .text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -360,12 +354,6 @@ body.dark .switch::before {
     left: 20px;
 }
 
-
-
-
-
-
-
 .home {
     background-color: var(--primary-color);
     min-height: 100vh;
@@ -376,7 +364,7 @@ body.dark .switch::before {
     top: 0;
     left: 250px;
     height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
 }
@@ -543,6 +531,45 @@ td:nth-child(5) {
     }
 }
 
+.edit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+    margin: 0 auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.editar-image {
+    height: 24px;
+    width: 24px;
+}
+
+.new-task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    margin: 0 auto;
+    border-radius: 0%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+.nueva-tarea {
+    height: 30px;
+    width: 30px;
+}
+
+
+
+
 /* Para celular */
 @media screen and (max-width: 400px) {
     .search-container {
@@ -570,7 +597,4 @@ td:nth-child(5) {
         flex-grow: 1;
         text-align: right;
     }
-
-
-
 }
