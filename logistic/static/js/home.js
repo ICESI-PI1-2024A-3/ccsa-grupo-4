@@ -19,3 +19,25 @@ modeSwitch.addEventListener("click", () => {
 })
 
 
+const searchInput = document.querySelector('#search-input');
+searchInput.addEventListener('keypress', function (event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        filterTable();
+    }
+});
+
+function filterTable() {
+    const searchInput = document.querySelector('#search-input');
+    const searchQuery = searchInput.value.toLowerCase();
+    const tableRows = document.querySelectorAll('table tbody tr');
+
+    tableRows.forEach(function (row) {
+        const rowText = row.textContent.toLowerCase();
+        if (rowText.includes(searchQuery)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
