@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 
 <html lang="en">
-
+    
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'styles/home.css' %}">
-
+  <link rel="stylesheet" href="{% static 'styles/deleteuser.css' %}">
 </head>
 
 <body>
@@ -24,13 +24,24 @@
 
     <div class="user-info">
       <p>{{ request.user.username }}</p>
-
     </div>
 
     <div class="user-image">
-      <img src="/static/images/profile.jpg">
+      <img src="/static/images/profile.jpg" id="profile-image">
     </div>
   </section>
+
+  <form id="delete-account-form" method="POST" action="{% url 'delete_user' %}">
+    {% csrf_token %}
+    <div class="dropdown">
+      <button class="dropbtn">&#9660;</button>
+      <div class="dropdown-content">
+          <form action="{% url 'delete_user' %}" method="post">
+              {% csrf_token %}
+              <input type="submit" value="Eliminar cuenta" class="delete-btn">
+          </form>
+      </div>
+  </div>
 
   <nav class="sidebar close">
 

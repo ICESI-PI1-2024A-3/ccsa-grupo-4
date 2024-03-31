@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
@@ -12,7 +12,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from ..models import Event
 from ..models import User
-
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     if request.user.is_superuser:  # Si es el admin, lista todas las tareas
@@ -117,3 +117,13 @@ def search_user(request):
         else:  # De lo contrario, buscar por nombre de usuario
             users = User.objects.filter(username__icontains=search_query)
         return render(request, 'users_search.html', {'users': users})
+
+
+
+@login_required
+def delete_user(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        return redirect('signin')    
+  

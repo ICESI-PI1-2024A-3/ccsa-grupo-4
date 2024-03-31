@@ -26,4 +26,5 @@ urlpatterns = [
     path('forgot-password-done/', PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name="password_reset_done"),
     path('forgot-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
     path('forgot-password/done/', PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
+    path('delete/user/', user.delete_user, name='delete_user'),
 ]
