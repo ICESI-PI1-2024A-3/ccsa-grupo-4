@@ -34,8 +34,7 @@
 
         <header>
             <div class="text logo">
-                <span class="name">Prueba</span>
-                <span class="profe">Menu</span>
+                <span class="name">MENU</span>
             </div>
             <img src="{% static 'icons/menu.png' %}" class="toggle">
         </header>
@@ -109,19 +108,22 @@
         </div>
     </nav>
 
-    <div class="profile">
-        <h1 class="text"> Perfil del Usuario</h1>
-        <img src="/static/images/profile.jpg">
-        <p><strong>Nombre:</strong> {{ user.username }}</p>
-        <p><strong>Correo Electronico:</strong> {{ user.email }}</p>
+    <div class="home">
+        <div class="profile">
+            <h1 class="text"> Perfil del Usuario</h1>
+            <img src="/static/images/profile.jpg">
+            <p><strong>Nombre:</strong> {{ user.username }}</p>
+            <p><strong>Correo Electronico:</strong> {{ user.email }}</p>
 
-        {% if user.is_superuser %}
-        <p><strong>Rol:</strong> Admin</p>
-        {% else %}
-        <p><strong>Rol:</strong> Gestor</p>
-        {% endif %}
-        <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
+            {% if user.is_superuser %}
+            <p><strong>Rol:</strong> Admin</p>
+            {% else %}
+            <p><strong>Rol:</strong> Gestor</p>
+            {% endif %}
+            <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
+        </div>
     </div>
+
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 

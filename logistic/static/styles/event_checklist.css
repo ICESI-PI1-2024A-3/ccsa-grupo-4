@@ -368,6 +368,12 @@ body.dark .switch::before {
     width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+
+    align-items: center;
+
 }
 
 .home .text {
@@ -399,6 +405,9 @@ body.dark .home .text {
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
+    margin-top: -20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .logo img {
