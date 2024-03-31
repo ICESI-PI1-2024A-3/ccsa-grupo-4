@@ -25,7 +25,9 @@
 body {
     min-height: 100vh;
     transition: var(--tran-05);
-    overflow: hidden;
+    overflow-y: visible;
+    overflow-x: hidden;
+
 }
 
 ::selection {
@@ -239,8 +241,9 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar.close .toggle {
-    width: 100%;
+    width: 50%;
     top: 20%;
+    margin-right: 27px;
 }
 
 .sidebar .menu {
@@ -368,6 +371,10 @@ body.dark .switch::before {
     width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home .text {
@@ -396,7 +403,9 @@ body.dark .home .text {
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
-    /* Se ajustó para añadir espacio arriba y abajo */
+
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {

@@ -111,35 +111,39 @@
         </div>
     </nav>
 
-
     <div class="home">
-        <h1 class="text">Search Users</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="search_query" placeholder="Enter username or ID">
-            <button type="submit">Search</button>
-        </form>
-        {% if users %}
-        <h2 class="text">Search Results:</h2>
-        <ul>
-            {% for user in users %}
-            <li><strong>Nombre de usuario: </strong>{{ user.username }}<br> <strong>ID</strong>: {{ user.id }} <br>
-                <strong>Ultimo
-                    ingreso:</strong> {{ user.last_login }}
-                {% if user.is_superuser %}
-                <p><strong>Rol:</strong> Admin</p>
-                {% else %}
-                <p><strong>Rol:</strong> Gestor</p>
-                {% endif %}
-                <div class="user-image"><strong>Foto: </strong><img src="/static/images/profile.jpg" class="user-image">
-                </div>
-                <br>
-                <br>
-                <br>
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <div class="profile">
+            <h1 class="text">Buscar Usuarios</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="search_query" placeholder="Escribe el nombre del usuario o el ID">
+                <button type="submit">Buscar</button>
+            </form>
+            {% if users %}
+            <h2 class="text">Resultados:</h2>
+            <ul>
+                {% for user in users %}
+                <li><strong>Nombre de usuario: </strong>{{ user.username }}<br> <strong>ID</strong>: {{ user.id }} <br>
+                    <strong>Ultimo
+                        ingreso:</strong> {{ user.last_login }}
+                    {% if user.is_superuser %}
+                    <p><strong>Rol:</strong> Admin</p>
+                    {% else %}
+                    <p><strong>Rol:</strong> Gestor</p>
+                    {% endif %}
+                    <div class="user-image"><strong>Foto: </strong><img src="/static/images/profile.jpg"
+                            class="user-image">
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        </div>
+
 
     </div>
 

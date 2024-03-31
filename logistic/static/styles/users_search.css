@@ -7,6 +7,10 @@
     font-family: "Inter", sans-serif;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 :root {
 
     --body-color: #C2DDFA;
@@ -33,7 +37,8 @@ body {
     background-color: #f1f1f1;
     color: #444;
     transition: background-color 0.5s ease;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 body.dark {
@@ -86,6 +91,7 @@ h1:after {
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.5;
+    display: none;
 }
 
 h1:before {
@@ -386,8 +392,9 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar.close .toggle {
-    width: 100%;
+    width: 50%;
     top: 20%;
+    margin-right: 27px;
 }
 
 .sidebar .menu {
@@ -521,6 +528,10 @@ body.dark .switch::before {
     width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home .text {
@@ -539,4 +550,35 @@ body.dark .switch::before {
 
 body.dark .home .text {
     color: var(--text-color);
+}
+
+.profile {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    height: 500px;
+    max-width: 600px;
+    margin: 20px auto;
+    margin-top: -100px;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll !important;
+
+}
+
+.profile img {
+    max-width: 100%;
+    /* Asegura que la imagen no sea más ancha que el contenedor */
+    max-height: 200px;
+    /* Ajusta la altura máxima según tus necesidades */
+    object-fit: cover;
+    /* Asegura que la imagen cubra el espacio asignado sin perder proporción */
+    display: block;
+    /* Elimina el espacio extra debajo de la imagen */
+    margin: 0 auto 20px;
+    /* Centra la imagen y añade espacio debajo */
+    border-radius: 50%;
+    /* Opcional: para hacer la imagen circular */
 }

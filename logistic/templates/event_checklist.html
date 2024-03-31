@@ -114,43 +114,44 @@
     </nav>
 
 
-
     <div class="home">
-        <h1 class="text">Detalles del Evento</h1>
-        <div class="event-checklist">
-            <div class="event-detail">
-                <h2>Información General</h2>
-                <p><strong>Nombre del evento:</strong> <span id="nameEvent">{{event.name}}</span></p>
-                <p><strong>Fecha de ejecución:</strong> <span id="executionDate">{{event.executionDate}}</span></p>
-                <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
-            </div>
-
-            <form method="POST" action="{% url 'event_checklist' event.id %}">
-                {% csrf_token %}
+        <div class="container">
+            <h1 class="text">Detalles del Evento</h1>
+            <div class="event-checklist">
                 <div class="event-detail">
-                    <h2>Checklist de Tareas para {{ event.name }}</h2>
-                    {{ formset.management_form }} <!-- Importante para controlar el formset -->
-                    <ul>
-                        {% for form in formset %}
-                        <li>
-                            {{ form.id }}
-                            <a href="{% url 'edit_task' form.instance.id %}">{{ form.instance.name }}</a>: {{ form.done
-                            }} <!-- Muestra el nombre y el checkbox -->
-                            {% if form.done.errors %} <!-- Errores de validación si existen -->
-                            <div class="errors">{{ form.done.errors }}</div>
-                            {% endif %}
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <p><strong>Nombre del evento:</strong> <span id="nameEvent">{{event.name}}</span></p>
+                    <p><strong>Fecha de ejecución:</strong> <span id="executionDate">{{event.executionDate}}</span></p>
+                    <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
                 </div>
-                <div class="form-actions">
-                    <button class="btn btn-save" type="submit">Guardar Cambios</button>
-                    <a href="{% url 'home' %}" class=" btn btn-cancel">Cancelar</a>
-                </div>
-            </form>
 
+                <form method="POST" action="{% url 'event_checklist' event.id %}">
+                    {% csrf_token %}
+                    <div class="event-detail">
+                        <h2>Checklist de Tareas para {{ event.name }}</h2>
+                        {{ formset.management_form }} <!-- Importante para controlar el formset -->
+                        <ul>
+                            {% for form in formset %}
+                            <li>
+                                {{ form.id }}
+                                <a href="{% url 'edit_task' form.instance.id %}"> {{ form.instance.name }}</a>:
+                                {{ form.done }}
+                                {% if form.done.errors %} <!-- Errores de validación si existen -->
+                                <div class="errors">{{ form.done.errors }}</div>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-save" type="submit">Guardar Cambios</button>
+                        <a href="{% url 'home' %}" class=" btn btn-cancel">Cancelar</a>
+                    </div>
+                </form>
+
+            </div>
         </div>
     </div>
+
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 

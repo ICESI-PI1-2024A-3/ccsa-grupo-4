@@ -128,14 +128,16 @@ img:hover {
 
 
 .profile {
-    background-color: var(--primary-color);
+    background-color: #FFFFFF;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 90%;
     max-width: 600px;
     margin: 20px auto;
-    /* Se ajustó para añadir espacio arriba y abajo */
+    margin-top: -100px;
+    justify-content: center;
+    align-items: center;
 
 }
 
@@ -269,8 +271,9 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar.close .toggle {
-    width: 100%;
+    width: 50%;
     top: 20%;
+    margin-right: 27px;
 }
 
 .sidebar .menu {
@@ -398,6 +401,10 @@ body.dark .switch::before {
     width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home .text {

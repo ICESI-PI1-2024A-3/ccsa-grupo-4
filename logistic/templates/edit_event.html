@@ -115,36 +115,38 @@
 
 
 
-
     <div class="home">
-        <h1 class="text">Editar Evento</h1>
-        <h2>Evento: {{ eventId.name }}</h2>
-        {{ error }}
-        <form id="updateForm" action="" method="POST">
-            {% csrf_token %}
-            {{ form }}
-        </form>
+        <div class="container">
+            <h1 class="text">Editar Evento</h1>
+            <h2>Evento: {{ eventId.name }}</h2>
+            {{ error }}
+            <form id="updateForm" action="" method="POST">
+                {% csrf_token %}
+                {{ form }}
+            </form>
 
-        <form id="deleteForm" action="{% url 'event_delete' eventId.id %}" method="POST" class="form-reset">
-            {% csrf_token %}
-        </form>
+            <form id="deleteForm" action="{% url 'event_delete' eventId.id %}" method="POST" class="form-reset">
+                {% csrf_token %}
+            </form>
 
-        <div class="button-container">
-            <button class="btn btn-update" type="submit" form="updateForm">
-                Actualizar
-            </button>
-            <button class="btn btn-delete" type="submit" form="deleteForm">
-                Eliminar
-            </button>
+            <div class="button-container">
+                <button class="btn btn-update" type="submit" form="updateForm">
+                    Actualizar
+                </button>
+                <button class="btn btn-delete" type="submit" form="deleteForm">
+                    Eliminar
+                </button>
+            </div>
+
+            <form action="{% url 'event_complete' eventId.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-complete btn-wide">
+                    Completar
+                </button>
+            </form>
         </div>
-
-        <form action="{% url 'event_complete' eventId.id %}" method="POST">
-            {% csrf_token %}
-            <button class="btn btn-complete btn-wide">
-                Completar
-            </button>
-        </form>
     </div>
+
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 

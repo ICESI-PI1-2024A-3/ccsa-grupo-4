@@ -113,21 +113,24 @@
     </nav>
 
 
-
     <div class="home">
-        <h1 class="text">Crear Evento</h1>
-        {% if error %}
-        <p class="error">{{ error }}</p>
-        {% endif %}
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ formForEvents }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-save">Guardar</button>
-                <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-            </div>
-        </form>
+        <div class="container">
+            <h1 class="text">Crear Evento</h1>
+            {% if error %}
+            <p class="error">{{ error }}</p>
+            {% endif %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ formForEvents }}
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-save">Guardar</button>
+                    <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
+
+
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 

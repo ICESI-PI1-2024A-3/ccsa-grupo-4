@@ -111,21 +111,25 @@
     </nav>
 
     <div class="home">
-        <h1 class="text">Crear tareas</h1>
-        {% if error %}
-        <p>{{ error }}</p>
-        {% endif %}
-        <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
-            {% csrf_token %}
+        <div class="container">
+            <h1 class="text">Crear tareas</h1>
+            {% if error %}
+            <p>{{ error }}</p>
+            {% endif %}
+            <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
+                {% csrf_token %}
 
-            {{ formForTask }}
+                {{ formForTask }}
 
-            <div class="form-actions">
-                <button class="btn btn-save" type="submit">Guardar</button>
-                <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-            </div>
-        </form>
+                <div class="form-actions">
+                    <button class="btn btn-save" type="submit">Guardar</button>
+                    <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
+
+
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 
