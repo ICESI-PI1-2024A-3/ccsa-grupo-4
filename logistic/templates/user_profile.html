@@ -110,15 +110,15 @@
     </nav>
 
     <div class="profile">
-        <h1>Perfil del Usuario</h1>
+        <h1 class="text"> Perfil del Usuario</h1>
         <img src="/static/images/profile.jpg">
         <p><strong>Nombre:</strong> {{ user.username }}</p>
         <p><strong>Correo Electronico:</strong> {{ user.email }}</p>
 
         {% if user.is_superuser %}
-        <p><strong>Rol:</strong> administrador</p>
+        <p><strong>Rol:</strong> Admin</p>
         {% else %}
-        <p><strong>Rol:</strong> gestor</p>
+        <p><strong>Rol:</strong> Gestor</p>
         {% endif %}
         <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
     </div>
