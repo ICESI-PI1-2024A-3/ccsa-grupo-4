@@ -10,6 +10,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from ..models import Event
 from ..models import User
 from django.contrib.auth.decorators import login_required
@@ -127,3 +128,7 @@ def delete_user(request):
         user.delete()
         return redirect('signin')    
   
+    
+@login_required  
+def user_profile(request):
+    return render(request, 'user_profile.html', {'user': request.user})

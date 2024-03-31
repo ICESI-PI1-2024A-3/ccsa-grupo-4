@@ -1,29 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Tarea</title>
+    <link rel="stylesheet" href="{% static 'styles/edit_task.css' %}">
 </head>
 <body>
-    <h1>Editar Tarea</h1>
-    <p>{{tareaId.name}}</p>
-    {{error}}
-    <form action="{% url 'edit_task' form.instance.id  %}" method="POST"> 
-        {% csrf_token %}
-        
-        {{form}}
 
-        <button>
-            Actualizar
-        </button>
-    </form>
-    
-    <form action="{% url 'task_delete' form.instance.id  %}"  method="POST">
-        {% csrf_token %}
-        <button>
-            Eliminar
-        </button>
-    </form>
+    <header class="header">
+        <div class="logo">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}" alt="Logo">
+        </div>
+        <div class="user-info">
+            <!-- Información del usuario aquí -->
+            <!-- Ejemplo: {{ user.get_full_name }} -->
+        </div>
+    </header>
+    <div class="container">
+
+        <h1>Editar Tarea</h1>
+        <p>{{tareaId.name}}</p>
+        {{error}}
+        <form id="updateForm" action="{% url 'edit_task' form.instance.id  %}" method="POST"> 
+            {% csrf_token %}
+            {{form}}
+        </form>
+        <form id="deleteForm" action="{% url 'task_delete' form.instance.id  %}"  method="POST" class="form-reset">
+            {% csrf_token %}
+           
+        </form>
+
+        <div class="button-container">
+            <button class="btn btn-update" form="updateForm">
+                Actualizar
+            </button>
+            <button class="btn btn-delete" form="deleteForm">
+                Eliminar
+            </button>
+        </div>
+
+
+    </div>
+
 </body>
 </html>

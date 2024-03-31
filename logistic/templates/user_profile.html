@@ -1,17 +1,16 @@
 {% load static %}
-{% load i18n %}
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Evento</title>
-    <link rel="stylesheet" href="{% static 'styles/create_event.css' %}">
+    <title>Perfil del usuario</title>
+    <link rel="stylesheet" href="{% static 'styles/user_profile.css' %}">
 </head>
 
 <body>
+
     <header class="user-container">
         <div class="icesi aling-left">
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
@@ -27,9 +26,7 @@
         </div>
 
         <div class="user-image">
-            <a href="{% url 'user_profile' %}">
-                <img src="/static/images/profile.jpg">
-            </a>
+            <img src="/static/images/profile.jpg">
         </div>
     </header>
 
@@ -112,21 +109,18 @@
         </div>
     </nav>
 
+    <div class="profile">
+        <h1>Perfil del Usuario</h1>
+        <img src="/static/images/profile.jpg">
+        <p><strong>Nombre:</strong> {{ user.username }}</p>
+        <p><strong>Correo Electronico:</strong> {{ user.email }}</p>
 
-
-    <div class="container">
-        <h1>Crear Evento</h1>
-        {% if error %}
-        <p class="error">{{ error }}</p>
+        {% if user.is_superuser %}
+        <p><strong>Rol:</strong> administrador</p>
+        {% else %}
+        <p><strong>Rol:</strong> gestor</p>
         {% endif %}
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ formForEvents }}
-            <div class="form-actions">
-                <button type="submit" class="btn btn-save">Guardar</button>
-                <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-            </div>
-        </form>
+        <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
     </div>
     <script src="{% static 'js/home.js' %}"></script>
 </body>
