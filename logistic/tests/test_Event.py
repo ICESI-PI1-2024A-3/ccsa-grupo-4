@@ -6,7 +6,6 @@ from logistic.models import Task
 from logistic.forms.eventForm import EventForm
 from logistic.forms.taskForm import TaskChecklist
 from django.contrib.auth.models import User
-from datetime import datetime
 from datetime import timedelta
 
 class test_Event(TestCase):
@@ -72,3 +71,12 @@ class test_Event(TestCase):
         event_id_non_exist = 123
         response = self.client.post(reverse('event_complete', args=[event_id_non_exist]))
         self.assertEqual(response.status_code, 404)
+
+    def test_delete_event(self):
+        """Test for: delete an event
+        - The response of this would be 302, which means is redirected to home
+        """
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('event_delete', args=[self.event.id]))
+        self.assertEqual(response.status_code, 302)
+        
