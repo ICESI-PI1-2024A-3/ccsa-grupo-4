@@ -121,7 +121,12 @@
             <p><strong>Rol:</strong> Gestor</p>
             {% endif %}
             <p><strong>Fecha de Registro:</strong> {{ user.date_joined|date:"Y-m-d H:i" }}</p>
-        </div>
+            <!-- Formulario para eliminar cuenta -->
+            <form action="{% url 'delete_user' %}" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Eliminar Cuenta" onclick="return confirm('¿Estás seguro de que quieres eliminar tu cuenta?')">
+            </form>
+        </div>    
     </div>
 
     <script src="{% static 'js/home.js' %}"></script>

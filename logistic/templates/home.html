@@ -2,14 +2,14 @@
 {% load i18n %}
 
 <html lang="en">
-    
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio</title>
   {% load static %}
   <link rel="stylesheet" href="{% static 'styles/home.css' %}">
-  <link rel="stylesheet" href="{% static 'styles/deleteuser.css' %}">
+
 </head>
 
 <body>
@@ -24,24 +24,20 @@
 
     <div class="user-info">
       <p>{{ request.user.username }}</p>
+
     </div>
 
     <div class="user-image">
-      <img src="/static/images/profile.jpg" id="profile-image">
+      <a href="{% url 'user_profile' %}">
+        <img src="/static/images/profile.jpg">
+      </a>
     </div>
-  </section>
+  </header>
 
-  <form id="delete-account-form" method="POST" action="{% url 'delete_user' %}">
-    {% csrf_token %}
-    <div class="dropdown">
-      <button class="dropbtn">&#9660;</button>
-      <div class="dropdown-content">
-          <form action="{% url 'delete_user' %}" method="post">
-              {% csrf_token %}
-              <input type="submit" value="Eliminar cuenta" class="delete-btn">
-          </form>
-      </div>
-  </div>
+
+
+
+  <section class="home">
 
     <nav class="sidebar close">
 
