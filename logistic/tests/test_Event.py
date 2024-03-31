@@ -79,4 +79,13 @@ class test_Event(TestCase):
         self.client.force_login(self.user)
         response = self.client.post(reverse('event_delete', args=[self.event.id]))
         self.assertEqual(response.status_code, 302)
+
+    def test_delete_event2(self):
+        """Test for: delete an event that doesn't exist
+        - The response of this would be 404, which means that the event wasn't found
+        """
+        event_id_non_exist = 123
+        self.client.force_login(self.user)
+        response = self.client.post(reverse('event_delete', args=[event_id_non_exist]))
+        self.assertEqual(response.status_code, 404)
         
