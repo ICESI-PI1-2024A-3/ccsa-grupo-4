@@ -47,8 +47,8 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado*  | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Implementarcion de delete user y css |merge con dev y trabajar en css |Ninguno |
+|*Daron Mercado*  |Me di cuenta que las bitacoras y feedback pertenece al siguiente Sprint, ademas de que no se puede sacar un crud completo de ellas, asi que hoy estoy añadiendo las evidencias de finalizacion al informe, ayudando a terminar el crud de usuarios y preparar todo para empezar las pruebas |Preparé todo el ambiente para hacer los tests y realicé el primer test de eventos | Ninguno|
+| *Johan Sebastian Diaz*  |Empezare hacer la visualizacion de los datos del usuario |Organizar las carpetas para empezar hacer las pruebas de integración |Ninguno |
+| *Cristian Cardona*  |Hoy no trabaje en el proyecto |Hice la pantalla del perfil del cliente y estoy estudiando como hacer las pruebas unitarias |Ninguno |
+| *Santiago Arboleda Velasco*  |Organizar el menu en las demas templates |Colocarle el menú y mejorar el diseño a los templates. También agregarle funcionalidad a la opción de buscar evento en el home. |Ninguno |
