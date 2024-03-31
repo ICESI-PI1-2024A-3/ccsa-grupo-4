@@ -129,17 +129,26 @@
                         </div>
 
                         <div class="user-data">
-                            <strong>Nombre de usuario: </strong>{{ user.username }}<br> <strong>ID:</strong>
-                            {{ user.id }}
+                            <strong style="display: inline-block;">Nombre de usuario:</strong>
+                            <p style="display: inline-block;">{{ user.username }}</p>
                             <br>
-                            <strong>Ultimo
-                                ingreso:</strong> {{ user.last_login }}
+                            <strong style="display: inline-block;">ID:</strong>
+                            <p style="display: inline-block;">{{ user.id }}</p>
+                            <br>
+                            <strong style="display: inline-block;">Ultimo ingreso:</strong>
+                            <p style="display: inline-block;">{{ user.last_login }}</p>
+
                             {% if user.is_superuser %}
-                            <p><strong>Rol:</strong> Admin</p>
+                            <br>
+                            <strong style="display: inline-block;">Rol:</strong>
+                            <p style="display: inline-block;">Admin</p>
                             {% else %}
-                            <p><strong>Rol:</strong> Gestor</p>
+                            <br>
+                            <strong style="display: inline-block;">Rol:</strong>
+                            <p style="display: inline-block;">Gestor</p>
                             {% endif %}
                         </div>
+
 
                     </div>
 
