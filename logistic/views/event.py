@@ -10,6 +10,7 @@ from ..models import Task
 from django.forms import modelformset_factory
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.contrib import messages
 
 
 def event_checklist(request, event_id):
@@ -39,60 +40,59 @@ def event_checklist(request, event_id):
 
 def create_event(request):
     if request.method == 'GET':
-        if request.user.is_superuser:
-            users_event = User.objects.all()
-        else:
-            users_event = User.objects.filter(id=request.user.id)
+        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
-    else:
+    elif request.method == 'POST':
         try:
-            if request.user.is_superuser:
-                user_events = User.objects.all()
-            else:
-                user_events = User.objects.filter(id=request.user.id)
+            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
                 new_event = form.save(commit=False)
-                new_event.user = new_event.user
+                if not request.user.is_superuser:
+                    new_event.user = request.user
                 new_event.save()
                 return redirect("home")
+            else:
+                return render(request, 'create_event.html', {'formForEvents': form})
         except:
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
 
+
 def edit_event(request, event_id):
-    formForEditEvent = None
+    event = get_object_or_404(Event, pk=event_id)
+    
     if request.method == 'GET':
-        if request.user.is_superuser:
-            # Aqui se obtiene el objeto y le indicamos que solo queremos el pk = event_id
-            event = get_object_or_404(Event, pk=event_id)
-            formForEditEvent = EventForm(instance=event)
+        user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        if request.user.is_superuser or event.user == request.user:
+            form = EventForm(instance=event)
+            form.fields['user'].queryset = user_events
+            return render(request, "edit_event.html", {'eventId': event, 'form': form})
         else:
-            # Si no es el admin, se hace filtro para que no pueda editar las otros eventos
-            event = get_object_or_404(Event, pk=event_id, user=request.user)
-            formForEditEvent = EventForm(instance=event)
-        # El primer eventId,simplem   ente es el nombre de uan variable. El segundo event es el que se obtiene. El que se llama en el html es el que va entre comillas
-        return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent})
-    else:
-        try:
-            if request.user.is_superuser:
-                event = get_object_or_404(Event, pk=event_id)
-                # Obtiene los datos del formulario
-                form = EventForm(request.POST, instance=event)
-            else:
-                event = get_object_or_404(
-                    Event, pk=event_id, user=request.user)
-                form = EventForm(request.POST, instance=event)
-            form.save()
+            messages.error(request, "No tiene permiso para editar este evento.")
             return redirect('home')
+    elif request.method == 'POST':
+        try:
+            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            form = EventForm(request.POST, instance=event)
+            form.fields['user'].queryset = user_events
+            if request.user.is_superuser or event.user == request.user:
+                if form.is_valid():
+                    form.save()
+                    return redirect('home')
+                else:
+                    return render(request, 'edit_event.html', {'eventId': event, 'form': form})
+            else:
+                messages.error(request, "No tiene permiso para editar este evento.")
+                return redirect('home')
         except ValueError:
-            return render(request, "edit_event.html", {'eventId': event, 'form': formForEditEvent,
-                                                       'error': "Error al intentar actualizar, intente de nuevo"})
+            messages.error(request, "Error al intentar actualizar, intente de nuevo")
+            return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
 def complete_event(request, event_id):

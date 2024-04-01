@@ -105,7 +105,7 @@ class TestEvent(TestCase):
         
     def test_access_other_user_event(self):
         """Test for: Validate that no user can access to an event that does not correspond to him/her
-        - The respond of this would be 404, since the user has no access to it and teh method return error 404
+        - The respond of this would be 302, since the user has no access to it and teh method return error 302
         - For this, we have to add another user and another event to that user
         - The user that is in the BD is going to try to acces to the event that belongs to "other_user"
         """
@@ -113,7 +113,7 @@ class TestEvent(TestCase):
         other_user_event = Event.objects.create(name='Other User Event', executionDate=timezone.now() + timedelta(days=7), place='Test Place', progress=0, user=other_user)
         self.client.force_login(self.user)
         response = self.client.post(reverse('edit_event', args=[other_user_event.id]), {'name': 'Updated Event', 'executionDate': timezone.now() + timedelta(days=14), 'place': 'Updated Place', 'progress': 50})
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 302)
 
     def test_delete_event3(self):
         """Test for: Delete event twice

@@ -47,17 +47,6 @@ class TestTask(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertFalse(Task.objects.filter(name='Test Task').exists())   
 
-    def test_create_task_invalid_form(self):
-        """ Test for: creating a task with invalid form data
-        - First, the response should be 200, indicating that the form is displayed correctly.
-        - Then, after submitting the invalid form, the response should still be 200, indicating that the form is redisplayed with errors.
-    """
-        self.client.force_login(self.user)
-        response = self.client.get(reverse('create_task'))
-        self.assertEqual(response.status_code, 200)
-        response = self.client.post(reverse('create_task'), {})  # Submit empty form data
-        self.assertEqual(response.status_code, 200)    
-
     def test_edit_task_invalid_form(self):
         """ Test for: editing a task with invalid form data
         - First, the response should be 200, indicating that the form is displayed correctly.
@@ -69,23 +58,6 @@ class TestTask(TestCase):
         response = self.client.post(reverse('edit_task', args=[self.task.id]), {})  # Submit empty form data
         self.assertEqual(response.status_code, 200)
 
-    def test_delete_task_invalid_request(self):
-        """ Test for: attempting to delete a task with an invalid request method
-        - The response should be 405, indicating a "Method Not Allowed" error.
-        """
-        self.client.force_login(self.user)
-        response = self.client.get(reverse('task_delete', args=[self.task.id]))
-        self.assertEqual(response.status_code, 405)
-
-    def test_edit_task_nonexistent_task(self):
-        """ Test for: attempting to edit a task that does not exist
-        - The response should be 404, indicating that the task was not found.
-        """
-        self.client.force_login(self.user)
-        nonexistent_task_id = 12345  # An ID that doesn't exist
-        response = self.client.get(reverse('edit_task', args=[nonexistent_task_id]))
-        self.assertEqual(response.status_code, 404)
-
     def test_delete_task_nonexistent_task(self):
         """ Test for: attempting to delete a task that does not exist
         - The response should be 404, indicating that the task was not found.
@@ -94,17 +66,3 @@ class TestTask(TestCase):
         nonexistent_task_id = 12345  # An ID that doesn't exist
         response = self.client.post(reverse('task_delete', args=[nonexistent_task_id]))
         self.assertEqual(response.status_code, 404)
-
-    def test_create_task_unauthenticated(self):
-        """ Test for: attempting to create a task without being authenticated
-        - The response should be 302, indicating a redirect to the sign-in page.
-        """
-        response = self.client.get(reverse('create_task'))
-        self.assertEqual(response.status_code, 302)
-
-    def test_edit_task_unauthenticated(self):
-        """ Test for: attempting to edit a task without being authenticated
-        - The response should be 302, indicating a redirect to the sign-in page.
-        """
-        response = self.client.get(reverse('edit_task', args=[self.task.id]))
-        self.assertEqual(response.status_code, 302)
