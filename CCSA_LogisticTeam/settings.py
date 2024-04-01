@@ -152,4 +152,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Define si la sesión debe expirar cuando el usuario cierra el navegador
 #SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# settings.py
+
+LOGIN_URL = 'signin'
+
 
