@@ -21,16 +21,6 @@ def home(request):
         events = Event.objects.filter(user=request.user)
     return render(request, 'home.html', {'Eventos': events})
 
-
-def admin(request):
-    return redirect(admin.site.urls)
-
-
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from django.db import IntegrityError
-
 def signup(request):
     if request.method == "GET":
         return render(
