@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil del usuario</title>
-    <link rel="stylesheet" href="{% static 'styles/user_profile.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/user_profile.css' %}">  
 </head>
 
 <body>
@@ -124,8 +124,8 @@
             <!-- Formulario para eliminar cuenta -->
             <form action="{% url 'delete_user' %}" method="post">
                 {% csrf_token %}
-                <input type="submit" value="Eliminar Cuenta" onclick="return confirm('¿Estás seguro de que quieres eliminar tu cuenta?')">
-            </form>
+                <input type="submit" value="Eliminar Cuenta" class="delete-btn" onclick="return confirm('¿Estás seguro de que quieres eliminar tu cuenta?')">
+            </form>            
         </div>    
     </div>
 
