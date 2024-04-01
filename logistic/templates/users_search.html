@@ -11,9 +11,9 @@
 
 <body>
 
-    <section class="user-container">
+    <header class="user-container">
         <div class="icesi aling-left">
-            <img src="/static/images/logo.png">
+            <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
         <div class="notification aling-right">
@@ -26,16 +26,17 @@
         </div>
 
         <div class="user-image">
-            <img src="/static/images/profile.jpg">
+            <a href="{% url 'user_profile' %}">
+                <img src="/static/images/profile.jpg">
+            </a>
         </div>
-    </section>
+    </header>
 
     <nav class="sidebar close">
 
         <header>
             <div class="text logo">
-                <span class="name">Prueba</span>
-                <span class="profe">Menu</span>
+                <span class="name">MENU</span>
             </div>
             <img src="{% static 'icons/menu.png' %}" class="toggle">
         </header>
@@ -109,22 +110,59 @@
         </div>
     </nav>
 
-
     <div class="home">
-        <h1>Search Users</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <input type="text" name="search_query" placeholder="Enter username or ID">
-            <button type="submit">Search</button>
-        </form>
-        {% if users %}
-        <h2>Search Results:</h2>
-        <ul>
-            {% for user in users %}
-            <li>{{ user.username }} (ID: {{ user.id }})</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+        <div class="profile">
+            <h1 class="text">Buscar Usuarios</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="search_query" placeholder="Escribe el nombre del usuario o el ID">
+                <button type="submit">Buscar</button>
+            </form>
+            {% if users %}
+            <h2 class="text">Resultados:</h2>
+            <ul>
+                {% for user in users %}
+                <li>
+                    <div class="info">
+
+                        <div class="picture"><strong></strong><img src="/static/images/profile.jpg" class="picture">
+                        </div>
+
+                        <div class="user-data">
+                            <strong style="display: inline-block;">Nombre de usuario:</strong>
+                            <p style="display: inline-block;">{{ user.username }}</p>
+                            <br>
+                            <strong style="display: inline-block;">ID:</strong>
+                            <p style="display: inline-block;">{{ user.id }}</p>
+                            <br>
+                            <strong style="display: inline-block;">Ultimo ingreso:</strong>
+                            <p style="display: inline-block;">{{ user.last_login }}</p>
+
+                            {% if user.is_superuser %}
+                            <br>
+                            <strong style="display: inline-block;">Rol:</strong>
+                            <p style="display: inline-block;">Admin</p>
+                            {% else %}
+                            <br>
+                            <strong style="display: inline-block;">Rol:</strong>
+                            <p style="display: inline-block;">Gestor</p>
+                            {% endif %}
+                        </div>
+
+
+                    </div>
+
+
+                    <br>
+                    <br>
+                    <br>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+        </div>
+
 
     </div>
 

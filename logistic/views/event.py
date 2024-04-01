@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from ..forms.eventForm import EventForm
 from ..forms.taskForm import TaskChecklist
+from django.contrib.auth.models import User
 from ..models import Event
 from ..models import Task
 from django.forms import modelformset_factory
@@ -38,22 +39,31 @@ def event_checklist(request, event_id):
 
 def create_event(request):
     if request.method == 'GET':
-        return render(request, 'create_event.html', {
-            'formForEvents': EventForm
-        })
+        if request.user.is_superuser:
+            users_event = User.objects.all()
+        else:
+            users_event = User.objects.filter(id=request.user.id)
+        form = EventForm()
+        form.fields['user'].queryset = users_event
+        return render(request, 'create_event.html', {'formForEvents': form})
     else:
         try:
+            if request.user.is_superuser:
+                user_events = User.objects.all()
+            else:
+                user_events = User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
-            # el commit=False es para que aún no lo guarde en la BD
-            newEvent = form.save(commit=False)
-            newEvent.save()
-            return redirect("home")
+            form.fields['user'].queryset = user_events
+            if form.is_valid():
+                new_event = form.save(commit=False)
+                new_event.user = new_event.user
+                new_event.save()
+                return redirect("home")
         except:
             return render(request, "create_event.html", {
-                "formForEvents": EventForm,
+                "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
-
 
 def edit_event(request, event_id):
     if request.method == 'GET':

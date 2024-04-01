@@ -25,7 +25,6 @@
 body {
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -34,6 +33,8 @@ body {
     background-color: #f1f1f1;
     color: #444;
     transition: background-color 0.5s ease;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 
 body.dark {
@@ -86,6 +87,7 @@ h1:after {
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.5;
+    display: none;
 }
 
 h1:before {
@@ -145,18 +147,63 @@ button[type="submit"]:hover {
     background-color: #45A049;
 }
 
-.user-container {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #000;
-    width: calc(100% - 80px);
-    margin: 0 0 0 80px;
-    position: relative;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/*Esto es para modificarlos globalmente y no tener que ir clasexclase */
+:root {
+
+    --body-color: #C2DDFA;
+    --sidebar-color: #FFFFFF;
+    --primary-color: #C2DDFA;
+    --primary-color-light: #9827B00D;
+    --toggle-color: #C2DDFA;
+    --text-color: #000000;
+
+    --tran-03: all 0.2s ease;
+    --tran-04: all 0.3s ease;
+    --tran-05: all 0.2s ease;
+}
+
+body {
+    min-height: 100vh;
+    transition: var(--tran-05);
+    overflow: hidden;
+}
+
+::selection {
+    background-color: var(--primary-color);
+    color: var(--sidebar-color);
+}
+
+body.dark {
+    --body-color: #18191A;
+    --sidebar-color: #242526;
+    --primary-color-light: #3A3B3C;
+    --toggle-color: #FFFFFF;
+    --text-color: #CCCCCC;
+}
+
+
+.user-container {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
 }
 
 .icesi img {
     cursor: pointer;
+    height: 50px;
 }
 
 .user-image img {
@@ -169,25 +216,20 @@ button[type="submit"]:hover {
 .user-info {
     display: flex;
     align-items: center;
-    margin-left: auto;
-}
-
-.user-info p {
     margin-right: 10px;
 }
+
 
 .notification {
-    margin: 0;
-    /* Remove the right margin */
+    display: flex;
     margin-left: auto;
-    margin-right: -800px;
-    /* Align the notification to the right side */
-}
-
-.notification img {
     margin-right: 10px;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    margin-top: 2px;
 }
+
 
 img:hover {
     transform: scale(1.05);
@@ -235,15 +277,16 @@ img:hover {
 
 .sidebar {
     position: fixed;
-    top: 0;
+    top: -35px;
     left: 0;
-    height: 100%;
-    width: 100%;
-    padding: 10px 14px;
+    height: calc(100vh - 50px);
+    width: 500px;
+    padding: 10px 10px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
     overflow: hidden;
+    margin-top: 100px;
 }
 
 .sidebar.close {
@@ -265,13 +308,13 @@ img:hover {
 }
 
 .sidebar .icon {
-    min-width: 60px;
-    border-radius: 6px;
-    height: 100%;
+    min-width: 45px;
+    border-radius: 10px;
+    height: 60%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 
@@ -345,8 +388,9 @@ body.dark .sidebar header .toggle {
 }
 
 .sidebar.close .toggle {
-    width: 100%;
+    width: 50%;
     top: 20%;
+    margin-right: 27px;
 }
 
 .sidebar .menu {
@@ -385,7 +429,7 @@ body.dark .sidebar li a:hover .text {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    overflow-y: scroll;
+    overflow: auto;
 }
 
 .menu-bar::-webkit-scrollbar {
@@ -477,13 +521,16 @@ body.dark .switch::before {
     top: 0;
     left: 250px;
     height: 100vh;
-    width: calc(100% - 250px);
+    width: calc(94.1%);
     background-color: var(--body-color);
     transition: var(--tran-05);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.home h1,
-h2 {
+.home .text {
     font-size: 30px;
     font-weight: bold;
     color: var(--text-color);
@@ -499,4 +546,80 @@ h2 {
 
 body.dark .home .text {
     color: var(--text-color);
+}
+
+.profile {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    height: 500px;
+    max-width: 600px;
+    margin: 20px auto;
+    margin-top: -100px;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll !important;
+
+}
+
+.profile img {
+    max-width: 100%;
+    /* Asegura que la imagen no sea más ancha que el contenedor */
+    max-height: 200px;
+    /* Ajusta la altura máxima según tus necesidades */
+    object-fit: cover;
+    /* Asegura que la imagen cubra el espacio asignado sin perder proporción */
+    display: block;
+    /* Elimina el espacio extra debajo de la imagen */
+    margin: 0 auto 20px;
+    /* Centra la imagen y añade espacio debajo */
+    border-radius: 50%;
+    /* Opcional: para hacer la imagen circular */
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.user-data {
+    flex: 1;
+    padding: 5px;
+}
+
+.user-data strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user-data p {
+    margin-top: 5px;
+}
+
+.info .picture:before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 10px;
+}
+
+.info .picture:before img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    margin-right: 10px;
 }

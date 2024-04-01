@@ -1,6 +1,5 @@
 from django.db import IntegrityError
 from django.shortcuts import render
-from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login
@@ -13,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from ..models import Event
 from ..models import User
-
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     if request.user.is_superuser:  # Si es el admin, lista todas las tareas
@@ -22,33 +21,52 @@ def home(request):
         events = Event.objects.filter(user=request.user)
     return render(request, 'home.html', {'Eventos': events})
 
-
-def admin(request):
-    return redirect(admin.site.urls)
-
-
 def signup(request):
-    if request.method == 'GET':
-        return render(request, 'signup.html', {
-            'form': UserCreationForm,
-        })
+    if request.method == "GET":
+        return render(
+            request,
+            "signup.html",
+            {
+                "form": UserCreationForm,
+            },
+        )
     else:
-        if request.POST['password1'] == request.POST['password2']:
+        if request.POST["password1"] == request.POST["password2"]:
+            email = request.POST['email']
+            if User.objects.filter(email=email).exists():  # Verifica si el correo ya existe
+                return render(
+                    request,
+                    "signup.html",
+                    {
+                        "form": UserCreationForm,
+                        "error": "Email already exists",
+                    },
+                )
             try:
                 user = User.objects.create_user(
-                    username=request.POST['username'], email=request.POST['email'], password=request.POST['password1'])
+                    username=request.POST['username'], email=email, password=request.POST['password1'])
                 user.save()
                 login(request, user)
-                return redirect('home')
+                return redirect("home")
             except IntegrityError:
-                return render(request, 'signup.html', {
-                    'form': UserCreationForm,
-                    'error': 'User already exists',
-                })
-        return render(request, 'signup.html', {
-            'form': UserCreationForm,
-            'error': 'Password do not match',
-        })
+                return render(
+                    request,
+                    "signup.html",
+                    {
+                        "form": UserCreationForm,
+                        "error": "User already exists",
+                    },
+                )
+        return render(
+            request,
+            "signup.html",
+            {
+                "form": UserCreationForm,
+                "error": "Password do not match",
+            },
+        )
+
+
 
 
 def signout(request):
@@ -57,18 +75,23 @@ def signout(request):
 
 
 def signin(request):
-    if request.method == 'GET':
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+    if request.method == "GET":
+        return render(request, "signin.html", {"form": AuthenticationForm})
     else:
         user = authenticate(
-            request, username=request.POST['username'], password=request.POST['password'])
+            request,
+            username=request.POST["username"],
+            password=request.POST["password"],
+        )
         if user is None:
-            return render(request, 'signin.html', {
-                'form': AuthenticationForm,
-                'error': 'Username or password is incorrect'
-            })
+            return render(
+                request,
+                "signin.html",
+                {
+                    "form": AuthenticationForm,
+                    "error": "Username or password is incorrect",
+                },
+            )
         else:
             login(request, user)
             return redirect('home')
@@ -84,6 +107,16 @@ def search_user(request):
         else:  # De lo contrario, buscar por nombre de usuario
             users = User.objects.filter(username__icontains=search_query)
         return render(request, 'users_search.html', {'users': users})
+
+
+
+@login_required
+def delete_user(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        return redirect('signin')    
+  
     
 @login_required  
 def user_profile(request):

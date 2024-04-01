@@ -3,11 +3,12 @@ from django.contrib import admin
 from .views import task
 from .views import event
 from .views import user
-from logistic.views.event import delete_event
-
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetConfirmView
+from django.contrib.auth.views import PasswordResetCompleteView
+from django.contrib.auth.views import PasswordResetDoneView
 
 urlpatterns = [
-    path('admin/', user.admin, name='admin'),
     path('home/', user.home, name='home'),
     path('signup/', user.signup, name='signup'),
     path('logout/', user.signout, name='logout'),
@@ -24,6 +25,9 @@ urlpatterns = [
     path('home/profile', user.user_profile, name='user_profile'),
     path('edit/task/<int:task_id>/', task.edit_task, name='edit_task'),
     path('edit/task/<int:task_id>/delete', task.delete_task, name='task_delete'),
-    path('delete_event/<int:event_id>/', delete_event, name='delete_event'),
-
+    path('forgot-password/', PasswordResetView.as_view(template_name='password_reset_form.html', email_template_name='password_reset.html'), name="password_reset"),
+    path('forgot-password-done/', PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name="password_reset_done"),
+    path('forgot-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('forgot-password/done/', PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
+    path('delete/user/', user.delete_user, name='delete_user'),
 ]
