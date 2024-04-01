@@ -3,6 +3,8 @@ from django.contrib import admin
 from .views import task
 from .views import event
 from .views import user
+from logistic.views.event import delete_event
+
 
 urlpatterns = [
     path('admin/', user.admin, name='admin'),
@@ -22,4 +24,6 @@ urlpatterns = [
     path('home/profile', user.user_profile, name='user_profile'),
     path('edit/task/<int:task_id>/', task.edit_task, name='edit_task'),
     path('edit/task/<int:task_id>/delete', task.delete_task, name='task_delete'),
+    path('delete_event/<int:event_id>/', delete_event, name='delete_event'),
+
 ]
