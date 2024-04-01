@@ -5,7 +5,7 @@ from logistic.models import Event
 from django.contrib.auth.models import User
 from datetime import timedelta
 
-class testEvent(TestCase):
+class TestEvent(TestCase):
     #Creamos un usuario y evento para probar los métodos
     def setUp(self):
         self.user = User.objects.create_user(username='testuser', password='12345')
