@@ -34,15 +34,14 @@ class views_test(TestCase):
             'name': 'Updated Event',
             'executionDate': '2022-12-31T23:59',
             'place': 'Updated Place',
-            'progress': 75,  # Proporcionamos un valor numérico válido para 'progress'
+            'progress': 75,
             'finishDate': '2023-01-01T00:01',
             'important': False,
-            'user': self.user.pk,  # Pasamos el ID del usuario en lugar del objeto completo
+            'user': self.user.pk,
         }
         response = self.client.post(url, data)
-        self.assertEqual(response.status_code, 302)  # Redirecciona a 'home'
+        self.assertEqual(response.status_code, 302)
         
-        # Recargamos el objeto desde la base de datos para verificar los cambios
         self.event.refresh_from_db()
         self.assertEqual(self.event.name, 'Updated Event')
 
@@ -51,14 +50,14 @@ class views_test(TestCase):
         request = self.factory.post(url)
         request.user = self.user
         response = delete_event(request, event_id=self.event.pk)
-        self.assertEqual(response.status_code, 302)  # Redirects to 'home'
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(Event.objects.count(), 0)
 
 
     def test_complete_event(self):
         url = reverse('event_complete', args=[self.event.pk])
-        response = self.client.post(url)  # Realiza una solicitud POST a la vista
-        self.assertEqual(response.status_code, 302)  # Redirecciona a 'home'
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 302)
         self.event.refresh_from_db()
         self.assertIsNotNone(self.event.completed)
 
