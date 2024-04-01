@@ -70,4 +70,6 @@ def delete_task(request, task_id):
     if request.method == 'POST':
         task.delete()
         return redirect('event_checklist', event_id = task.event.id)
+    
+    
 
