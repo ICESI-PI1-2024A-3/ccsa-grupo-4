@@ -3,7 +3,10 @@ from django.contrib import admin
 from .views import task
 from .views import event
 from .views import user
-from django.contrib.auth.views import PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView, PasswordResetDoneView
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import PasswordResetConfirmView
+from django.contrib.auth.views import PasswordResetCompleteView
+from django.contrib.auth.views import PasswordResetDoneView
 
 urlpatterns = [
     path('home/', user.home, name='home'),
