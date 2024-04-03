@@ -1,0 +1,12 @@
+.btn-primary{
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    width: 60%;
+    margin: 1rem auto;
+    box-sizing: border-box;
+}
