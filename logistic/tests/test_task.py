@@ -3,8 +3,8 @@ from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
-from ..models import Event
-from ..models import Task
+from logistic.models import Event
+from logistic.models import Task
 
 class TestTask(TestCase):
     def setUp(self):
