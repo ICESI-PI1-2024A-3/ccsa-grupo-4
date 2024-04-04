@@ -17,8 +17,7 @@
 |*Camilo Bueno*   | Definir la HU que me corresponde | Crear models de mi rama  | Ninguno |
 |*Daron Mercado*  |Estuve en la reunión de repartición de funcionalidades y ya tengo todo listo para empezar  | Hoy no pude trabajar en el proyecto  | Ninguno |
 | *Johan Sebastian Diaz*  | Estuve reunido con mis compañeros para repartir las funciones | No avancé en el proyecto | Ninguno |
-| *Cristian Cardona*   | Definir las HU con mis compañeros | Hoy no avancé en el proyecto
- | Ninguno |
+| *Cristian Cardona*   | Definir las HU con mis compañeros | Hoy no avancé en el proyecto | Ninguno |
 | *Santiago Arboleda Velasco*  | Definir las HU con mis demás compañeros, empezar Sprint 2. | No avancé en el proyecto | Ninguno |
 
 # Daily No.3
