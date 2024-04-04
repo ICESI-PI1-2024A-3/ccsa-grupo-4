@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="{% static 'styles/signin.css' %}"> 
+    <link rel="stylesheet" href="{% static 'styles/buttons.css' %}"> 
 </head>
 <body style="background-image: url('{% static 'images/fondoSaman.png' %}');
  background-size: cover; background-position: center;" 
@@ -30,7 +31,7 @@
                         <input type="password" name="password" id="password" placeholder="Contraseña" />
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="login-button">Acceder</button>
+                        <button type="submit" class="btn-primary">Acceder</button>
                         <a href="/forgot-password/" class="forgot-password">¿Olvidó la contraseña?</a>
                         <a href="{% url 'signup' %}" class="signup-template">¿No te has registrado? ¡Registrate!</a>
                     </div>
