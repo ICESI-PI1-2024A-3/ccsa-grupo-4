@@ -25,11 +25,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*   |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   | Crear models de mi rama   |investigar y practicar sobre html y css |Ninguno  |
+|*Daron Mercado*  | Hoy no pude trabajar en el proyecto  |Hoy no pude trabajar en el proyecto  |Ninguno  |
+| *Johan Sebastian Diaz*  |No avancé en el proyecto  |No puedo avanzar en el proyecto  |Ninguno  |
+| *Cristian Cardona*   | Hoy no avancé en el proyecto  | Mirar tutoriales se calendarios en Django | Ninguno  |
+| *Santiago Arboleda Velasco*  |No avancé en el proyecto  |No avancé en el proyecto  |Tiempo  |
 
 # Daily No.4
 ### Viernes 5 de abril de 2024
