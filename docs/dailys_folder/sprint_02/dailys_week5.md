@@ -36,11 +36,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*   |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   | investigar y practicar sobre html y css  | Ver tutorial en youtube | Ninguno |
+|*Daron Mercado*  | Hoy no pude trabajar en el proyecto | Diseñar como ira el feedback y las bitacoras en el sistema | Ninguno |
+| *Johan Sebastian Diaz*  | No puedo avanzar en el proyecto | Empezar a ver videos de como hacer las alertas de Django | Ninguno |
+| *Cristian Cardona*   | Mirar tutoriales se calendarios en Django | Ver videos de la implementacion full calendar en Django usando JS | Ninguno |
+| *Santiago Arboleda Velasco*  | No avancé en el proyecto | Ver videos de posibles diseños y funcionalidades para la barra de progreso | Ninguno |
 
 # Daily No.5
 ### Sabado 6 de abril de 2024
