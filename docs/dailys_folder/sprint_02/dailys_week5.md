@@ -47,8 +47,8 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |  |  |  |
-|*Daron Mercado*  |  |  |  |
-| *Johan Sebastian Diaz*  |  |  |  |
-| *Cristian Cardona*   |  |  |  |
-| *Santiago Arboleda Velasco*  |  |  |  |
+|*Camilo Bueno*   | Ver tutorial en youtube | implementar historic eliminated events | Ninguno |
+|*Daron Mercado*  | Diseñar como ira el feedback y las bitacoras en el sistema | Ajustar el modelo de las bitácoras y trabar en backend | Ninguno |
+| *Johan Sebastian Diaz*  | Empezar a ver videos de como hacer las alertas de Django |Comencé a trabajar en el proyecto de notificaciónes y tratando de establecer una estructura inicial  | Ninguno |
+| *Cristian Cardona*   | er videos de la implementacion full calendar en Django usando JS | Definí las subtareas en jira, y empecé con la template del calendarioImpedimentos  | Ninguno |
+| *Santiago Arboleda Velasco*  | Ver videos de posibles diseños y funcionalidades para la barra de progreso | Iniciar el proceso de desarrollo de la barra de progreso para los eventos | Ninguno |
