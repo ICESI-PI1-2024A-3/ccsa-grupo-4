@@ -40,13 +40,15 @@ def event_checklist(request, event_id):
 
 def create_event(request):
     if request.method == 'GET':
-        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        users_event = User.objects.all(
+        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all(
+            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
@@ -66,19 +68,22 @@ def create_event(request):
 
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
-    
+
     if request.method == 'GET':
-        user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        user_events = User.objects.all(
+        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
         if request.user.is_superuser or event.user == request.user:
             form = EventForm(instance=event)
             form.fields['user'].queryset = user_events
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
         else:
-            messages.error(request, "No tiene permiso para editar este evento.")
+            messages.error(
+                request, "No tiene permiso para editar este evento.")
             return redirect('home')
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all(
+            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST, instance=event)
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
@@ -88,10 +93,12 @@ def edit_event(request, event_id):
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
             else:
-                messages.error(request, "No tiene permiso para editar este evento.")
+                messages.error(
+                    request, "No tiene permiso para editar este evento.")
                 return redirect('home')
         except ValueError:
-            messages.error(request, "Error al intentar actualizar, intente de nuevo")
+            messages.error(
+                request, "Error al intentar actualizar, intente de nuevo")
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
@@ -114,3 +121,13 @@ def delete_event(request, event_id):
     if request.method == 'POST':
         event.delete()
         return redirect('home')
+
+
+def events_calendar(request):
+    
+    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
+        events = Event.objects.all()
+    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+        events = Event.objects.filter(user=request.user)
+
+    return render(request, 'events_calendar.html', {'Event': events})
