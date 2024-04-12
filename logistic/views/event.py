@@ -11,6 +11,11 @@ from django.forms import modelformset_factory
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.contrib import messages
+from django.shortcuts import render
+from django.core.serializers import serialize
+from django.http import HttpResponse
+import json
+from django.utils import timezone
 
 
 def event_checklist(request, event_id):
@@ -125,9 +130,25 @@ def delete_event(request, event_id):
 
 def events_calendar(request):
     
-    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
+    if request.user.is_superuser:
         events = Event.objects.all()
-    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+    else:
         events = Event.objects.filter(user=request.user)
 
-    return render(request, 'events_calendar.html', {'Event': events})
+    events_for_calendar = [
+        {
+            'title': event.name,
+            'start': event.executionDate.strftime("%Y-%m-%dT%H:%M"),
+            'end': event.finishDate.strftime("%Y-%m-%dT%H:%M") if event.finishDate else None,
+            'color': 'red' if event.important else 'blue',
+            'url': f"/event/checklist/{event.id}",
+            'username': event.user.username if event.user else 'Sin usuario', 
+        }
+        for event in events
+    ]
+
+    context = {
+        'events_json': json.dumps(events_for_calendar),
+    }
+
+    return render(request, 'events_calendar.html', context)
