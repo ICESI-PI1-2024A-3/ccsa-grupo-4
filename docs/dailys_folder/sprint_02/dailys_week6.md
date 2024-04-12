@@ -14,11 +14,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   |Acomodar el html |Hoy no avance en el proyecto |Ninguno |
+|*Camilo Bueno*   |Acomodar el html |Hoy no avancé en el proyecto |Ninguno |
 |*Daron Mercado* |Investigar cómo hacer las prueba end to end y revisar el soft delete |No pude trabajar en el proyecto |Ninguno |
 | *Johan Sebastian Diaz*  |Corregir el nombre de la rama y haciendo métodos para poder mandar alertas |No pude avanzar por tema de carga académica |Ninguno |
-| *Cristian Cardona*   |Investigacion de la logica de para ver los eventos en el calendario |Hoy no avance en el proyecto |Tiempo |
-| *Santiago Arboleda Velasco*  |Seguir en el proceso de la implementacion de la barra de tareas |No avance en el proyecto|Carga académica y falta de tiempo |
+| *Cristian Cardona*   |Investigacion de la logica de para ver los eventos en el calendario |Hoy no avancé en el proyecto |Tiempo |
+| *Santiago Arboleda Velasco*  |Seguir en el proceso de la implementacion de la barra de tareas |No avancé en el proyecto|Carga académica y falta de tiempo |
 
 # Daily No.3
 ### Jueves 11 de abril de 2024
@@ -28,7 +28,8 @@
 |*Camilo Bueno*   | | | |
 |*Daron Mercado* | | | |
 | *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*   | | | |
+| *Cristian Cardona*   |Ayer no avancé en el proyecto |La lógica para visualizar los eventos en el calendario 
+ | |
 | *Santiago Arboleda Velasco*  | | | |
 
 # Daily No.4
