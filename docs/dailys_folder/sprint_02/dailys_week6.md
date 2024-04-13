@@ -25,12 +25,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*   |Ayer no avancé en el proyecto |La lógica para visualizar los eventos en el calendario 
- | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   | Ayer no avancé en el proyecto| Estudio de css| Ninguno|
+|*Daron Mercado* |No pude trabajar en el proyecto | Estudio pruebas y empezar a llenar el formato para las pruebas | Ninguno |
+| *Johan Sebastian Diaz*  |No pude avanzar por tema de carga académica | Corregí errores de los métodos|Ninguno |
+| *Cristian Cardona*   |Ayer no avancé en el proyecto |La lógica para visualizar los eventos en el calendario | Manejo de las zonas horarias de django |
+| *Santiago Arboleda Velasco*  | No avancé en el proyecto |No pude avanzar en el proyecto | Tiempo|
 
 # Daily No.4
 ### Viernes 12 de abril de 2024
