@@ -37,11 +37,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*   | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   | | Estudiar CSS | Ninguno |
+|*Daron Mercado* | | Seguir con el analisis y preparacion de pruebas end to end | Ninguno |
+| *Johan Sebastian Diaz*  | | Estuve avanzando la parte de las alertas | Ninguno |
+| *Cristian Cardona*   | | Solucionar los problemas de zona horaria del calendario | Ninguno |
+| *Santiago Arboleda Velasco*  | | Avanzar en la implementacion de la barra de proceso | Ninguno |
 
 # Daily No.5
 ### Sabado 13 de abril de 2024
