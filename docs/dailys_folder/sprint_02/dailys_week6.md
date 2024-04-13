@@ -36,11 +36,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | Estudiar CSS | Ninguno |
-|*Daron Mercado* | | Seguir con el analisis y preparacion de pruebas end to end | Ninguno |
-| *Johan Sebastian Diaz*  | | Estuve avanzando la parte de las alertas | Ninguno |
-| *Cristian Cardona*   | | Solucionar los problemas de zona horaria del calendario | Ninguno |
-| *Santiago Arboleda Velasco*  | | Avanzar en la implementacion de la barra de proceso | Ninguno |
+|*Camilo Bueno*   | Estudio de css | Estudiar CSS | Ninguno |
+|*Daron Mercado* | Estudio pruebas y empezar a llenar el formato para las pruebas | Seguir con el analisis y preparacion de pruebas end to end | Ninguno |
+| *Johan Sebastian Diaz*  | Corregí errores de los métodos | Estuve avanzando la parte de las alertas | Ninguno |
+| *Cristian Cardona*   | La lógica para visualizar los eventos en el calendario | Solucionar los problemas de zona horaria del calendario | Ninguno |
+| *Santiago Arboleda Velasco*  | No pude avanzar en el proyecto | Avanzar en la implementacion de la barra de proceso | Ninguno |
 
 # Daily No.5
 ### Sabado 13 de abril de 2024
