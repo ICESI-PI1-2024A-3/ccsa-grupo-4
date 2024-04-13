@@ -10,7 +10,13 @@ from ..models import Task
 from django.forms import modelformset_factory
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.core.mail import send_mail
+from ..forms.eventForm import EventForm
+from ..models import Event
 
 
 def event_checklist(request, event_id):
@@ -54,6 +60,14 @@ def create_event(request):
                 if not request.user.is_superuser:
                     new_event.user = request.user
                 new_event.save()
+
+                subject = 'Nuevo evento creado'
+                message = f'Se ha creado un nuevo evento: {new_event.name}'
+                from_email = 'your@example.com'
+                recipient_list = ['recipient@example.com']
+
+                send_mail(subject, message, from_email, recipient_list)
+
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
