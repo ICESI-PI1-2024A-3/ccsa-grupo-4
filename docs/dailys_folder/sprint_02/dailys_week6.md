@@ -47,8 +47,8 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*   | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Estudio de css |implementacion de boton y html |Ninguno |
+|*Daron Mercado* |Seguir con el analisis y preparacion de pruebas end to end |Taller de selenium web Driving |Ninguno |
+| *Johan Sebastian Diaz*  |Estuve avanzando la parte de las alertas |El taller de sleenium |Ninguno |
+| *Cristian Cardona*   |Solucionar los problemas de zona horaria del calendario |Taller de selenium |Tiempo |
+| *Santiago Arboleda Velasco*  |Avanzar en la implementacion de la barra de proceso  |Taller de selenium y seguir con la implementación de la barra de progreso|Ninguno |
