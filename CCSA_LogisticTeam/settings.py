@@ -99,7 +99,7 @@ DATABASES = {
 }
 
 MIGRATION_MODULES = {
-    'logistic': None,
+
 }
 
 
