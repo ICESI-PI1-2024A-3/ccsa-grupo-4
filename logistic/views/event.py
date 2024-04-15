@@ -45,7 +45,6 @@ def event_checklist(request, event_id):
         'event': event
     })
 
-
 def create_event(request):
     if request.method == 'GET':
         users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -73,11 +72,13 @@ def create_event(request):
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
-        except:
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
+
 
 
 def edit_event(request, event_id):
@@ -102,7 +103,7 @@ def edit_event(request, event_id):
                     subject = 'Evento Actualizado'
                     message = f"Se ha actualizado el evento: {updated_event.name}"
                     from_email = settings.EMAIL_HOST_USER
-                    to_email = [request.user.email]  # Cambia esto por la dirección de correo que desees
+                    to_email = [request.user.email]
                     send_mail(subject, message, from_email, to_email)
                     return redirect('home')
                 else:
@@ -116,16 +117,28 @@ def edit_event(request, event_id):
 
 
 
-
 def complete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+
     if request.method == 'POST':
         event.completed = timezone.now()
         event.save()
+
+        subject = 'Evento completado'
+        message = f'El evento "{event.name}" ha sido completado.'
+        from_email = 'your@example.com'
+        recipient_list = ['recipient@example.com']
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+
         return redirect('home')
+
 
 
 def delete_event(request, event_id):
@@ -136,18 +149,17 @@ def delete_event(request, event_id):
     
     if request.method == 'POST':
         try:
-            deleted_event_name = event.name  # Guardamos el nombre del evento que se eliminará
+            deleted_event_name = event.name 
             event.delete()
 
             # Envía un correo electrónico de notificación
             subject = 'Evento Eliminado'
             message = f"Se ha eliminado el evento: {deleted_event_name}"
             from_email = settings.EMAIL_HOST_USER
-            to_email = [request.user.email]  # Cambia esto por la dirección de correo que desees
+            to_email = [request.user.email]
             send_mail(subject, message, from_email, to_email)
 
             return redirect('home')
         except:
-            # Maneja cualquier error de manera adecuada
             messages.error(request, "Error al intentar eliminar el evento.")
             return redirect('home')
