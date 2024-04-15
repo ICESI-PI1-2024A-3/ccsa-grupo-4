@@ -17,6 +17,8 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from ..forms.eventForm import EventForm
 from ..models import Event
+from django.conf import settings
+
 
 
 def event_checklist(request, event_id):
@@ -80,7 +82,6 @@ def create_event(request):
 
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
-    
     if request.method == 'GET':
         user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
         if request.user.is_superuser or event.user == request.user:
@@ -97,7 +98,12 @@ def edit_event(request, event_id):
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    form.save()
+                    updated_event = form.save()
+                    subject = 'Evento Actualizado'
+                    message = f"Se ha actualizado el evento: {updated_event.name}"
+                    from_email = settings.EMAIL_HOST_USER
+                    to_email = [request.user.email]  # Cambia esto por la dirección de correo que desees
+                    send_mail(subject, message, from_email, to_email)
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
@@ -107,6 +113,8 @@ def edit_event(request, event_id):
         except ValueError:
             messages.error(request, "Error al intentar actualizar, intente de nuevo")
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
+
+
 
 
 def complete_event(request, event_id):
