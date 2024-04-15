@@ -1,25 +1,17 @@
 from django.shortcuts import render
-from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-from ..forms.eventForm import EventForm
 from ..forms.taskForm import TaskChecklist
-from django.contrib.auth.models import User
 from ..models import Event
 from ..models import Task
 from django.forms import modelformset_factory
-from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib import messages
 from django.core.mail import send_mail
 from ..forms.eventForm import EventForm
-from ..models import Event
 from django.conf import settings
-
-
 
 def event_checklist(request, event_id):
     if request.user.is_superuser:
@@ -34,6 +26,17 @@ def event_checklist(request, event_id):
         formset = TaskFormSet(request.POST, queryset=queryset)
         if formset.is_valid():
             formset.save()
+
+            subject = 'Actualización de lista de tareas'
+            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
+            from_email = 'your@example.com'
+            recipient_list = ['recipient@example.com']
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect('home')
         else:
             print(formset.errors)
