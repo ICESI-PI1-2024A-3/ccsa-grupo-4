@@ -133,6 +133,21 @@ def delete_event(request, event_id):
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+    
     if request.method == 'POST':
-        event.delete()
-        return redirect('home')
+        try:
+            deleted_event_name = event.name  # Guardamos el nombre del evento que se eliminará
+            event.delete()
+
+            # Envía un correo electrónico de notificación
+            subject = 'Evento Eliminado'
+            message = f"Se ha eliminado el evento: {deleted_event_name}"
+            from_email = settings.EMAIL_HOST_USER
+            to_email = [request.user.email]  # Cambia esto por la dirección de correo que desees
+            send_mail(subject, message, from_email, to_email)
+
+            return redirect('home')
+        except:
+            # Maneja cualquier error de manera adecuada
+            messages.error(request, "Error al intentar eliminar el evento.")
+            return redirect('home')
