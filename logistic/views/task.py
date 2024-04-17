@@ -49,7 +49,6 @@ def create_task(request):
                 'error': 'Por favor, digite valores válidos'
             })
 
-
 def edit_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
     
@@ -68,11 +67,24 @@ def edit_task(request, task_id):
                 # Si el usuario no es superusuario, asigna la tarea al usuario actual automáticamente
                 task.user = request.user
             task.save()
+
+            # Envío de correo electrónico de notificación
+            subject = 'Tarea actualizada'
+            message = f'Se ha actualizado la tarea: {task.name}'
+            from_email = 'your@example.com'
+            recipient_list = ['recipient@example.com']
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect('event_checklist', event_id=task.event.id)
         else:
             return render(request, "edit_task.html", {'taskId': task, 'form': form, 'error': "Error al intentar actualizar, intente de nuevo"})
 
     return render(request, "edit_task.html", {'taskId': task, 'form': form})
+
 
 def delete_task(request, task_id):
     if request.user.is_superuser:
