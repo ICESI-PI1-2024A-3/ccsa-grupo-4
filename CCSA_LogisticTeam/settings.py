@@ -98,9 +98,9 @@ DATABASES = {
     }
 }
 
-MIGRATION_MODULES = {
-    'logistic': None,
-}
+#MIGRATION_MODULES = {
+#    'logistic': None,
+#}
 
 
 # Password validation

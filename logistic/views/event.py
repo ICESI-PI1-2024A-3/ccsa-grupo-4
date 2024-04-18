@@ -15,7 +15,6 @@ from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
-from django.utils import timezone
 
 
 def event_checklist(request, event_id):
@@ -129,20 +128,21 @@ def delete_event(request, event_id):
 
 
 def events_calendar(request):
-    
     if request.user.is_superuser:
         events = Event.objects.all()
     else:
         events = Event.objects.filter(user=request.user)
 
+    local_tz = local_tz = timezone.get_current_timezone()
+
     events_for_calendar = [
         {
             'title': event.name,
-            'start': event.executionDate.strftime("%Y-%m-%dT%H:%M"),
-            'end': event.finishDate.strftime("%Y-%m-%dT%H:%M") if event.finishDate else None,
+            'start': event.executionDate.astimezone(local_tz).isoformat() if event.executionDate else None,
+            'end': event.finishDate.astimezone(local_tz).isoformat() if event.finishDate else None,
             'color': 'red' if event.important else 'blue',
             'url': f"/event/checklist/{event.id}",
-            'username': event.user.username if event.user else 'Sin usuario', 
+            'username': event.user.username if event.user else 'Sin usuario',
         }
         for event in events
     ]

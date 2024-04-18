@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
     var calendar = new FullCalendar.Calendar(calendarEl, {
+        timeZone: 'America/Bogota',
         initialView: 'dayGridMonth',
         events: eventsJsonData,
         eventContent: function(arg) {
+
             // Creamos un elemento para el título del evento
             var titleElement = document.createElement('div');
             titleElement.innerText = arg.event.title;
@@ -27,4 +29,5 @@ document.addEventListener('DOMContentLoaded', function() {
         },
     });
     calendar.render();
+    calendar.setOption('locale','es')
 });
