@@ -29,7 +29,6 @@ def create_task(request):
                 new_task.user = new_task.event.user
                 new_task.save()
 
-                # Envío de correo electrónico de notificación
                 subject = 'Nueva tarea creada'
                 message = f'Se ha creado una nueva tarea: {new_task.name}'
                 from_email = 'your@example.com'
@@ -64,11 +63,9 @@ def edit_task(request, task_id):
         if form.is_valid():
             task = form.save(commit=False)
             if not request.user.is_superuser:
-                # Si el usuario no es superusuario, asigna la tarea al usuario actual automáticamente
                 task.user = request.user
             task.save()
 
-            # Envío de correo electrónico de notificación
             subject = 'Tarea actualizada'
             message = f'Se ha actualizado la tarea: {task.name}'
             from_email = 'your@example.com'
@@ -91,9 +88,17 @@ def delete_task(request, task_id):
         task = get_object_or_404(Task, pk=task_id)
     else:
         task = get_object_or_404(Task, pk=task_id, user=request.user)
+    
     if request.method == 'POST':
-        task.delete()
-        return redirect('event_checklist', event_id = task.event.id)
-    
-    
+        subject = 'Tarea eliminada'
+        message = f'Se ha eliminado la tarea: {task.name}'
+        from_email = 'your@example.com'
+        recipient_list = ['recipient@example.com']
 
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+
+        task.delete()
+        return redirect('event_checklist', event_id=task.event.id)
