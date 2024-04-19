@@ -11,7 +11,7 @@
 
 
 # Daily No.2
-### Martes 17 de abril de 2024
+### Miercoles 17 de abril de 2024
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
@@ -20,3 +20,15 @@
 | *Johan Sebastian Diaz*  | Estuve haciendo las alertas del task | Terminar las pruebas de task | Ninguno|
 | *Cristian Cardona*   | Estudiar deployment con vercel| Hoy no pude avanzar en el proyecto | Ninguno|
 | *Santiago Arboleda Velasco*  |Seguir con la implementacion de mi funcionalidad de barra de progreso. Al igual continuar con el proceso de desarrollo del documento del plan de pruebas|Desarrolar el plan de pruebas|Ninguno |
+
+
+# Daily No.3
+### Jueves 18 de abril de 2024
+
+| Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
+|-----------|-----------|-----------|-----------|
+|*Camilo Bueno*   | Estudiar css| Estudiar css y html|Ninguno |
+|*Daron Mercado* |Terminar el plan de pruebas junto con las matrices|Estuadiar como mandar un formulario de Google forms mediante correo| Ninguno |
+| *Johan Sebastian Diaz*  | Terminar las pruebas de task |No puedo avanzar por temas de carga académica| Los trabajos|
+| *Cristian Cardona*   |Hoy no pude avanzar en el proyecto|Arregle los problemas del calendario| Ninguno|
+| *Santiago Arboleda Velasco*  |Desarrolar el plan de pruebas|Finalizar el Plan de Pruebas|Ninguno |
