@@ -32,3 +32,14 @@
 | *Johan Sebastian Diaz*  | Terminar las pruebas de task |No puedo avanzar por temas de carga académica| Los trabajos|
 | *Cristian Cardona*   |Hoy no pude avanzar en el proyecto|Arregle los problemas del calendario| Ninguno|
 | *Santiago Arboleda Velasco*  |Desarrolar el plan de pruebas|Finalizar el Plan de Pruebas|Ninguno |
+
+# Daily No.3
+### Jueves 18 de abril de 2024
+
+| Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
+|-----------|-----------|-----------|-----------|
+|*Camilo Bueno*   | Estudiar css y html| No pude avanzar en el proyecto |Carga academica |
+|*Daron Mercado* |Estuadiar como mandar un formulario de Google forms mediante correo|No pude avanzar en el proyecto| Carga academica |
+| *Johan Sebastian Diaz*  | No puedo avanzar por temas de carga académica |Avanzar en la parte de users| Ninguno |
+| *Cristian Cardona*   |Arregle los problemas del calendario|Avanzando con el calendario| Ninguno|
+| *Santiago Arboleda Velasco*  |Finalizar el Plan de Pruebas|No pude avanzar en el proyecto|Carga academica |
