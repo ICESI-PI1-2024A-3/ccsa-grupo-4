@@ -89,18 +89,18 @@ WSGI_APPLICATION = 'CCSA_LogisticTeam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    },
-    'test': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'uipgzidh',  
+        'USER': 'uipgzidh',  
+        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',  
+        'HOST': 'salt.db.elephantsql.com',  
+        'PORT': '5432',  
     }
 }
 
-MIGRATION_MODULES = {
-    'logistic': None,
-}
+#MIGRATION_MODULES = {
+#    'logistic': None,
+#}
 
 
 # Password validation

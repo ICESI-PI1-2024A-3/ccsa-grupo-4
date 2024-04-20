@@ -1,16 +1,16 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear tareas</title>
-    <link rel="stylesheet" href="{% static 'styles/create_task.css' %}">
-</head>
-
-<body>
-    <header class="user-container">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'styles/events_calendar.css' %}">
+        <link rel="stylesheet" href="{% static 'fullcalendar/lib/main.css' %}">
+    </head>
+    <body>
+        <header class="user-container">
         <div class="icesi aling-left">
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
@@ -109,27 +109,14 @@
         </div>
     </nav>
 
-    <div class="home">
-        <div class="container">
-            <h1 class="text">Crear tareas</h1>
-            {% if error %}
-            <p>{{ error }}</p>
-            {% endif %}
-            <form action="" method="POST"> <!--En action no le pongo nada para que se quede en la misma página-->
-                {% csrf_token %}
-
-                {{ formForTask }}
-
-                <div class="form-actions">
-                    <button class="btn btn-save" type="submit">Guardar</button>
-                    <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-                </div>
-            </form>
-        </div>
-    </div>
-
+    <div id="calendar" class="container"></div>
 
     <script src="{% static 'js/home.js' %}"></script>
-</body>
-
+    <script src="{% static 'fullcalendar/lib/main.js' %}"></script>
+    <script src="{% static 'fullcalendar/lib/locales-all.js' %}"></script>
+    <script type="text/javascript">
+        var eventsJsonData = {{ events_json | safe }};
+    </script>
+    <script src="{% static 'js/calendar_setup.js' %}"></script>
+    </body>
 </html>
