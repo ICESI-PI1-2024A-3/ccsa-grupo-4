@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Event(models.Model):
     registerDate = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=200)
-    executionDate = models.DateField()
+    executionDate = models.DateTimeField()
     place = models.CharField(max_length=200)
     progress = models.IntegerField()  # en revision
     finishDate = models.DateTimeField(null=True)

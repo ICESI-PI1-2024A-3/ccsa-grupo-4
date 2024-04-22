@@ -468,6 +468,46 @@ td:nth-child(5) {
     }
 }
 
+/* Estilos para la barra de progreso */
+.progress-bar {
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(2, 0, 0);
+    font-weight: bold;
+    transition: width 0.3s;
+}
+
+/* Color de la barra de progreso según el rango de progreso */
+.progress-bar.low {
+    background-color: #ff6347;
+    /* Rojo */
+}
+
+.progress-bar.medium {
+    background-color: #ffa500;
+    /* Naranja */
+}
+
+.progress-bar.medium-dark {
+    background-color: #ffd700;
+    /* Amarillo oscuro */
+}
+
+.progress-bar.high {
+    background-color: #90ee90;
+    /* Verde claro */
+}
+
+.progress-bar.complete {
+    background-color: #008000;
+    /* Verde */
+}
+
+
+
+
+
 .section-title-container {
     display: flex;
     align-items: center;
