@@ -19,6 +19,7 @@ from django.core.mail import send_mail
 def home(request):
     if request.user.is_superuser:
         events = Event.objects.all()
+    else:
         events = Event.objects.filter(user=request.user)
     return render(request, 'home.html', {'Eventos': events})
 
