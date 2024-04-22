@@ -34,7 +34,7 @@
 | *Santiago Arboleda Velasco*  |Desarrolar el plan de pruebas|Finalizar el Plan de Pruebas|Ninguno |
 
 # Daily No.3
-### Jueves 19 de abril de 2024
+### Viernes 19 de abril de 2024
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
