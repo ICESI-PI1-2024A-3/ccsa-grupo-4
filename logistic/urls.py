@@ -30,5 +30,6 @@ urlpatterns = [
     path('forgot-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
     path('forgot-password/done/', PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
     path('delete/user/', user.delete_user, name='delete_user'),
-    path('home/calendar', event.events_calendar, name ='events_calendar')
+    path('home/calendar', event.events_calendar, name ='events_calendar'),
+    path('historic_deleted_events/', event.historic_deleted_events, name='historic_deleted_events')
 ]
