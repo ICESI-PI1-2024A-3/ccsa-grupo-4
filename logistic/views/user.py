@@ -135,8 +135,22 @@ def search_user(request):
 def delete_user(request):
     if request.method == 'POST':
         user = request.user
+        
+        user_email = user.email
+        
         user.delete()
-        return redirect('signin')    
+
+        subject = 'Cuenta eliminada'
+        message = f'Hola {user.username},\n\nTu cuenta ha sido eliminada satisfactoriamente.'
+        from_email = 'your@example.com'
+        recipient_list = [user_email]
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico de alerta de eliminación de cuenta: {e}")
+
+        return redirect('signin')
   
     
 @login_required  
