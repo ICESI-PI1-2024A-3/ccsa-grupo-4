@@ -9,6 +9,7 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from django.contrib.auth.views import PasswordResetDoneView
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('home/', user.home, name='home'),
     path('signup/', user.signup, name='signup'),
     path('logout/', user.signout, name='logout'),
