@@ -6,6 +6,8 @@ from ..forms.eventForm import EventForm
 from ..forms.taskForm import TaskChecklist
 from django.contrib.auth.models import User
 from ..models import Event
+from ..models import HistoricDeletedEvents
+from django.contrib.auth.decorators import login_required
 from ..models import Task
 from django.forms import modelformset_factory
 from django.shortcuts import get_object_or_404
@@ -123,8 +125,30 @@ def delete_event(request, event_id):
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
     if request.method == 'POST':
+        historic_event = HistoricDeletedEvents(
+            name=event.name,
+            executionDate=event.executionDate,
+            place=event.place,
+            progress=event.progress,
+            finishDate=event.finishDate,
+            important=event.important,
+            completed=event.completed,  
+            deleted=timezone.now().date(), 
+            user=event.user
+        )
+        historic_event.save()
         event.delete()
+        
         return redirect('home')
+    
+@login_required
+def historic_deleted_events(request):
+    if request.user.is_superuser:
+        historic_events = HistoricDeletedEvents.objects.all()
+    else:
+        historic_events = HistoricDeletedEvents.objects.filter(user=request.user)
+        return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
+
 
 
 def events_calendar(request):
