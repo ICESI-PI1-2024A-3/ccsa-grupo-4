@@ -27,11 +27,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*  | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Estudiar css |Realizar cambios para depurar errores |Ninguno |
+|*Daron Mercado* |Empezar con el desarrollo de mi funcionalidad en mi rama |Investigar y estudiar sobre selenium web driver |Ninguno |
+| *Johan Sebastian Diaz*  |Estudiar css |Mejorar en cómo acomodar las cosas a mi gusto en CSS  |Ninguno |
+| *Cristian Cardona*  |Corregir errores en mi rama | Corregir errores |Ninguno |
+| *Santiago Arboleda Velasco*  |Avanzar poco en GitHub actions |No avance en el proyecto |Carga academica |
 
 
 # Daily No.4
