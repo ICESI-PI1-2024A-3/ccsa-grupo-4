@@ -1,14 +1,12 @@
 name: CI
 
-on:
-  
+on: 
   push:
-    branches: [ "main" ]
+    branches: [ "testing" ]
 
   workflow_dispatch:
 
-jobs:
-  
+jobs:  
   build:   
     runs-on: ubuntu-latest
 
