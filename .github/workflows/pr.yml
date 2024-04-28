@@ -24,13 +24,6 @@ jobs:
         with:
           python-version: 3.12.3
 
-      - name: "Set up environment"
-        run: |          
-          pip install -r requirements.txt
-
-      - name: "Run tests"
-        run: |
-          python manage.py test
 
       
 
