@@ -1,18 +1,19 @@
 from django.shortcuts import render
-from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-from ..forms.eventForm import EventForm
 from ..forms.taskForm import TaskChecklist
-from django.contrib.auth.models import User
 from ..models import Event
 from ..models import HistoricDeletedEvents
 from django.contrib.auth.decorators import login_required
 from ..models import Task
 from django.forms import modelformset_factory
-from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from ..forms.eventForm import EventForm
+from django.conf import settings
 from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse
@@ -33,6 +34,17 @@ def event_checklist(request, event_id):
         formset = TaskFormSet(request.POST, queryset=queryset)
         if formset.is_valid():
             formset.save()
+
+            subject = 'Actualización de lista de tareas'
+            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
+            from_email = 'your@example.com'
+            recipient_list = ['recipient@example.com']
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect('home')
         else:
             print(formset.errors)
@@ -43,7 +55,6 @@ def event_checklist(request, event_id):
         'formset': formset,
         'event': event
     })
-
 
 def create_event(request):
     if request.method == 'GET':
@@ -63,19 +74,28 @@ def create_event(request):
                 if not request.user.is_superuser:
                     new_event.user = request.user
                 new_event.save()
+
+                subject = 'Nuevo evento creado'
+                message = f'Se ha creado un nuevo evento: {new_event.name}'
+                from_email = 'your@example.com'
+                recipient_list = ['recipient@example.com']
+
+                send_mail(subject, message, from_email, recipient_list)
+
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
-        except:
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
 
 
+
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
-
     if request.method == 'GET':
         user_events = User.objects.all(
         ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -95,7 +115,12 @@ def edit_event(request, event_id):
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    form.save()
+                    updated_event = form.save()
+                    subject = 'Evento Actualizado'
+                    message = f"Se ha actualizado el evento: {updated_event.name}"
+                    from_email = settings.EMAIL_HOST_USER
+                    to_email = [request.user.email]
+                    send_mail(subject, message, from_email, to_email)
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
@@ -109,15 +134,29 @@ def edit_event(request, event_id):
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
+
 def complete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+
     if request.method == 'POST':
         event.completed = timezone.now()
         event.save()
+
+        subject = 'Evento completado'
+        message = f'El evento "{event.name}" ha sido completado.'
+        from_email = 'your@example.com'
+        recipient_list = ['recipient@example.com']
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+
         return redirect('home')
+
 
 
 def delete_event(request, event_id):
@@ -125,6 +164,7 @@ def delete_event(request, event_id):
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+    
     if request.method == 'POST':
         historic_event = HistoricDeletedEvents(
             name=event.name,
