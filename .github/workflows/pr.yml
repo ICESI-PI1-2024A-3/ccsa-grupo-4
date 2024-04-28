@@ -2,7 +2,7 @@ name: CI
 
 on: 
   push:
-    branches: [ "feature-HU13-Process_bar" ]
+    branches: [ "testing" ]
 
   workflow_dispatch:
 
@@ -17,4 +17,22 @@ jobs:
       - name: "Variables Github"
         run: |          
           echo "GitHub Event: ${{ toJson(github.event) }}"
+      
+      - name: "Install Python"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12.3
 
+      - name: "Set up environment"
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install -r requirements.txt
+
+      - name: "Run tests"
+        run: |
+          python manage.py test
+
+      
+
+      
