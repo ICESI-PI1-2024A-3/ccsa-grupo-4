@@ -13,3 +13,10 @@ jobs:
     steps:
       - name: "Mostrar un mensaje"
         run: echo "Hello, world!"
+
+      - name: "Variables Github"
+        run: |
+          echo "Variable 1: ${{ secrets.VARIABLE_1 }}"
+          echo "Variable 2: ${{ secrets.VARIABLE_2 }}"
+          echo "GitHub Event: ${{ toJson(github.event) }}"
+
