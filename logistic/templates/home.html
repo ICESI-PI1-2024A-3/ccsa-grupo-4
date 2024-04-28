@@ -50,40 +50,42 @@
       <div class="menu-bar">
         <div class="menu">
           <ul>
-            <li>
-              <a href="{% url 'home' %}">
-                <img src="{% static 'icons/home.png' %}" class="icon">
-                <span class="text nav-text">Inicio</span>
-              </a>
-            </li>
+            <div class="menu-items">
+              <li>
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'icons/home.png' %}" class="icon">
+                  <span class="text nav-text">Inicio</span>
+                </a>
+              </li>
 
-            <li>
-              <a href="{% url 'create_event' %}">
-                <img src="{% static 'icons/create.png' %}" class="icon">
-                <span class="text nav-text">Crear Evento</span>
-              </a>
-            </li>
 
-            <li>
-              <a href="{% url 'users_search' %}">
-                <img src="{% static 'icons/lupa.png' %}" class="icon">
-                <span class="text nav-text">Buscar Usuario</span>
-              </a>
-            </li>
+              <li>
+                <a href="{% url 'create_event' %}">
+                  <img src="{% static 'icons/create.png' %}" class="icon">
+                  <span class="text nav-text">Crear Evento</span>
+                </a>
+              </li>
 
-            <li>
-              <a href="{% url 'events_calendar' %}">
-                <img src="{% static 'icons/calendar.png' %}" class="icon">
-                <span class="text nav-text">Calendario</span>
-              </a>
-            </li>
+              <li>
+                <a href="{% url 'users_search' %}">
+                  <img src="{% static 'icons/lupa.png' %}" class="icon">
+                  <span class="text nav-text">Buscar Usuario</span>
+                </a>
+              </li>
 
-            <li>
-              <a href="{% url 'historic_deleted_events' %}">
-                <img src="{% static 'icons/trash.png' %}" class="icon">
-                <span class="text nav-text">Historial</span>
-              </a>
-            </li>
+              <li>
+                <a href="{% url 'events_calendar' %}">
+                  <img src="{% static 'icons/calendar.png' %}" class="icon">
+                  <span class="text nav-text">Calendario</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'historic_deleted_events' %}">
+                  <img src="{% static 'icons/trash.png' %}" class="icon">
+                  <span class="text nav-text">Historial</span>
+                </a>
+              </li>
           </ul>
         </div>
 
@@ -106,6 +108,8 @@
             </div>
           </li>
         </div>
+
+      </div>
       </div>
     </nav>
 

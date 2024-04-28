@@ -228,7 +228,6 @@ body.dark .home .text {
     right: 0px;
     height: 35px;
     width: 35px;
-
     color: var(--sidebar-color);
     display: flex;
     align-items: center;
@@ -276,12 +275,6 @@ body.dark .home .text {
     font-size: 10px;
 }
 
-
-
-
-
-
-
 .sidebar .menu-bar {
     height: calc(100% - 55px);
     display: flex;
@@ -319,6 +312,14 @@ body.dark .home .text {
 
 .sidebar .menu {
     margin-top: 40px;
+}
+
+.menu-items {
+    display: none;
+}
+
+.menu-items.open {
+    display: block;
 }
 
 .sidebar li a {

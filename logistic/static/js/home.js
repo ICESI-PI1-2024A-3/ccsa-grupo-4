@@ -1,11 +1,13 @@
 const body = document.querySelector('body'),
     sidebar = body.querySelector('nav'),
     toogle = body.querySelector(".toggle"),
+    menuItems = body.querySelector(".menu-items"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
 
 toogle.addEventListener("click", () => {
     sidebar.classList.toggle("close");
+    menuItems.classList.toggle("open");
 })
 
 modeSwitch.addEventListener("click", () => {
