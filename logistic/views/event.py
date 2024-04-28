@@ -17,6 +17,7 @@ from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
+import random
 
 
 def event_checklist(request, event_id):
@@ -160,12 +161,31 @@ def events_calendar(request):
 
     local_tz = local_tz = timezone.get_current_timezone()
 
+    colors = [
+        '#ff6961', '#ffb347', '#fdfd96', '#77dd77',  # Pastel Red, Orange, Yellow, Green
+        '#aec6cf', '#cda4de', '#ffb6c1', '#ffdab9',  # Pastel Blue, Purple, Pink, Peach
+        '#e6e6fa', '#bfff00', '#cbf9da', '#87dde0',  # Pastel Lavender, Lime, Mint, Aqua
+        # Pastel Magenta, Coral, Turquoise, Raspberry
+        '#f4aaff', '#fc998d', '#99f9ec', '#fbbcde',
+        '#f5f5dc', '#cfcfc4', '#b1f089', '#fcf7d5',  # Pastel Beige, Gray, Olive, Bronze
+        '#bccfdf', '#f8e5c0', '#f5989d', '#fdebbe',  # Pastel Teal, Gold, Crimson, Amber
+        # Pastel Cerulean, Silver, Sky Blue, Sapphire
+        '#ace7ee', '#d9e8ef', '#cae8fa', '#b8cfe5',
+        # Pastel Khaki, Sea Green, Orchid, Violet
+        '#f8f4a6', '#a7fcad', '#f2bdcd', '#cb99c9',
+        # Pastel Cyan, Mauve, Salmon, Chocolate
+        '#9de5e5', '#e0b7de', '#ffafaf', '#efd9d1',
+        # Pastel Charcoal, Tan, Indigo, Maroon
+        '#a4a4a7', '#d2b48c', '#6a5acd', '#f2a3bd'
+    ]
+
     events_for_calendar = [
         {
             'title': event.name,
             'start': event.executionDate.astimezone(local_tz).isoformat() if event.executionDate else None,
             'end': event.finishDate.astimezone(local_tz).isoformat() if event.finishDate else None,
-            'color': 'red' if event.important else 'blue',
+            # Elige un color al azar de la lista
+            'color': colors[event.id % len(colors)],
             'url': f"/event/checklist/{event.id}",
             'username': event.user.username if event.user else 'Sin usuario',
         }
