@@ -147,7 +147,8 @@ def historic_deleted_events(request):
         historic_events = HistoricDeletedEvents.objects.all()
     else:
         historic_events = HistoricDeletedEvents.objects.filter(user=request.user)
-        return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
+        
+    return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
 
 
 
