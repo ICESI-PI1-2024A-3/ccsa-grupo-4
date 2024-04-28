@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historic Deleted Events</title>
+    <link rel="stylesheet" href="{% static 'styles/historic_deleted_events.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/buttons.css' %}">
+</head>
+<body>
+    <header class="user-container">
+        <!-- Your header content here -->
+    </header>
+
+    <nav class="sidebar">
+        <!-- Your sidebar content here -->
+    </nav>
+
+    <div class="home">
+        <div class="container">
+            <h1 class="text">Historic Deleted Events</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Execution Date</th>
+                        <th>Place</th>
+                        <th>Progress</th>
+                        <th>Finish Date</th>
+                        <th>Important</th>
+                        <th>Completed</th>
+                        <th>Deleted</th>
+                        <th>User</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in historic_events %}
+                    <tr>
+                        <td>{{ event.name }}</td>
+                        <td>{{ event.executionDate }}</td>
+                        <td>{{ event.place }}</td>
+                        <td>{{ event.progress }}</td>
+                        <td>{{ event.finishDate }}</td>
+                        <td>{{ event.important }}</td>
+                        <td>{{ event.completed }}</td>
+                        <td>{{ event.deleted }}</td>
+                        <td>{{ event.user }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="{% url 'home' %}" class="btn-primary">Back</a>
+
+
+        </div>
+    </div>
+
+    <script src="{% static 'js/historic_deleted_events.js' %}"></script>
+</body>
+</html>

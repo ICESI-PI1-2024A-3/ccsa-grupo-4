@@ -9,6 +9,7 @@ from django.contrib.auth.views import PasswordResetCompleteView
 from django.contrib.auth.views import PasswordResetDoneView
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('home/', user.home, name='home'),
     path('signup/', user.signup, name='signup'),
     path('logout/', user.signout, name='logout'),
@@ -30,5 +31,6 @@ urlpatterns = [
     path('forgot-password/<uidb64>/<token>/', PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
     path('forgot-password/done/', PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
     path('delete/user/', user.delete_user, name='delete_user'),
-    path('home/calendar', event.events_calendar, name ='events_calendar')
+    path('home/calendar', event.events_calendar, name ='events_calendar'),
+    path('historic_deleted_events/', event.historic_deleted_events, name='historic_deleted_events')
 ]
