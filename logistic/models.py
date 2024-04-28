@@ -37,7 +37,7 @@ class HistoricDeletedEvents(models.Model):
     id = models.AutoField(primary_key=True)
     registerDate = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=200)
-    executionDate = models.DateField()
+    executionDate = models.DateTimeField()
     place = models.CharField(max_length=200)
     progress = models.IntegerField()  # en revision
     finishDate = models.DateTimeField(null=True)
