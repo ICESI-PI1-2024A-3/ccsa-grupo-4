@@ -16,9 +16,12 @@
     --primary-color-light: #9827B00D;
     --toggle-color: #C2DDFA;
     --text-color: #000000;
-    --header-height: 60px; /* Ajusta esto al alto de tu header */
-    --sidebar-width: 250px; /* Ajusta esto al ancho de tu sidebar */
-    --sidebar-closed-width: 88px; /* Ancho del sidebar cuando está cerrado */
+    --header-height: 60px;
+    /* Ajusta esto al alto de tu header */
+    --sidebar-width: 250px;
+    /* Ajusta esto al ancho de tu sidebar */
+    --sidebar-closed-width: 88px;
+    /* Ancho del sidebar cuando está cerrado */
     --tran-03: all 0.2s ease;
     --tran-04: all 0.3s ease;
     --tran-05: all 0.2s ease;
@@ -29,7 +32,8 @@ body {
     transition: var(--tran-05);
     overflow: hidden;
     background-color: var(--body-color);
-    padding-top: var(--header-height); /* Agrega padding para el header */
+    padding-top: var(--header-height);
+    /* Agrega padding para el header */
 }
 
 ::selection {
@@ -57,7 +61,7 @@ body.dark {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; 
+    z-index: 1000;
 }
 
 .icesi img {
@@ -136,7 +140,8 @@ img:hover {
 
 .sidebar {
     position: fixed;
-    top: var(--header-height); /* Posición debajo del header */
+    top: var(--header-height);
+    /* Posición debajo del header */
     left: 0;
     height: calc(100vh - var(--header-height));
     width: var(--sidebar-width);
@@ -144,7 +149,8 @@ img:hover {
     background: var(--sidebar-color);
     transition: var(--tran-05);
     z-index: 100;
-    overflow-y: auto; /* Permite desplazamiento si el contenido es más largo */
+    overflow-y: auto;
+    /* Permite desplazamiento si el contenido es más largo */
 }
 
 .sidebar.close {
@@ -153,17 +159,23 @@ img:hover {
 
 #calendar {
     position: absolute;
-    top: var(--header-height); /* Alinea debajo del header */
-    left: var(--sidebar-width); /* Alinea a la derecha del sidebar */
-    right: 0; /* Asegura que no se extienda fuera de la pantalla */
-    bottom: 0; /* Asegura que no se extienda fuera de la pantalla */
-    padding: 20px; /* Espacio alrededor del calendario */
-    overflow: auto; /* Permite desplazamiento si el contenido es más grande */
+    top: var(--header-height);
+    /* Alinea debajo del header */
+    left: var(--sidebar-width);
+    /* Alinea a la derecha del sidebar */
+    right: 0;
+    /* Asegura que no se extienda fuera de la pantalla */
+    bottom: 0;
+    /* Asegura que no se extienda fuera de la pantalla */
+    padding: 20px;
+    /* Espacio alrededor del calendario */
+    overflow: auto;
+    /* Permite desplazamiento si el contenido es más grande */
     transition: var(--tran-05);
     background-color: #FFFFFF;
 }
 
-.sidebar.close ~ #calendar {
+.sidebar.close~#calendar {
     left: var(--sidebar-closed-width);
 }
 
@@ -421,9 +433,11 @@ body.dark .home .text {
 
 
 .container {
-    max-width: 90%; /* O ajusta según la necesidad */
+    max-width: 90%;
+    /* O ajusta según la necesidad */
     margin: 20px auto;
-    display: block; /* O 'flex' si necesitas centrar el contenido en el contenedor */
+    display: block;
+    /* O 'flex' si necesitas centrar el contenido en el contenedor */
     justify-content: center;
 }
 

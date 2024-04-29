@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 {% load i18n %}
+{% load static %}
 
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inicio</title>
-  {% load static %}
+
   <link rel="stylesheet" href="{% static 'styles/home.css' %}">
 
 </head>
@@ -24,7 +25,6 @@
 
     <div class="user-info">
       <p>{{ request.user.username }}</p>
-
     </div>
 
     <div class="user-image">
@@ -35,15 +35,13 @@
   </header>
 
 
-
-
-  <section class="home">
+  <section class="main">
 
     <nav class="sidebar close">
 
       <header>
         <div class="text logo">
-          <span class="name">MENU</span>
+          <span>MENU</span>
         </div>
         <img src="{% static 'icons/menu.png' %}" class="toggle">
       </header>
@@ -51,53 +49,48 @@
 
       <div class="menu-bar">
         <div class="menu">
-
-          <ul class="menu-links">
-
-            <li class="nav-link">
-              <a href="{% url 'home' %}">
-                <img src="{% static 'icons/home.png' %}" class="icon">
-                <span class="text nav-text">Inicio</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="{% url 'create_event' %}">
-                <img src="{% static 'icons/create.png' %}" class="icon">
-                <span class="text nav-text">Crear Evento</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="{% url 'users_search' %}">
-                <img src="{% static 'icons/lupa.png' %}" class="icon">
-                <span class="text nav-text">Buscar Usuario</span>
-              </a>
-            </li>
-
-            <li class="nav-link">
-              <a href="{% url 'events_calendar' %}">
-                <img src="{% static 'icons/calendar.png' %}" class="icon">
-                <span class="text nav-text">Calendario</span>
-              </a>
-            </li>
+          <ul>
+            <div class="menu-items">
+              <li>
+                <a href="{% url 'home' %}">
+                  <img src="{% static 'icons/home.png' %}" class="icon">
+                  <span class="text nav-text">Inicio</span>
+                </a>
+              </li>
 
 
-            <li class="nav-link">
-              <a href="{% url 'historic_deleted_events' %}">
+              <li>
+                <a href="{% url 'create_event' %}">
+                  <img src="{% static 'icons/create.png' %}" class="icon">
+                  <span class="text nav-text">Crear Evento</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'users_search' %}">
+                  <img src="{% static 'icons/lupa.png' %}" class="icon">
+                  <span class="text nav-text">Buscar Usuario</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'events_calendar' %}">
+                  <img src="{% static 'icons/calendar.png' %}" class="icon">
+                  <span class="text nav-text">Calendario</span>
+                </a>
+              </li>
+
+              <li>
+                <a href="{% url 'historic_deleted_events' %}">
                   <img src="{% static 'icons/trash.png' %}" class="icon">
                   <span class="text nav-text">Historial</span>
-              </a>
-          </li>
-          
-
-
+                </a>
+              </li>
           </ul>
-
         </div>
 
         <div class="bottom-content">
-          <li class="">
+          <li>
             <a href="{% url 'logout' %}">
               <img src="{% static 'icons/logout.png' %}" class="icon">
               <span class="text nav-text">Salir</span>
@@ -115,6 +108,8 @@
             </div>
           </li>
         </div>
+
+      </div>
       </div>
     </nav>
 
@@ -177,7 +172,7 @@
           </td>
 
           <td>
-            <a href="{% url 'create_task' %}">
+            <a href="{% url 'create_task' event_id=event.id %}">
               <button class="new-task">
                 <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
               </button>
