@@ -101,10 +101,8 @@ DATABASES = {
         'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
         'HOST': 'salt.db.elephantsql.com',
         'PORT': '5432',
-        'TEST': {
-            'NAME': 'uipgzidh',
-            'USER': 'uipgzidh',
-            'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
+        "TEST": {
+            "MIRROR": "default",
         },
     }
 }
