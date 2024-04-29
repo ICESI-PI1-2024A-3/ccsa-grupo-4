@@ -45,13 +45,38 @@ class create_delete_event(unittest.TestCase):
         save_button.click()
 
         #Borramos el evento
-        event_edit = self.driver.find_element(By.CLASS_NAME, "edit-button")
+        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/31/')]")
         event_edit.click()
         delete_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div/button[2]")
         delete_button.click()
 
         #Assert
+        text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
+        self.assertEqual(text_expected.text, "Apoyo Logistico")
 
+
+    def test_delete_and_check(self):
+        #login
+        user = self.driver.find_element(By.NAME, "username")
+        user.send_keys("daron")
+        password = self.driver.find_element(By.NAME, "password")
+        password.send_keys("daron123")
+        loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
+        loginButton.click()
+        text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
+        self.assertEqual(text_expected.text, "Apoyo Logistico")
+
+        #Borramos el evento
+        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/30/')]")
+        event_edit.click()
+        delete_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div/button[2]")
+        delete_button.click()
+
+        #miramos el historial
+        history = self.driver.find_element(By.XPATH, "/html/body/section/nav/div/div[1]/ul/li[5]/a/img")
+        history.click()
+        text_expected = self.driver.find_element(By.XPATH, '/html/body/div/div/h1')
+        self.assertEqual(text_expected.text, "Historic Deleted Events")
 
 if __name__ == "__main__":
     unittest.main()
