@@ -42,7 +42,7 @@ img:hover {
 body {
     min-height: 100vh;
     transition: var(--tran-05);
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body.dark {
