@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ feature-HU13-Process_bar ]
+    branches: [ dev ]
   pull_request:
-    branches: [ feature-HU13-Process_bar ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -33,6 +33,12 @@ jobs:
         python manage.py migrate
 
     - name: Run tests
-      run: |
-        export DJANGO_TEST_DIRS=logistic/tests:logistic/test
-        python manage.py test
+      run: |        
+        python manage.py test logistic.tests.test_checklist
+        python manage.py test logistic.tests.test_event
+        python manage.py test logistic.tests.test_user
+        python manage.py test logistic.tests.test_task
+        python manage.py test logistic.test.forms_test
+        python manage.py test logistic.test.models_test
+        python manage.py test logistic.test.templates_test
+        python manage.py test logistic.test.views_test      

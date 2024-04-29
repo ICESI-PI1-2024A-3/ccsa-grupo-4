@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME) 
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -60,7 +60,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', #Aquí sí funciona
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Aquí sí funciona
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -96,17 +96,22 @@ WSGI_APPLICATION = 'CCSA_LogisticTeam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'uipgzidh',  
-        'USER': 'uipgzidh',  
-        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',  
-        'HOST': 'salt.db.elephantsql.com',  
-        'PORT': '5432',  
+        'NAME': 'uipgzidh',
+        'USER': 'uipgzidh',
+        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
+        'HOST': 'salt.db.elephantsql.com',
+        'PORT': '5432',
+        'TEST': {
+            'NAME': 'uipgzidh',
+            'USER': 'uipgzidh',
+            'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
+        },
     }
 }
 
-#MIGRATION_MODULES = {
+# MIGRATION_MODULES = {
 #    'logistic': None,
-#}
+# }
 
 
 # Password validation
@@ -146,7 +151,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -158,12 +163,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 # Tiempo de vencimiento de la sesión en segundos (e.g., 1800 segundos = 30 minutos)
-#SESSION_COOKIE_AGE = 1800
+# SESSION_COOKIE_AGE = 1800
 
 # Define si la sesión debe expirar cuando el usuario cierra el navegador
-#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # settings.py
 
 LOGIN_URL = 'signin'
-
-
