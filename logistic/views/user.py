@@ -13,13 +13,16 @@ from django.contrib.auth.decorators import login_required
 from ..models import Event
 from ..models import User
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+
 
 def home(request):
-    if request.user.is_superuser:  # Si es el admin, lista todas las tareas
+    if request.user.is_superuser:
         events = Event.objects.all()
-    else:  # si no es el admin, solo lista las tareas asociadas a el/ella
+    else:
         events = Event.objects.filter(user=request.user)
     return render(request, 'home.html', {'Eventos': events})
+
 
 def signup(request):
     if request.method == "GET":
@@ -33,7 +36,7 @@ def signup(request):
     else:
         if request.POST["password1"] == request.POST["password2"]:
             email = request.POST['email']
-            if User.objects.filter(email=email).exists():  # Verifica si el correo ya existe
+            if User.objects.filter(email=email).exists():
                 return render(
                     request,
                     "signup.html",
@@ -46,6 +49,17 @@ def signup(request):
                 user = User.objects.create_user(
                     username=request.POST['username'], email=email, password=request.POST['password1'])
                 user.save()
+
+                subject = 'Registro exitoso'
+                message = f'Hola {user.username},\n\nTe has registrado correctamente en nuestro sitio.'
+                from_email = 'your@example.com'
+                recipient_list = [user.email]
+
+                try:
+                    send_mail(subject, message, from_email, recipient_list)
+                except Exception as e:
+                    print(f"Error al enviar correo electrónico de confirmación: {e}")
+
                 login(request, user)
                 return redirect("home")
             except IntegrityError:
@@ -62,11 +76,9 @@ def signup(request):
             "signup.html",
             {
                 "form": UserCreationForm,
-                "error": "Password do not match",
+                "error": "Passwords do not match",
             },
         )
-
-
 
 
 def signout(request):
@@ -94,8 +106,18 @@ def signin(request):
             )
         else:
             login(request, user)
-            return redirect('home')
 
+            subject = 'Inicio de sesión exitoso'
+            message = f'Hola {user.username},\n\nHas iniciado sesión correctamente en nuestro sitio.'
+            from_email = 'your@example.com'
+            recipient_list = [user.email]
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico de alerta de inicio de sesión: {e}")
+
+            return redirect('home')
 
 def search_user(request):
     if request.method == 'GET':
@@ -114,8 +136,22 @@ def search_user(request):
 def delete_user(request):
     if request.method == 'POST':
         user = request.user
+        
+        user_email = user.email
+        
         user.delete()
-        return redirect('signin')    
+
+        subject = 'Cuenta eliminada'
+        message = f'Hola {user.username},\n\nTu cuenta ha sido eliminada satisfactoriamente.'
+        from_email = 'your@example.com'
+        recipient_list = [user_email]
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico de alerta de eliminación de cuenta: {e}")
+
+        return redirect('signin')
   
     
 @login_required  
