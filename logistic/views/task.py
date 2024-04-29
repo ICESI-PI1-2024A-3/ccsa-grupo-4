@@ -4,6 +4,8 @@ from django.shortcuts import redirect
 from ..forms.taskForm import TaskForm
 from ..models import Event
 from ..models import Task
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
 
 
 def create_task(request, event_id):
@@ -43,9 +45,19 @@ def edit_task(request, task_id):
         if form.is_valid():
             task = form.save(commit=False)
             if not request.user.is_superuser:
-                # Si el usuario no es superusuario, asigna la tarea al usuario actual automáticamente
                 task.user = request.user
             task.save()
+
+            subject = 'Tarea actualizada'
+            message = f'Se ha actualizado la tarea: {task.name}'
+            from_email = 'your@example.com'
+            recipient_list = ['recipient@example.com']
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect('event_checklist', event_id=task.event.id)
         else:
             return render(request, "edit_task.html", {'taskId': task, 'form': form, 'error': "Error al intentar actualizar, intente de nuevo"})
