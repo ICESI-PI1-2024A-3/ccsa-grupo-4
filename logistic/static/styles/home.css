@@ -53,30 +53,58 @@ body.dark {
     --text-color: #CCCCCC;
 }
 
-body.dark .sidebar header .toggle {
+body.dark * {
+    color: var(--text-color);
+    background-color: var(--body-color);
+}
+
+body.dark.sidebar,
+body.dark.sidebar header,
+body.dark.sidebar li,
+body.dark.sidebar a {
+    background-color: var(--sidebar-color);
     color: var(--text-color);
 }
 
-
-body.dark .sidebar li a:hover .icon,
-body.dark .sidebar li a:hover .text {
+body.dark.main.text {
     color: var(--text-color);
 }
 
-body.dark .mode .sun-moon img.sun {
-    opacity: 1;
+body.dark.search-container {
+    background-color: var(--body-color);
 }
 
-body.dark .mode .sun-moon img.moon {
-    opacity: 0;
-}
-
-body.dark .switch::before {
-    left: 20px;
-}
-
-body.dark .home .text {
+body.dark.search-input {
+    background-color: var(--body-color);
     color: var(--text-color);
+}
+
+body.dark.search-icon {
+    filter: invert(1);
+}
+
+body.dark.progress-bar {
+    background-color: var(--primary-color-light);
+}
+
+body.dark.progress-bar.low {
+    background-color: var(--primary-color-light);
+}
+
+body.dark.progress-bar.medium {
+    background-color: var(--primary-color-light);
+}
+
+body.dark.progress-bar.medium-dark {
+    background-color: var(--primary-color-light);
+}
+
+body.dark.progress-bar.high {
+    background-color: var(--primary-color-light);
+}
+
+body.dark.progress-bar.complete {
+    background-color: var(--primary-color-light);
 }
 
 /* */
@@ -148,7 +176,7 @@ body.dark .home .text {
 }
 
 
-.home {
+.main {
     background-color: var(--primary-color);
     min-height: 100vh;
     transition: var(--tran-05);
@@ -161,7 +189,7 @@ body.dark .home .text {
     transition: var(--tran-05);
 }
 
-.home .text {
+.main .text {
     font-size: 30px;
     font-weight: bold;
     color: var(--text-color);

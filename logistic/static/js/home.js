@@ -1,9 +1,9 @@
-const body = document.querySelector('body'),
-    sidebar = body.querySelector('nav'),
-    toogle = body.querySelector(".toggle"),
-    menuItems = body.querySelector(".menu-items"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+const body = document.querySelector('body');
+const sidebar = body.querySelector('nav');
+const toogle = body.querySelector(".toggle");
+const menuItems = body.querySelector(".menu-items");
+const modeSwitch = body.querySelector(".toggle-switch");
+const modeText = body.querySelector(".mode-text");
 
 toogle.addEventListener("click", () => {
     sidebar.classList.toggle("close");
@@ -12,6 +12,7 @@ toogle.addEventListener("click", () => {
 
 modeSwitch.addEventListener("click", () => {
     body.classList.toggle("dark");
+    modeSwitch.classList.toggle("active");
     if (body.classList.contains("dark")) {
         modeText.innerText = "Light mode"
     } else {
@@ -85,3 +86,11 @@ function move() {
     });
 }
 
+
+// Verificar si el modo oscuro está guardado en el almacenamiento local
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode === 'true') {
+    body.classList.add('dark');
+    modeSwitch.classList.add('active');
+    modeText.innerText = "Modo claro";
+}

@@ -5,42 +5,32 @@ from ..forms.taskForm import TaskForm
 from ..models import Event
 from ..models import Task
 
-def create_task(request):
+
+def create_task(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+
     if request.method == 'GET':
-        if request.user.is_superuser:
-            user_events = Event.objects.all()
-        else:
-            # Obtener los eventos asociados al usuario actual
-            user_events = Event.objects.filter(user=request.user)
-        # Crear el formulario de tarea y filtrar los eventos asociados al usuario
-        form = TaskForm()
-        form.fields['event'].queryset = user_events
-        return render(request, 'create_task.html', 
-                      {'formForTask': form})
+        # Crear el formulario de tarea y establecer el evento predeterminado
+        form = TaskForm(event_instance=event)
+        return render(request, 'create_task.html', {'formForTask': form})
     else:
-        try:
-            if request.user.is_superuser:
-                user_events = Event.objects.all()
-            else:
-                # Obtener los eventos asociados al usuario actual
-                user_events = Event.objects.filter(user=request.user)
-            form = TaskForm(request.POST)
-            # Aplicar el filtro a los eventos en el formulario
-            form.fields['event'].queryset = user_events
-            if form.is_valid():
-                new_task = form.save(commit=False)
-                new_task.user = new_task.event.user
-                new_task.save()
-                return redirect("home")
-        except:
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.event = event
+            new_task.save()
+            return redirect("home")
+        else:
             return render(request, "create_task.html", {
-                "formForTask": TaskForm,
+                "formForTask": form,
                 'error': 'Por favor, digite valores válidos'
             })
 
+
 def edit_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
-    
+
     if request.method == 'GET':
         if request.user.is_superuser:
             form = TaskForm(instance=task)
@@ -62,6 +52,7 @@ def edit_task(request, task_id):
 
     return render(request, "edit_task.html", {'taskId': task, 'form': form})
 
+
 def delete_task(request, task_id):
     if request.user.is_superuser:
         task = get_object_or_404(Task, pk=task_id)
@@ -69,7 +60,4 @@ def delete_task(request, task_id):
         task = get_object_or_404(Task, pk=task_id, user=request.user)
     if request.method == 'POST':
         task.delete()
-        return redirect('event_checklist', event_id = task.event.id)
-    
-    
-
+        return redirect('event_checklist', event_id=task.event.id)

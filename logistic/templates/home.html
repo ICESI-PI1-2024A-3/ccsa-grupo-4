@@ -35,7 +35,7 @@
   </header>
 
 
-  <section class="home">
+  <section class="main">
 
     <nav class="sidebar close">
 
@@ -172,7 +172,7 @@
           </td>
 
           <td>
-            <a href="{% url 'create_task' %}">
+            <a href="{% url 'create_task' event_id=event.id %}">
               <button class="new-task">
                 <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
               </button>
