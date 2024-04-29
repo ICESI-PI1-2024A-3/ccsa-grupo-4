@@ -34,5 +34,5 @@ jobs:
 
     - name: Run tests
       run: |
-        python manage.py test logistic --test-dir tests
-        python manage.py test logistic --test-dir test
+        export DJANGO_TEST_DIRS=logistic/tests:logistic/test
+        python manage.py test
