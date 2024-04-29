@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ feature-HU13-Process_bar ]
+  pull_request:
+    branches: [ feature-HU13-Process_bar ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.12.3
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.12.3
+
+    - name: Install dependencies
+      run: |
+        pip install django
+        pip install --upgrade pip
+        pip install pipenv
+        pipenv install --dev
+        pip install -r requirements.txt
+
+    - name: Run makemigrations
+      run: |
+        python manage.py makemigrations
+        python manage.py migrate
+
+    - name: Run tests
+      run: |
+        python manage.py test
