@@ -54,7 +54,7 @@ def event_checklist(request, event_id):
         'event': event
     })
 
-def create_event(request):
+def create_event(request):          #FUNCIONA
     if request.method == 'GET':
         users_event = User.objects.all(
         ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -92,7 +92,7 @@ def create_event(request):
 
 
 
-def edit_event(request, event_id):
+def edit_event(request, event_id):   #FUNCIONA
     event = get_object_or_404(Event, pk=event_id)
     if request.method == 'GET':
         user_events = User.objects.all(
@@ -157,15 +157,31 @@ def complete_event(request, event_id):
 
 
 
+
+
 def delete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
     
+    event_name = event.name
+
     if request.method == 'POST':
         event.delete()
+
+        subject = 'Evento eliminado'
+        message = f'Se ha eliminado el evento: {event_name}'
+        from_email = 'tu_correo@example.com'
+        recipient_list = [request.user.email]
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+        
         return redirect('home')
+
 
 
 def events_calendar(request):
