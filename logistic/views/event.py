@@ -18,6 +18,7 @@ from django.http import HttpResponse
 import json
 
 
+
 def event_checklist(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, id=event_id)
