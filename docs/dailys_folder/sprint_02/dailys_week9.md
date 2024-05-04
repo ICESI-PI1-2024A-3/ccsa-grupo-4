@@ -37,11 +37,11 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*   | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Hoy no avance en el proyecto |Estudiar css |Ninguno |
+|*Daron Mercado* |Estudiar HTML y CSS | No pude trabajar en el proyecto|Ninguno |
+| *Johan Sebastian Diaz*   |No avancé en el proyecto | Estudiar css y html|Ninguno |
+| *Cristian Cardona*  | Estudias javascript|Hoy no pude avanzar en el proyecto |Carga academica |
+| *Santiago Arboleda Velasco*  | Hoy no avance en el proyecto|No pude avanzar en el proyecto |Carga academica |
 
 # Daily No.5
 ### Sabado 4 de Mayo de 2024
