@@ -6,7 +6,7 @@ from ..models import Event
 from ..models import Task
 from django.forms import modelformset_factory
 from django.utils import timezone
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -16,6 +16,8 @@ from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
+
+
 
 
 
@@ -54,17 +56,17 @@ def event_checklist(request, event_id):
         'event': event
     })
 
-def create_event(request):          #FUNCIONA
+def create_event(request): #Funciona
     if request.method == 'GET':
-        users_event = User.objects.all(
-        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        
+        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all(
-            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            
+            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
@@ -75,9 +77,8 @@ def create_event(request):          #FUNCIONA
 
                 subject = 'Nuevo evento creado'
                 message = f'Se ha creado un nuevo evento: {new_event.name}'
-                from_email = 'your@example.com'
-                recipient_list = ['recipient@example.com']
-
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [request.user.email]  
                 send_mail(subject, message, from_email, recipient_list)
 
                 return redirect("home")
@@ -159,7 +160,7 @@ def complete_event(request, event_id):
 
 
 
-def delete_event(request, event_id):
+def delete_event(request, event_id): #Funciona
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
