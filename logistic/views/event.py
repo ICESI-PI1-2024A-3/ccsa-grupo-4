@@ -21,7 +21,7 @@ import json
 
 
 
-def event_checklist(request, event_id):
+def event_checklist(request, event_id): #Funciona
     if request.user.is_superuser:
         event = get_object_or_404(Event, id=event_id)
     else:
@@ -134,7 +134,7 @@ def edit_event(request, event_id):   #FUNCIONA
 
 
 
-def complete_event(request, event_id):
+def complete_event(request, event_id): #Funciona
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
