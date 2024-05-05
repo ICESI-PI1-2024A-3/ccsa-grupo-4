@@ -6,6 +6,9 @@ from ..models import Event
 from ..models import Task
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.conf import settings
+
+
 
 def create_task(request):
     if request.method == 'GET':
@@ -31,8 +34,8 @@ def create_task(request):
 
                 subject = 'Nueva tarea creada'
                 message = f'Se ha creado una nueva tarea: {new_task.name}'
-                from_email = 'your@example.com'
-                recipient_list = ['recipient@example.com']
+                from_email = settings.EMAIL_HOST_USER
+                recipient_list = [request.user.email]
 
                 try:
                     send_mail(subject, message, from_email, recipient_list)
