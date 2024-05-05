@@ -29,6 +29,5 @@ class Task(models.Model):
 class Inquiry(models.Model):
     id = models.AutoField(primary_key=True)
     # Es para saber a que evento está relacionado
-    eventName = models.CharField(max_length=200)
+    eventName = models.ForeignKey(Event, on_delete=models.CASCADE, null = True)
     description = models.TextField()
-    feedback = models.TextField()
