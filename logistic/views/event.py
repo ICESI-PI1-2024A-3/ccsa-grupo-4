@@ -144,10 +144,11 @@ def complete_event(request, event_id):
         event.completed = timezone.now()
         event.save()
 
+        # Envía el correo electrónico de notificación al usuario que inició sesión
         subject = 'Evento completado'
         message = f'El evento "{event.name}" ha sido completado.'
-        from_email = 'your@example.com'
-        recipient_list = ['recipient@example.com']
+        from_email = settings.EMAIL_HOST_USER
+        recipient_list = [request.user.email]  # Envía al correo del usuario que inició sesión
 
         try:
             send_mail(subject, message, from_email, recipient_list)
