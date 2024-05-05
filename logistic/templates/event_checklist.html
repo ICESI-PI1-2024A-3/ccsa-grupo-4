@@ -132,8 +132,8 @@
                                 {% for form in formset %}
                                 <li>
                                     {{ form.id }}
-                                    <a href="{% url 'edit_task' form.instance.id %}"> {{ form.instance.name }}</a>:
                                     {{ form.done }}
+                                    <a href="{% url 'edit_task' form.instance.id %}" class="task-link">{{ form.instance.name }}</a>
                                     {% if form.done.errors %} <!-- Errores de validación si existen -->
                                     <div class="errors">{{ form.done.errors }}</div>
                                     {% endif %}

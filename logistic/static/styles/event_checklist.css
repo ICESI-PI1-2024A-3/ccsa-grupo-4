@@ -447,6 +447,8 @@ h1 {
 }
 
 .event-checklist li {
+    display: flex; /* Alinea los items horizontalmente */
+    align-items: center; /* Centra los items verticalmente */
     padding: 5px;
     border-bottom: 1px solid #ddd;
 }
@@ -454,6 +456,23 @@ h1 {
 .event-checklist li:last-child {
     border-bottom: none;
 }
+
+/* Estilo básico para los enlaces de tareas */
+.task-link {
+    flex-grow: 1; /* Permite que el enlace llene todo el espacio disponible */
+    overflow: hidden; /* Oculta cualquier contenido que desborde el contenedor */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido desborda */
+    white-space: nowrap; /* Evita que el contenido se envuelva en múltiples líneas */
+    text-decoration: none; /* Remueve el subrayado */
+    color: #000; /* Color del texto */
+    cursor: pointer;
+}
+
+.task-link:hover {
+    background-color: #C2DDFA; /* Fondo azul claro en hover */
+    text-decoration: none; /* Asegura que no haya subrayado en hover */
+}
+
 
 input[type="checkbox"] {
     margin-right: 10px;
@@ -500,3 +519,7 @@ input[type="checkbox"] {
 .btn-cancel:hover {
     background-color: #e0e0e0;
 }
+
+
+
+
