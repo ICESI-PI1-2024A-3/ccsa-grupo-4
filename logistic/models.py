@@ -7,7 +7,7 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     executionDate = models.DateTimeField()
     place = models.CharField(max_length=200)
-    progress = models.IntegerField()  # en revision
+    progress = models.IntegerField()  # models.PositiveIntegerField()
     finishDate = models.DateTimeField(null=True)
     important = models.BooleanField(default=False)
     completed = models.DateTimeField(null=True, blank=True)

@@ -4,16 +4,15 @@ from email.mime.text import MIMEText
 from django.shortcuts import render
 from django.core.mail import send_mail
 
-def enviar_correo(request):
+def send_email_to_client(request):
     if request.method == 'POST':
         cliente_email = request.POST.get('cliente_email')
-        # Construir el cuerpo del correo electrónico
+        formulario_google_url = 'https://forms.gle/MzHw5qdFXaML5nqz5'  # Reemplaza esto con la URL real de tu formulario Google
+        
         mensaje = f"""
-        Hola,
+        Hola!,
 
-        Gracias por utilizar nuestro servicio logístico para tu evento. Nos encantaría conocer tu opinión sobre cómo fue tu experiencia.
-
-        Por favor, responde a este correo electrónico con una puntuación del 1 al 5 y una breve descripción de tu experiencia. Tu retroalimentación es muy importante para nosotros.
+        Gracias por utilizar nuestro servicio de apoyo logístico para tu evento. Nos encantaría recibir tus comentarios sobre cómo fue tu experiencia. Por favor, completa este formulario de calificación: {formulario_google_url}
 
         ¡Esperamos verte de nuevo pronto!
 
@@ -29,7 +28,7 @@ def enviar_correo(request):
             [cliente_email],  # Lista de destinatarios
             fail_silently=False,
         )
+        msj_exito = "Correo enviado con éxito al cliente"
+        return render(request, 'feedback.html', {"msj_exito": msj_exito})  # Renderizar una página de éxito después de enviar el correo
 
-        return render(request, 'exito.html')  # Renderizar una página de éxito después de enviar el correo
-
-    return render(request, 'formulario.html')  # Renderizar el formulario para capturar el correo del cliente
+    return render(request, 'feedback.html')  # Renderizar el formulario para capturar el correo del cliente
