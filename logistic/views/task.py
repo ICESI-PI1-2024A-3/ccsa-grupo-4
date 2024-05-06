@@ -6,15 +6,19 @@ from ..models import Event
 from ..models import Task
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.urls import reverse
 
 
 def create_task(request, event_id):
+    # Obtener el evento o devolver error 404 si no se encuentra
     event = get_object_or_404(Event, pk=event_id)
 
     if request.method == 'GET':
         # Crear el formulario de tarea y establecer el evento predeterminado
         form = TaskForm(event_instance=event)
-        return render(request, 'create_task.html', {'formForTask': form})
+        # Pasar tanto el formulario como el evento al contexto del template
+        context = {'formForTask': form, 'event': event}
+        return render(request, 'create_task.html', context)
     else:
         form = TaskForm(request.POST)
         if form.is_valid():
@@ -22,12 +26,17 @@ def create_task(request, event_id):
             new_task.user = request.user
             new_task.event = event
             new_task.save()
-            return redirect("home")
+            # Redirigir a la checklist del evento
+            return redirect(reverse('event_checklist', args=[event_id]))
         else:
-            return render(request, "create_task.html", {
+            # Incluir el evento en el contexto para reconstruir correctamente la página con errores
+            context = {
                 "formForTask": form,
-                'error': 'Por favor, digite valores válidos'
-            })
+                'error': 'Por favor, digite valores válidos',
+                'event': event
+            }
+            return render(request, "create_task.html", context)
+
 
 
 def edit_task(request, task_id):
