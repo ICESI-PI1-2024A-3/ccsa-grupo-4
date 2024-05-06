@@ -28,7 +28,9 @@ class EventForm(ModelForm):
 
     def clean_progress(self):
         progress = self.cleaned_data['progress']
-        if progress > 100:
+        if progress < 0:
+            raise ValidationError("No puede ser negativo.")
+        elif progress > 100:
             raise ValidationError("No puede ser mayor a 100.")
         return progress
 
