@@ -31,3 +31,16 @@ class Inquiry(models.Model):
     # Es para saber a que evento está relacionado
     eventName = models.ForeignKey(Event, on_delete=models.CASCADE, null = True)
     description = models.TextField()
+
+class HistoricDeletedEvents(models.Model):
+    id = models.AutoField(primary_key=True)
+    registerDate = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=200)
+    executionDate = models.DateTimeField()
+    place = models.CharField(max_length=200)
+    progress = models.IntegerField()  # en revision
+    finishDate = models.DateTimeField(null=True)
+    important = models.BooleanField(default=False)
+    completed = models.DateTimeField(null=True, blank=True)
+    deleted = models.DateField()
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

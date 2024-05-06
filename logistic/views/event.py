@@ -1,20 +1,24 @@
 from django.shortcuts import render
-from django.shortcuts import render
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-from ..forms.eventForm import EventForm
 from ..forms.taskForm import TaskChecklist
-from django.contrib.auth.models import User
 from ..models import Event
+from ..models import HistoricDeletedEvents
+from django.contrib.auth.decorators import login_required
 from ..models import Task
 from django.forms import modelformset_factory
-from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from ..forms.eventForm import EventForm
+from django.conf import settings
 from django.shortcuts import render
 from django.core.serializers import serialize
 from django.http import HttpResponse
 import json
+import random
 
 
 def event_checklist(request, event_id):
@@ -30,6 +34,17 @@ def event_checklist(request, event_id):
         formset = TaskFormSet(request.POST, queryset=queryset)
         if formset.is_valid():
             formset.save()
+
+            subject = 'Actualización de lista de tareas'
+            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
+            from_email = 'your@example.com'
+            recipient_list = ['recipient@example.com']
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect('home')
         else:
             print(formset.errors)
@@ -40,7 +55,6 @@ def event_checklist(request, event_id):
         'formset': formset,
         'event': event
     })
-
 
 def create_event(request):
     if request.method == 'GET':
@@ -60,19 +74,28 @@ def create_event(request):
                 if not request.user.is_superuser:
                     new_event.user = request.user
                 new_event.save()
+
+                subject = 'Nuevo evento creado'
+                message = f'Se ha creado un nuevo evento: {new_event.name}'
+                from_email = 'your@example.com'
+                recipient_list = ['recipient@example.com']
+
+                send_mail(subject, message, from_email, recipient_list)
+
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
-        except:
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
 
 
+
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
-
     if request.method == 'GET':
         user_events = User.objects.all(
         ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -92,7 +115,12 @@ def edit_event(request, event_id):
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    form.save()
+                    updated_event = form.save()
+                    subject = 'Evento Actualizado'
+                    message = f"Se ha actualizado el evento: {updated_event.name}"
+                    from_email = settings.EMAIL_HOST_USER
+                    to_email = [request.user.email]
+                    send_mail(subject, message, from_email, to_email)
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
@@ -106,15 +134,29 @@ def edit_event(request, event_id):
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
+
 def complete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+
     if request.method == 'POST':
         event.completed = timezone.now()
         event.save()
+
+        subject = 'Evento completado'
+        message = f'El evento "{event.name}" ha sido completado.'
+        from_email = 'your@example.com'
+        recipient_list = ['recipient@example.com']
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+
         return redirect('home')
+
 
 
 def delete_event(request, event_id):
@@ -122,9 +164,33 @@ def delete_event(request, event_id):
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
+    
     if request.method == 'POST':
+        historic_event = HistoricDeletedEvents(
+            name=event.name,
+            executionDate=event.executionDate,
+            place=event.place,
+            progress=event.progress,
+            finishDate=event.finishDate,
+            important=event.important,
+            completed=event.completed,  
+            deleted=timezone.now().date(), 
+            user=event.user
+        )
+        historic_event.save()
         event.delete()
+        
         return redirect('home')
+    
+@login_required
+def historic_deleted_events(request):
+    if request.user.is_superuser:
+        historic_events = HistoricDeletedEvents.objects.all()
+    else:
+        historic_events = HistoricDeletedEvents.objects.filter(user=request.user)
+        
+    return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
+
 
 
 def events_calendar(request):
@@ -135,12 +201,31 @@ def events_calendar(request):
 
     local_tz = local_tz = timezone.get_current_timezone()
 
+    colors = [
+        '#ff6961', '#ffb347', '#fdfd96', '#77dd77',  # Pastel Red, Orange, Yellow, Green
+        '#aec6cf', '#cda4de', '#ffb6c1', '#ffdab9',  # Pastel Blue, Purple, Pink, Peach
+        '#e6e6fa', '#bfff00', '#cbf9da', '#87dde0',  # Pastel Lavender, Lime, Mint, Aqua
+        # Pastel Magenta, Coral, Turquoise, Raspberry
+        '#f4aaff', '#fc998d', '#99f9ec', '#fbbcde',
+        '#f5f5dc', '#cfcfc4', '#b1f089', '#fcf7d5',  # Pastel Beige, Gray, Olive, Bronze
+        '#bccfdf', '#f8e5c0', '#f5989d', '#fdebbe',  # Pastel Teal, Gold, Crimson, Amber
+        # Pastel Cerulean, Silver, Sky Blue, Sapphire
+        '#ace7ee', '#d9e8ef', '#cae8fa', '#b8cfe5',
+        # Pastel Khaki, Sea Green, Orchid, Violet
+        '#f8f4a6', '#a7fcad', '#f2bdcd', '#cb99c9',
+        # Pastel Cyan, Mauve, Salmon, Chocolate
+        '#9de5e5', '#e0b7de', '#ffafaf', '#efd9d1',
+        # Pastel Charcoal, Tan, Indigo, Maroon
+        '#a4a4a7', '#d2b48c', '#6a5acd', '#f2a3bd'
+    ]
+
     events_for_calendar = [
         {
             'title': event.name,
             'start': event.executionDate.astimezone(local_tz).isoformat() if event.executionDate else None,
             'end': event.finishDate.astimezone(local_tz).isoformat() if event.finishDate else None,
-            'color': 'red' if event.important else 'blue',
+            # Elige un color al azar de la lista
+            'color': colors[event.id % len(colors)],
             'url': f"/event/checklist/{event.id}",
             'username': event.user.username if event.user else 'Sin usuario',
         }

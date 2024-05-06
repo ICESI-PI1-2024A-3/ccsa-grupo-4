@@ -6,9 +6,6 @@ from logistic.models import Event
 from logistic.views.event import delete_event
 from logistic.views.event import complete_event
 
-
-
-
 class views_test(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
@@ -46,7 +43,7 @@ class views_test(TestCase):
         self.assertEqual(self.event.name, 'Updated Event')
 
     def test_delete_event(self):
-        url = reverse('delete_event', args=[self.event.pk])
+        url = reverse('event_delete', args=[self.event.pk])
         request = self.factory.post(url)
         request.user = self.user
         response = delete_event(request, event_id=self.event.pk)

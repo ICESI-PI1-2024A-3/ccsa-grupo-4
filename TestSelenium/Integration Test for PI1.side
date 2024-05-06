@@ -71,7 +71,7 @@
         ["xpath=//input[@id='password']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "daron123"
+      "value": "daronbien2024"
     }, {
       "id": "62df0d57-9620-44b4-84da-3dbc4eb24727",
       "comment": "",
@@ -468,310 +468,6 @@
       "value": ""
     }]
   }, {
-    "id": "7a244fae-dcb2-4942-b8b0-c73cbde34f29",
-    "name": "Test all crud task",
-    "commands": [{
-      "id": "3d7a0907-1d92-4786-adbc-c5b4f06bda80",
-      "comment": "",
-      "command": "open",
-      "target": "/",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "f01c19bc-71b2-451e-af53-842f6a782b45",
-      "comment": "",
-      "command": "setWindowSize",
-      "target": "1552x832",
-      "targets": [],
-      "value": ""
-    }, {
-      "id": "8fd42333-f661-4f7c-8431-ab3949799498",
-      "comment": "",
-      "command": "click",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "177f36b5-c887-4019-b86d-7e9d2431f70d",
-      "comment": "",
-      "command": "type",
-      "target": "id=username",
-      "targets": [
-        ["id=username", "id"],
-        ["name=username", "name"],
-        ["css=#username", "css:finder"],
-        ["xpath=//input[@id='username']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": "daron"
-    }, {
-      "id": "e0827cd0-532d-4463-b8ee-79e5f9105164",
-      "comment": "",
-      "command": "click",
-      "target": "id=password",
-      "targets": [
-        ["id=password", "id"],
-        ["name=password", "name"],
-        ["css=#password", "css:finder"],
-        ["xpath=//input[@id='password']", "xpath:attributes"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "6b37bcb6-3ec1-466e-bb58-392067ad5fea",
-      "comment": "",
-      "command": "type",
-      "target": "id=password",
-      "targets": [
-        ["id=password", "id"],
-        ["name=password", "name"],
-        ["css=#password", "css:finder"],
-        ["xpath=//input[@id='password']", "xpath:attributes"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
-      "value": "daron123"
-    }, {
-      "id": "4ef492f3-5df6-4438-8bf6-3b3dba088356",
-      "comment": "",
-      "command": "sendKeys",
-      "target": "id=password",
-      "targets": [
-        ["id=password", "id"],
-        ["name=password", "name"],
-        ["css=#password", "css:finder"],
-        ["xpath=//input[@id='password']", "xpath:attributes"],
-        ["xpath=//div[2]/input", "xpath:position"]
-      ],
-      "value": "${KEY_ENTER}"
-    }, {
-      "id": "094a8053-4817-4f6c-b52f-05e13c6c0174",
-      "comment": "",
-      "command": "click",
-      "target": "css=tr:nth-child(1) .nueva-tarea",
-      "targets": [
-        ["css=tr:nth-child(1) .nueva-tarea", "css:finder"],
-        ["xpath=//table[@id='events-table']/tbody/tr/td[9]/a/button/img", "xpath:idRelative"],
-        ["xpath=//td[9]/a/button/img", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "0a733f22-e9d9-4c7c-8fb0-2cb70b133624",
-      "comment": "",
-      "command": "click",
-      "target": "id=id_name",
-      "targets": [
-        ["id=id_name", "id"],
-        ["name=name", "name"],
-        ["css=#id_name", "css:finder"],
-        ["xpath=//input[@id='id_name']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "004e154f-ef5c-4e07-8dbe-271eea53a4f4",
-      "comment": "",
-      "command": "type",
-      "target": "id=id_name",
-      "targets": [
-        ["id=id_name", "id"],
-        ["name=name", "name"],
-        ["css=#id_name", "css:finder"],
-        ["xpath=//input[@id='id_name']", "xpath:attributes"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": "tarea desde selenium"
-    }, {
-      "id": "a59c0251-bead-4a1b-a2b5-0463abb85a48",
-      "comment": "",
-      "command": "click",
-      "target": "id=id_event",
-      "targets": [
-        ["id=id_event", "id"],
-        ["name=event", "name"],
-        ["css=#id_event", "css:finder"],
-        ["xpath=//select[@id='id_event']", "xpath:attributes"],
-        ["xpath=//select", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "bf2d4b77-54c5-4e09-bac3-a12dc6fd4aad",
-      "comment": "",
-      "command": "select",
-      "target": "id=id_event",
-      "targets": [],
-      "value": "label=Charla Microsoft 2.0"
-    }, {
-      "id": "4319e1a2-27db-4f1e-bcf3-8d3ef9126845",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-save",
-      "targets": [
-        ["css=.btn-save", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Guardar')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "7c9b647f-8554-408f-af50-662c6ff284a7",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=Charla Microsoft 2.0",
-      "targets": [
-        ["linkText=Charla Microsoft 2.0", "linkText"],
-        ["css=tr:nth-child(1) > td:nth-child(2) > a", "css:finder"],
-        ["xpath=//a[contains(text(),'Charla Microsoft 2.0')]", "xpath:link"],
-        ["xpath=//table[@id='events-table']/tbody/tr/td[2]/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, '/event/checklist/2')]", "xpath:href"],
-        ["xpath=//td[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'Charla Microsoft 2.0')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "a3cddb51-e7c8-4b75-aeb6-8fe0dbfc71f4",
-      "comment": "",
-      "command": "assertText",
-      "target": "linkText=tarea desde selenium",
-      "targets": [],
-      "value": "tarea desde selenium"
-    }, {
-      "id": "4a13443f-5f67-4677-868a-0548d7c1ab4c",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=tarea desde selenium",
-      "targets": [
-        ["linkText=tarea desde selenium", "linkText"],
-        ["css=li:nth-child(4) > a:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'tarea desde selenium')]", "xpath:link"],
-        ["xpath=//a[contains(@href, '/edit/task/33/')]", "xpath:href"],
-        ["xpath=//form/div/ul/li[4]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'tarea desde selenium')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "e53e2bfe-f724-4be9-848b-1cc66e95a30c",
-      "comment": "",
-      "command": "click",
-      "target": "id=id_name",
-      "targets": [
-        ["id=id_name", "id"],
-        ["name=name", "name"],
-        ["css=#id_name", "css:finder"],
-        ["xpath=//input[@id='id_name']", "xpath:attributes"],
-        ["xpath=//form[@id='updateForm']/div/input", "xpath:idRelative"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "ec5616df-ca70-4a6e-9f07-04db2143e52d",
-      "comment": "",
-      "command": "type",
-      "target": "id=id_name",
-      "targets": [
-        ["id=id_name", "id"],
-        ["name=name", "name"],
-        ["css=#id_name", "css:finder"],
-        ["xpath=//input[@id='id_name']", "xpath:attributes"],
-        ["xpath=//form[@id='updateForm']/div/input", "xpath:idRelative"],
-        ["xpath=//div/input", "xpath:position"]
-      ],
-      "value": "tarea desde selenium actualizada"
-    }, {
-      "id": "84ff1be5-4107-4a3c-bd26-07e96604b828",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-update",
-      "targets": [
-        ["css=.btn-update", "css:finder"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Actualizar')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "fee6e0d6-5cc3-4a31-b1e0-bbe9517a5dbd",
-      "comment": "",
-      "command": "click",
-      "target": "id=id_form-3-done",
-      "targets": [
-        ["id=id_form-3-done", "id"],
-        ["name=form-3-done", "name"],
-        ["css=#id_form-3-done", "css:finder"],
-        ["xpath=//input[@id='id_form-3-done']", "xpath:attributes"],
-        ["xpath=//li[4]/input[2]", "xpath:position"]
-      ],
-      "value": ""
-    }, {
-      "id": "c0031f0b-592d-4bad-a3a1-7dab5313f457",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-save",
-      "targets": [
-        ["css=.btn-save", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Guardar Cambios')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "060ab175-c1ae-45e0-b1ae-87a254f90742",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=Charla Microsoft 2.0",
-      "targets": [
-        ["linkText=Charla Microsoft 2.0", "linkText"],
-        ["css=tr:nth-child(1) > td:nth-child(2) > a", "css:finder"],
-        ["xpath=//a[contains(text(),'Charla Microsoft 2.0')]", "xpath:link"],
-        ["xpath=//table[@id='events-table']/tbody/tr/td[2]/a", "xpath:idRelative"],
-        ["xpath=//a[contains(@href, '/event/checklist/2')]", "xpath:href"],
-        ["xpath=//td[2]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'Charla Microsoft 2.0')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "7958e423-43c2-43ef-82fd-6402928776d4",
-      "comment": "",
-      "command": "click",
-      "target": "linkText=tarea desde selenium actualizada",
-      "targets": [
-        ["linkText=tarea desde selenium actualizada", "linkText"],
-        ["css=li:nth-child(4) > a:nth-child(2)", "css:finder"],
-        ["xpath=//a[contains(text(),'tarea desde selenium actualizada')]", "xpath:link"],
-        ["xpath=//a[contains(@href, '/edit/task/33/')]", "xpath:href"],
-        ["xpath=//form/div/ul/li[4]/a", "xpath:position"],
-        ["xpath=//a[contains(.,'tarea desde selenium actualizada')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "b5aa08ef-f24c-4929-8773-3571bf837169",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-delete",
-      "targets": [
-        ["css=.btn-delete", "css:finder"],
-        ["xpath=//button[2]", "xpath:position"],
-        ["xpath=//button[contains(.,'Eliminar')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }, {
-      "id": "cdc9fa80-b6c7-4c20-9be1-416a9f95f793",
-      "comment": "",
-      "command": "click",
-      "target": "css=.btn-save",
-      "targets": [
-        ["css=.btn-save", "css:finder"],
-        ["xpath=//button[@type='submit']", "xpath:attributes"],
-        ["xpath=//button", "xpath:position"],
-        ["xpath=//button[contains(.,'Guardar Cambios')]", "xpath:innerText"]
-      ],
-      "value": ""
-    }]
-  }, {
     "id": "027522f2-361c-4d74-8e2d-a5f475f554d5",
     "name": "test search user",
     "commands": [{
@@ -839,7 +535,7 @@
         ["xpath=//input[@id='password']", "xpath:attributes"],
         ["xpath=//div[2]/input", "xpath:position"]
       ],
-      "value": "daron123"
+      "value": "daronbien2024"
     }, {
       "id": "2bb0341b-c7c4-4f17-8641-6c1c7040f61e",
       "comment": "",
@@ -1055,6 +751,322 @@
         ["xpath=//p[contains(.,'usuario2')]", "xpath:innerText"]
       ],
       "value": "usuario2"
+    }]
+  }, {
+    "id": "8f7ad66f-77dc-4cab-b140-671f6ef0583d",
+    "name": "Test all crud task",
+    "commands": [{
+      "id": "6e5bae10-92b0-4103-b313-bba932280f73",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "17da3f5a-f0c3-4cee-89be-b86545b00b2d",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1496x725",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ac28c8e5-b774-492e-8a83-b0c5e9bd9dad",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9e522183-97a2-4cc3-8920-ef3861510b89",
+      "comment": "",
+      "command": "click",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3d80357f-5782-422d-9a35-0da4aec8a1ae",
+      "comment": "",
+      "command": "type",
+      "target": "id=username",
+      "targets": [
+        ["id=username", "id"],
+        ["name=username", "name"],
+        ["css=#username", "css:finder"],
+        ["xpath=//input[@id='username']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "daron"
+    }, {
+      "id": "017387dd-810e-47e2-90db-e1498551968e",
+      "comment": "",
+      "command": "click",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "89baf14a-580f-49ca-b66e-f9367cd68362",
+      "comment": "",
+      "command": "type",
+      "target": "id=password",
+      "targets": [
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "daronbien2024"
+    }, {
+      "id": "4de8f215-b2d9-418d-a5ce-e0f6e0a0eb59",
+      "comment": "",
+      "command": "click",
+      "target": "css=.login-button",
+      "targets": [
+        ["css=.login-button", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Acceder')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "49d351b4-e01e-41de-9d81-7957d68c9e02",
+      "comment": "",
+      "command": "click",
+      "target": "css=tr:nth-child(9) .nueva-tarea",
+      "targets": [
+        ["css=tr:nth-child(9) .nueva-tarea", "css:finder"],
+        ["xpath=//table[@id='events-table']/tbody/tr[9]/td[9]/a/button/img", "xpath:idRelative"],
+        ["xpath=//tr[9]/td[9]/a/button/img", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "bf481449-a1ed-4e95-949f-a72494a1e10e",
+      "comment": "",
+      "command": "click",
+      "target": "id=id_name",
+      "targets": [
+        ["id=id_name", "id"],
+        ["name=name", "name"],
+        ["css=#id_name", "css:finder"],
+        ["xpath=//input[@id='id_name']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "d316d12f-6af7-4b39-bfb6-9b70cac21e3a",
+      "comment": "",
+      "command": "type",
+      "target": "id=id_name",
+      "targets": [
+        ["id=id_name", "id"],
+        ["name=name", "name"],
+        ["css=#id_name", "css:finder"],
+        ["xpath=//input[@id='id_name']", "xpath:attributes"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "tarea desde selenium"
+    }, {
+      "id": "cb71c3cc-c99e-409b-98ef-5ff7df867917",
+      "comment": "",
+      "command": "click",
+      "target": "id=id_event",
+      "targets": [
+        ["id=id_event", "id"],
+        ["name=event", "name"],
+        ["css=#id_event", "css:finder"],
+        ["xpath=//select[@id='id_event']", "xpath:attributes"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "020d22dd-0cd1-4d54-a9de-18885276d145",
+      "comment": "",
+      "command": "select",
+      "target": "id=id_event",
+      "targets": [],
+      "value": "label=eveneto desde selenium"
+    }, {
+      "id": "6c1a032a-fd82-47f3-920f-bac30caaf694",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-save",
+      "targets": [
+        ["css=.btn-save", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "f4e19b4b-5e66-412c-aa60-88eabcca0425",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=eveneto desde selenium",
+      "targets": [
+        ["linkText=eveneto desde selenium", "linkText"],
+        ["css=tr:nth-child(9) > td:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'eveneto desde selenium')]", "xpath:link"],
+        ["xpath=//table[@id='events-table']/tbody/tr[9]/td[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/event/checklist/26')]", "xpath:href"],
+        ["xpath=//tr[9]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'eveneto desde selenium')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d29e11ae-90f5-4d1f-8598-27c366792559",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=tarea desde selenium",
+      "targets": [
+        ["linkText=tarea desde selenium", "linkText"],
+        ["css=li > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'tarea desde selenium')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/edit/task/38/')]", "xpath:href"],
+        ["xpath=//form/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'tarea desde selenium')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "6f18a379-f37c-4a09-b996-51725052aa58",
+      "comment": "",
+      "command": "click",
+      "target": "id=id_name",
+      "targets": [
+        ["id=id_name", "id"],
+        ["name=name", "name"],
+        ["css=#id_name", "css:finder"],
+        ["xpath=//input[@id='id_name']", "xpath:attributes"],
+        ["xpath=//form[@id='updateForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32a0d10c-d8d1-4f58-b1bc-b65fd19fbb42",
+      "comment": "",
+      "command": "type",
+      "target": "id=id_name",
+      "targets": [
+        ["id=id_name", "id"],
+        ["name=name", "name"],
+        ["css=#id_name", "css:finder"],
+        ["xpath=//input[@id='id_name']", "xpath:attributes"],
+        ["xpath=//form[@id='updateForm']/div/input", "xpath:idRelative"],
+        ["xpath=//div/input", "xpath:position"]
+      ],
+      "value": "tarea desde selenium actualizada"
+    }, {
+      "id": "93f3243f-9bde-479c-9fba-3ad0a52e3d8f",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-update",
+      "targets": [
+        ["css=.btn-update", "css:finder"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Actualizar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "75e39343-046f-4a03-9bd9-dbaa93741831",
+      "comment": "",
+      "command": "click",
+      "target": "id=id_form-0-done",
+      "targets": [
+        ["id=id_form-0-done", "id"],
+        ["name=form-0-done", "name"],
+        ["css=#id_form-0-done", "css:finder"],
+        ["xpath=//input[@id='id_form-0-done']", "xpath:attributes"],
+        ["xpath=//li/input[2]", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8f1952e3-bcc6-4358-8695-8fbefa617011",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-save",
+      "targets": [
+        ["css=.btn-save", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0eb414f8-0fce-42ce-841a-42de3f87382a",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=eveneto desde selenium",
+      "targets": [
+        ["linkText=eveneto desde selenium", "linkText"],
+        ["css=tr:nth-child(9) > td:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'eveneto desde selenium')]", "xpath:link"],
+        ["xpath=//table[@id='events-table']/tbody/tr[9]/td[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, '/event/checklist/26')]", "xpath:href"],
+        ["xpath=//tr[9]/td[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'eveneto desde selenium')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fe23e31c-e35b-4753-a49b-36d356dc2a5e",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=tarea desde selenium actualizada",
+      "targets": [
+        ["linkText=tarea desde selenium actualizada", "linkText"],
+        ["css=li > a:nth-child(2)", "css:finder"],
+        ["xpath=//a[contains(text(),'tarea desde selenium actualizada')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/edit/task/39/')]", "xpath:href"],
+        ["xpath=//form/div/ul/li/a", "xpath:position"],
+        ["xpath=//a[contains(.,'tarea desde selenium actualizada')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "d4600b95-38f5-40cf-b968-34c23f423e1b",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-delete",
+      "targets": [
+        ["css=.btn-delete", "css:finder"],
+        ["xpath=//button[2]", "xpath:position"],
+        ["xpath=//button[contains(.,'Eliminar')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "ab7ef27d-5c1c-423b-b38c-7c3ab17c814d",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn-save",
+      "targets": [
+        ["css=.btn-save", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//button", "xpath:position"],
+        ["xpath=//button[contains(.,'Guardar Cambios')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "e6a0e9e6-0d56-4eec-a4d3-9a766b9c31ec",
+      "comment": "",
+      "command": "assertText",
+      "target": "linkText=eveneto desde selenium",
+      "targets": [],
+      "value": "eveneto desde selenium"
     }]
   }],
   "suites": [{
