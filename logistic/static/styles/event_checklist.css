@@ -473,6 +473,32 @@ h1 {
     text-decoration: none; /* Asegura que no haya subrayado en hover */
 }
 
+.new-task {
+    display: flex;
+    align-items: center; /* Centra verticalmente el contenido */
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none; /* Elimina cualquier subrayado del enlace */
+}
+
+.nueva-tarea {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px; /* Espacio entre el icono y el texto */
+}
+
+.new-task span {
+    color: #000; /* Ajusta el color del texto según necesites */
+    font-size: 16px; /* Ajusta el tamaño del texto según necesites */
+}
+
+.new-task span:hover {
+    color: #C2DDFA;
+}
+
+
 
 input[type="checkbox"] {
     margin-right: 10px;

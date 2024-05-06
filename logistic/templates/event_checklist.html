@@ -122,6 +122,13 @@
                         </p>
                         <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
                     </div>
+                    
+                    <div>
+                        <a href="{% url 'create_task' event_id=event.id %}" class="new-task">
+                            <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
+                            <span>Crear una tarea</span>
+                        </a>
+                    </div>
 
                     <form method="POST" action="{% url 'event_checklist' event.id %}">
                         {% csrf_token %}
