@@ -7,6 +7,10 @@ from django.test import Client
 
 
 class UserViewTests(TestCase):
+    # Corrección: Asegúrate de limpiar la base de datos antes de ejecutar esta prueba
+    def setUp(self):
+        User.objects.all().delete()
+
     def test_signup_view_get(self):
         """
         Tests that the signup page loads correctly using the GET method.
@@ -39,7 +43,7 @@ class UserViewTests(TestCase):
             'password2': 'wrongpassword',
         })
         self.assertEqual(User.objects.count(), 0)
-        self.assertContains(response, "Password do not match")
+        self.assertContains(response, "Passwords do not match")
 
     def test_signin_view_post_success(self):
         """
@@ -113,3 +117,67 @@ class UserViewTests(TestCase):
 
         # The response should be a redirect to the sign-in page
         self.assertRedirects(response, reverse('signin'))
+
+    def test_search_user_view_get(self):
+        """
+        Test that the search user page loads correctly using the GET method.
+        """
+        response = self.client.get(reverse('users_search'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'users_search.html')
+
+    def test_search_user_view_post_username(self):
+        """
+        Test searching for users by username.
+        """
+        # Create some test users
+        user1 = User.objects.create_user(
+            username='user1', email='user1@example.com', password='password123')
+        user2 = User.objects.create_user(
+            username='user2', email='user2@example.com', password='password456')
+        user3 = User.objects.create_user(
+            username='user3', email='user3@example.com', password='password789')
+
+        # Perform a POST request to search for users by username
+        response = self.client.post(reverse('users_search'), {
+            'search_query': 'user1'
+        })
+        self.assertEqual(response.status_code, 200)
+        # Ensure user1 is in the response
+        self.assertContains(response, 'user1')
+        self.assertNotContains(response, 'user2')
+        self.assertNotContains(response, 'user3')
+
+    def test_search_user_view_post_id(self):
+        """
+        Test searching for users by ID.
+        """
+        # Create some test users
+        user1 = User.objects.create_user(
+            username='user1', email='user1@example.com', password='password123')
+        user2 = User.objects.create_user(
+            username='user2', email='user2@example.com', password='password456')
+        user3 = User.objects.create_user(
+            username='user3', email='user3@example.com', password='password789')
+
+        # Perform a POST request to search for users by ID
+        response = self.client.post(reverse('users_search'), {
+            'search_query': user2.id
+        })
+        self.assertEqual(response.status_code, 200)
+        # Ensure user2 is in the response
+        self.assertContains(response, 'user2')
+        self.assertNotContains(response, 'user1')
+        self.assertNotContains(response, 'user3')
+
+    def test_search_user_view_post_no_results(self):
+        """
+        Test searching for users with no results.
+        """
+        # Perform a POST request to search for a non-existent user
+        response = self.client.post(reverse('users_search'), {
+            'search_query': 'nonexistent'
+        })
+        self.assertEqual(response.status_code, 200)
+        # Ensure the response indicates no results found
+        self.assertContains(response, '')

@@ -36,7 +36,8 @@ def event_checklist(request, event_id):
             formset.save()
 
             subject = 'Actualización de lista de tareas'
-            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
+            message = f'Se ha actualizado la lista de tareas para el evento "{
+                event.name}".'
             from_email = 'your@example.com'
             recipient_list = ['recipient@example.com']
 
@@ -56,6 +57,7 @@ def event_checklist(request, event_id):
         'event': event
     })
 
+
 def create_event(request):
     if request.method == 'GET':
         users_event = User.objects.all(
@@ -74,28 +76,19 @@ def create_event(request):
                 if not request.user.is_superuser:
                     new_event.user = request.user
                 new_event.save()
-
-                subject = 'Nuevo evento creado'
-                message = f'Se ha creado un nuevo evento: {new_event.name}'
-                from_email = 'your@example.com'
-                recipient_list = ['recipient@example.com']
-
-                send_mail(subject, message, from_email, recipient_list)
-
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
-        except Exception as e:
-            print(f"Error al enviar correo electrónico: {e}")
+        except:
             return render(request, "create_event.html", {
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
 
 
-
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
+
     if request.method == 'GET':
         user_events = User.objects.all(
         ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -115,12 +108,7 @@ def edit_event(request, event_id):
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    updated_event = form.save()
-                    subject = 'Evento Actualizado'
-                    message = f"Se ha actualizado el evento: {updated_event.name}"
-                    from_email = settings.EMAIL_HOST_USER
-                    to_email = [request.user.email]
-                    send_mail(subject, message, from_email, to_email)
+                    form.save()
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
@@ -132,7 +120,6 @@ def edit_event(request, event_id):
             messages.error(
                 request, "Error al intentar actualizar, intente de nuevo")
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
-
 
 
 def complete_event(request, event_id):
@@ -158,13 +145,12 @@ def complete_event(request, event_id):
         return redirect('home')
 
 
-
 def delete_event(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
         event = get_object_or_404(Event, pk=event_id, user=request.user)
-    
+
     if request.method == 'POST':
         historic_event = HistoricDeletedEvents(
             name=event.name,
@@ -173,24 +159,25 @@ def delete_event(request, event_id):
             progress=event.progress,
             finishDate=event.finishDate,
             important=event.important,
-            completed=event.completed,  
-            deleted=timezone.now().date(), 
+            completed=event.completed,
+            deleted=timezone.now().date(),
             user=event.user
         )
         historic_event.save()
         event.delete()
-        
+
         return redirect('home')
-    
+
+
 @login_required
 def historic_deleted_events(request):
     if request.user.is_superuser:
         historic_events = HistoricDeletedEvents.objects.all()
     else:
-        historic_events = HistoricDeletedEvents.objects.filter(user=request.user)
-        
-    return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
+        historic_events = HistoricDeletedEvents.objects.filter(
+            user=request.user)
 
+    return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
 
 
 def events_calendar(request):
