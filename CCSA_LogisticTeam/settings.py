@@ -45,7 +45,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apoyologisticoccsa@gmail.com'
-EMAIL_HOST_PASSWORD = 'cfrqhiskdcuxeill'
+EMAIL_HOST_PASSWORD = 'cfrq hisk dcux eill'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # settings.py
 
