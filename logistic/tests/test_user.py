@@ -43,7 +43,7 @@ class UserViewTests(TestCase):
             'password2': 'wrongpassword',
         })
         self.assertEqual(User.objects.count(), 0)
-        self.assertContains(response, "Password do not match")
+        self.assertContains(response, "Passwords do not match")
 
     def test_signin_view_post_success(self):
         """
