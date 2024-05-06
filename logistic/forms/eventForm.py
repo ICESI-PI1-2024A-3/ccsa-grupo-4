@@ -6,7 +6,6 @@ from ..models import Event
 
 
 class EventForm(ModelForm):
-    # Esto agrega un campo de seleccon para el usuario, de lo contrario arroja error de validacion
     user = ModelChoiceField(queryset=User.objects.all(), label="Usuario")
 
     class Meta:
@@ -14,13 +13,13 @@ class EventForm(ModelForm):
         fields = ["name", "executionDate", "place",
                   "progress", "finishDate", "important", "user"]
         widgets = {
-            'executionDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='\n%Y-%m-%dT%H:%M'),
-            'finishDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='\n%Y-%m-%dT%H:%M'),
+            'executionDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
+            'finishDate': DateTimeInput(attrs={'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }
         labels = {
             'name': 'Nombre',
             'executionDate': 'Fecha de Ejecución',
-            'place': '\nLugar',
+            'place': 'Lugar',
             'progress': 'Progreso',
             'finishDate': 'Fecha de Finalización',
             'important': 'Importante',

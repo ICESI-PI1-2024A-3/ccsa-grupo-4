@@ -196,6 +196,10 @@ body.dark.progress-bar.complete {
     padding: 12px 60px;
 }
 
+.home {
+    right: auto;
+}
+
 .sidebar {
     position: fixed;
     top: -35px;
