@@ -49,6 +49,7 @@
 
       <div class="menu-bar">
         <div class="menu">
+
           <ul>
             <div class="menu-items">
               <li>
@@ -86,6 +87,14 @@
                   <span class="text nav-text">Historial</span>
                 </a>
               </li>
+              
+              <li class="nav-link">
+              <a href="{% url 'feedback' %}">
+                <img src="{% static 'icons/thumb-up.png' %}" class="icon">
+                <span class="text nav-text">Comentarios</span>
+              </a>
+            </li>
+
           </ul>
         </div>
 
