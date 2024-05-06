@@ -88,12 +88,7 @@
                 </a>
               </li>
 
-              <li class="nav-link">
-                <a href="{% url 'feedback' %}">
-                  <img src="{% static 'icons/thumb-up.png' %}" class="icon">
-                  <span class="text nav-text">Comentarios</span>
-                </a>
-              </li>
+
 
           </ul>
         </div>
@@ -181,9 +176,9 @@
           </td>
 
           <td>
-            <a href="{% url 'create_task' event_id=event.id %}">
+            <a href="{% url 'feedback' %}">
               <button id="create-task-button-{{ event.id }}" class="new-task">
-                <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
+                <img src="{% static 'icons/thumb-up.png' %}" class="nueva-tarea">
               </button>
             </a>
           </td>
