@@ -36,8 +36,7 @@ def event_checklist(request, event_id):
             formset.save()
 
             subject = 'Actualización de lista de tareas'
-            message = f'Se ha actualizado la lista de tareas para el evento "{
-                event.name}".'
+            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
             from_email = 'your@example.com'
             recipient_list = ['recipient@example.com']
 
