@@ -37,8 +37,8 @@ def event_checklist(request, event_id): #Funciona
 
             subject = 'Actualización de lista de tareas'
             message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
-            from_email = 'your@example.com'
-            recipient_list = ['recipient@example.com']
+            from_email = settings.EMAIL_HOST_USER
+            recipient_list = [request.user.email]  
 
             try:
                 send_mail(subject, message, from_email, recipient_list)
