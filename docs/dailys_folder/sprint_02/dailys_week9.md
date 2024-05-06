@@ -48,9 +48,9 @@
 
 | Desarrollador | ¿Que hice ayer? | ¿Que voy a hacer hoy? | ¿Que impedimentos tuve? |
 |-----------|-----------|-----------|-----------|
-|*Camilo Bueno*   | | | |
-|*Daron Mercado* | | | |
-| *Johan Sebastian Diaz*   | | | |
-| *Cristian Cardona*  | | | |
-| *Santiago Arboleda Velasco*  | | | |
+|*Camilo Bueno*   |Estudiar css  |Hoy no pude trabajar en el proyecto |Arquisoft |
+|*Daron Mercado* |No pude trabajar en el proyecto |Hoy no pude avanzar en el proyecto |Ninguno |
+| *Johan Sebastian Diaz*   |Estudiar css y html |Estuve estudiando Javascript |Ninguno |
+| *Cristian Cardona*  |Hoy no pude avanzar en el proyecto |Hoy no pude avanzar en el proyecto |Arquisoft |
+| *Santiago Arboleda Velasco*  |No pude avanzar en el proyecto |No pude avanzar en el proyecto |Parcial Arquisoft |
 
