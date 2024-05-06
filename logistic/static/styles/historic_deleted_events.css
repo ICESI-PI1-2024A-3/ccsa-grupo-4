@@ -214,8 +214,19 @@ body.dark.progress-bar.complete {
     margin-top: 100px;
 }
 
+
 .sidebar.close {
     width: 88px;
+    height: auto;
+    min-height: 60px;
+}
+
+.sidebar.close .menu-bar {
+    display: none;
+}
+
+.sidebar.close header {
+    height: 60px;
 }
 
 .sidebar.close~.home {
