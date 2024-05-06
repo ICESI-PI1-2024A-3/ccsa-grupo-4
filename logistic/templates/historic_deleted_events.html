@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historic Deleted Events</title>
+    <title>Hisotorial De Eventos Eliminados</title>
     <link rel="stylesheet" href="{% static 'styles/historic_deleted_events.css' %}">
     <link rel="stylesheet" href="{% static 'styles/buttons.css' %}">
 </head>
@@ -23,15 +23,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Execution Date</th>
-                        <th>Place</th>
-                        <th>Progress</th>
-                        <th>Finish Date</th>
-                        <th>Important</th>
-                        <th>Completed</th>
-                        <th>Deleted</th>
-                        <th>User</th>
+                        <th>Nombre</th>
+                        <th>Fecha de Ejecución</th>
+                        <th>Lugar</th>
+                        <th>Progreso</th>
+                        <th>Fecha de Finalización</th>
+                        <th>Importante</th>
+                        <th>Completado</th>
+                        <th>Borrado</th>
+                        <th>Usuario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,7 +50,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <a href="{% url 'home' %}" class="btn-primary">Back</a>
+            <a href="{% url 'home' %}" class="btn-primary">Atras</a>
 
 
         </div>
