@@ -97,16 +97,6 @@ def signin(request):
         else:
             login(request, user)
 
-            subject = 'Inicio de sesión exitoso'
-            message = f'Hola {user.username},\n\nHas iniciado sesión correctamente en nuestro sitio.'
-            from_email = 'tu_correo@example.com' 
-            recipient_list = [user.email]
-
-            try:
-                send_mail(subject, message, from_email, recipient_list)
-            except Exception as e:
-                print(f"Error al enviar correo electrónico de inicio de sesión: {e}")
-
             return redirect('home')
 
 def search_user(request):
