@@ -210,8 +210,19 @@ body.dark.progress-bar.complete {
     margin-top: 100px;
 }
 
+
 .sidebar.close {
     width: 88px;
+    height: auto;
+    min-height: 60px;
+}
+
+.sidebar.close .menu-bar {
+    display: none;
+}
+
+.sidebar.close header {
+    height: 60px;
 }
 
 .sidebar.close~.home {
@@ -447,8 +458,10 @@ h1 {
 }
 
 .event-checklist li {
-    display: flex; /* Alinea los items horizontalmente */
-    align-items: center; /* Centra los items verticalmente */
+    display: flex;
+    /* Alinea los items horizontalmente */
+    align-items: center;
+    /* Centra los items verticalmente */
     padding: 5px;
     border-bottom: 1px solid #ddd;
 }
@@ -459,39 +472,52 @@ h1 {
 
 /* Estilo básico para los enlaces de tareas */
 .task-link {
-    flex-grow: 1; /* Permite que el enlace llene todo el espacio disponible */
-    overflow: hidden; /* Oculta cualquier contenido que desborde el contenedor */
-    text-overflow: ellipsis; /* Añade puntos suspensivos si el contenido desborda */
-    white-space: nowrap; /* Evita que el contenido se envuelva en múltiples líneas */
-    text-decoration: none; /* Remueve el subrayado */
-    color: #000; /* Color del texto */
+    flex-grow: 1;
+    /* Permite que el enlace llene todo el espacio disponible */
+    overflow: hidden;
+    /* Oculta cualquier contenido que desborde el contenedor */
+    text-overflow: ellipsis;
+    /* Añade puntos suspensivos si el contenido desborda */
+    white-space: nowrap;
+    /* Evita que el contenido se envuelva en múltiples líneas */
+    text-decoration: none;
+    /* Remueve el subrayado */
+    color: #000;
+    /* Color del texto */
     cursor: pointer;
 }
 
 .task-link:hover {
-    background-color: #C2DDFA; /* Fondo azul claro en hover */
-    text-decoration: none; /* Asegura que no haya subrayado en hover */
+    background-color: #C2DDFA;
+    /* Fondo azul claro en hover */
+    text-decoration: none;
+    /* Asegura que no haya subrayado en hover */
 }
 
 .new-task {
     display: flex;
-    align-items: center; /* Centra verticalmente el contenido */
+    align-items: center;
+    /* Centra verticalmente el contenido */
     height: 30px;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    text-decoration: none; /* Elimina cualquier subrayado del enlace */
+    text-decoration: none;
+    /* Elimina cualquier subrayado del enlace */
 }
 
 .nueva-tarea {
     height: 30px;
     width: 30px;
-    margin-right: 5px; /* Espacio entre el icono y el texto */
+    margin-right: 5px;
+    /* Espacio entre el icono y el texto */
 }
 
 .new-task span {
-    color: #000; /* Ajusta el color del texto según necesites */
-    font-size: 16px; /* Ajusta el tamaño del texto según necesites */
+    color: #000;
+    /* Ajusta el color del texto según necesites */
+    font-size: 16px;
+    /* Ajusta el tamaño del texto según necesites */
 }
 
 .new-task span:hover {
@@ -545,7 +571,3 @@ input[type="checkbox"] {
 .btn-cancel:hover {
     background-color: #e0e0e0;
 }
-
-
-
-
