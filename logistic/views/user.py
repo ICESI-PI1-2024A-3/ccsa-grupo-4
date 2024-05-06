@@ -50,16 +50,6 @@ def signup(request):
                     username=request.POST['username'], email=email, password=request.POST['password1'])
                 user.save()
 
-                subject = 'Registro exitoso'
-                message = f'Hola {user.username},\n\nTe has registrado correctamente en nuestro sitio.'
-                from_email = 'your@example.com'
-                recipient_list = [user.email]
-
-                try:
-                    send_mail(subject, message, from_email, recipient_list)
-                except Exception as e:
-                    print(f"Error al enviar correo electrónico de confirmación: {e}")
-
                 login(request, user)
                 return redirect("home")
             except IntegrityError:
@@ -76,7 +66,7 @@ def signup(request):
             "signup.html",
             {
                 "form": UserCreationForm,
-                "error": "Passwords do not match",
+                "error": "Password do not match",
             },
         )
 
