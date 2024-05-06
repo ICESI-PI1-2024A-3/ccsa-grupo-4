@@ -88,6 +88,7 @@ def create_event(request):
 
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
+
     if request.method == 'GET':
         user_events = User.objects.all(
         ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
@@ -107,13 +108,7 @@ def edit_event(request, event_id):
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    updated_event = form.save()
-                    subject = 'Evento Actualizado'
-                    message = f"Se ha actualizado el evento: {
-                        updated_event.name}"
-                    from_email = settings.EMAIL_HOST_USER
-                    to_email = [request.user.email]
-                    send_mail(subject, message, from_email, to_email)
+                    form.save()
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
