@@ -97,35 +97,38 @@ def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
 
     if request.method == 'GET':
-        user_events = User.objects.all(
-        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
         if request.user.is_superuser or event.user == request.user:
             form = EventForm(instance=event)
             form.fields['user'].queryset = user_events
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
         else:
-            messages.error(
-                request, "No tiene permiso para editar este evento.")
+            messages.error(request, "No tiene permiso para editar este evento.")
             return redirect('home')
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all(
-            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST, instance=event)
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
-                    form.save()
+                    updated_event = form.save()
+                    
+                    # Envío de correo electrónico al usuario que está iniciando sesión
+                    subject = 'Evento Actualizado'
+                    message = f"Se ha actualizado el evento: {updated_event.name}"
+                    from_email = 'your@example.com'  # Cambia esto por tu correo electrónico si es necesario
+                    recipient_list = [request.user.email]  # Envía el correo al correo electrónico del usuario que está iniciando sesión
+                    send_mail(subject, message, from_email, recipient_list)
+                    
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
             else:
-                messages.error(
-                    request, "No tiene permiso para editar este evento.")
+                messages.error(request, "No tiene permiso para editar este evento.")
                 return redirect('home')
         except ValueError:
-            messages.error(
-                request, "Error al intentar actualizar, intente de nuevo")
+            messages.error(request, "Error al intentar actualizar, intente de nuevo")
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
