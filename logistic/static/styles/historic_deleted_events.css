@@ -42,7 +42,7 @@ img:hover {
 body {
     min-height: 100vh;
     transition: var(--tran-05);
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body.dark {
@@ -194,6 +194,10 @@ body.dark.progress-bar.complete {
     font-weight: bold;
     color: var(--text-color);
     padding: 12px 60px;
+}
+
+.home {
+    right: auto;
 }
 
 .sidebar {
@@ -417,128 +421,29 @@ body.dark.progress-bar.complete {
     transition: var(--tran-04);
 }
 
-
-
-.container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
-
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 h1 {
     text-align: center;
-    color: #333;
-}
-
-form {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    padding: 15px;
-    margin-top: 20px;
-}
-
-.error,
-.errorlist {
-    color: #d9534f;
-    margin-bottom: 15px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"],
-input[type="checkbox"],
-select {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-top: 5px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    color: #070ab9;
 }
 
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    /* Esto alineará los botones como en la imagen */
-    margin-top: 10px;
+table {
+    width: 100%;
+    border-collapse: collapse;
 }
 
-.btn {
-    padding: 10px 15px;
-    font-size: 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    /* Remover el subrayado de los enlaces */
-    display: inline-block;
-    /* Para que los enlaces se comporten como botones */
-}
-
-.btn-save {
-    border: none;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-.btn-save:hover {
-    background-color: #4cae4c;
-}
-
-.btn-cancel {
-    background-color: #f0f0f0;
-    color: #333;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    margin-right: 20px;
-    /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
-}
-
-.btn-cancel:hover {
-    background-color: #e0e0e0;
-}
-
-.errorlist li {
-    list-style-type: none;
-}
-
-/* Clase para el campo de checkbox, para manejar el alineamiento de la etiqueta */
-.checkbox-label {
+table th,
+table td {
+    padding: 8px;
+    border: 1px solid #ddd;
     text-align: left;
-    /* Asegura que la etiqueta de checkbox esté alineada a la derecha */
 }
 
-/* No se necesita flexbox aquí ya que ahora todo se apilará verticalmente */
-input[type="checkbox"] {
-    width: auto;
-    /* Asegura que el checkbox no se estire */
-    margin-top: 5px;
-    /* Espacio adicional arriba del checkbox, si es necesario */
-    display: inline-block;
-    /* Para que el checkbox no tome el ancho completo de su contenedor */
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
 }
 
-@media only screen and (max-width: 768px) {
-    .user-info {
-        flex-direction: column;
-        /* Apila los elementos verticalmente en pantallas más pequeñas */
-        align-items: center;
-        /* Centra los elementos en pantallas más pequeñas */
-    }
-
-    .notification {
-        margin-top: 10px;
-        /* Añade espacio entre el nombre de usuario y el icono de notificación en pantallas más pequeñas */
-        margin-right: 0;
-        /* Elimina el margen derecho para que el icono de notificación esté alineado correctamente */
-    }
-
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
 }

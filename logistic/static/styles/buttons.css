@@ -6,7 +6,8 @@
     border-radius: 4px;
     cursor: pointer;
     display: block;
-    width: 60%;
+    width: 200px;
     margin: 1rem auto;
     box-sizing: border-box;
+    text-align: center
 }

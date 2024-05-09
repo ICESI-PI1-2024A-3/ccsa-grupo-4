@@ -1,18 +1,17 @@
-<!DOCTYPE html>
 {% load static %}
-{% load i18n %}
-
-
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Evento</title>
-    <link rel="stylesheet" href="{% static 'styles/create_event.css' %}">
+    <title>Historic Deleted Events</title>
+    <link rel="stylesheet" href="{% static 'styles/historic_deleted_events.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/buttons.css' %}">
 </head>
 
 <body>
+
     <header class="user-container">
         <div class="icesi aling-left">
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
@@ -24,7 +23,6 @@
 
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">
@@ -34,7 +32,9 @@
         </div>
     </header>
 
+
     <section class="main">
+
         <nav class="sidebar close">
 
             <header>
@@ -113,18 +113,40 @@
 
         <div class="home">
             <div class="container">
-                <h1 class="text">Crear Evento</h1>
-                {% if error %}
-                <p class="error">{{ error }}</p>
-                {% endif %}
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    {{ formForEvents }}
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-save">Guardar</button>
-                        <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-                    </div>
-                </form>
+                <h1 class="text">Historic Deleted Events</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Execution Date</th>
+                            <th>Place</th>
+                            <th>Progress</th>
+                            <th>Finish Date</th>
+                            <th>Important</th>
+                            <th>Completed</th>
+                            <th>Deleted</th>
+                            <th>User</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for event in historic_events %}
+                        <tr>
+                            <td>{{ event.name }}</td>
+                            <td>{{ event.executionDate }}</td>
+                            <td>{{ event.place }}</td>
+                            <td>{{ event.progress }}</td>
+                            <td>{{ event.finishDate }}</td>
+                            <td>{{ event.important }}</td>
+                            <td>{{ event.completed }}</td>
+                            <td>{{ event.deleted }}</td>
+                            <td>{{ event.user }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="{% url 'home' %}" class="btn-primary">Back</a>
+
+
             </div>
         </div>
     </section>

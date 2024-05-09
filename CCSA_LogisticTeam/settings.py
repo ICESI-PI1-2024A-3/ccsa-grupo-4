@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,12 +22,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-b40$*zz+x&r__=e9%exl8iw8f)2_dx)v7)+nb#)8z0^byv@9he'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -38,14 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'logistic'
+    'logistic',
 ]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apoyologisticoccsa@gmail.com'
-EMAIL_HOST_PASSWORD = 'cfrq hisk dcux eill'
+EMAIL_HOST_PASSWORD = 'cfrqhiskdcuxeill'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # settings.py
 
@@ -55,6 +60,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Aquí sí funciona
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -89,18 +95,21 @@ WSGI_APPLICATION = 'CCSA_LogisticTeam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'uipgzidh',  
-        'USER': 'uipgzidh',  
-        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',  
-        'HOST': 'salt.db.elephantsql.com',  
-        'PORT': '5432',  
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'uipgzidh',
+        'USER': 'uipgzidh',
+        'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
+        'HOST': 'salt.db.elephantsql.com',
+        'PORT': '5432',
+        "TEST": {
+            "MIRROR": "default",
+        },
     }
 }
 
-#MIGRATION_MODULES = {
+# MIGRATION_MODULES = {
 #    'logistic': None,
-#}
+# }
 
 
 # Password validation
@@ -139,6 +148,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -148,12 +161,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # settings.py
 
 # Tiempo de vencimiento de la sesión en segundos (e.g., 1800 segundos = 30 minutos)
-#SESSION_COOKIE_AGE = 1800
+# SESSION_COOKIE_AGE = 1800
 
 # Define si la sesión debe expirar cuando el usuario cierra el navegador
-#SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # settings.py
 
 LOGIN_URL = 'signin'
-
-

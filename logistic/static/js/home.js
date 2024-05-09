@@ -1,15 +1,18 @@
-const body = document.querySelector('body'),
-    sidebar = body.querySelector('nav'),
-    toogle = body.querySelector(".toggle"),
-    modeSwitch = body.querySelector(".toggle-switch"),
-    modeText = body.querySelector(".mode-text");
+const body = document.querySelector('body');
+const sidebar = body.querySelector('nav');
+const toogle = body.querySelector(".toggle");
+const menuItems = body.querySelector(".menu-items");
+const modeSwitch = body.querySelector(".toggle-switch");
+const modeText = body.querySelector(".mode-text");
 
 toogle.addEventListener("click", () => {
     sidebar.classList.toggle("close");
+    menuItems.classList.toggle("open");
 })
 
 modeSwitch.addEventListener("click", () => {
     body.classList.toggle("dark");
+    modeSwitch.classList.toggle("active");
     if (body.classList.contains("dark")) {
         modeText.innerText = "Light mode"
     } else {
@@ -61,8 +64,18 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (progressValue >= 81 && progressValue <= 100) {
             progressBar.classList.add('complete');
         }
+
+        // Ocultar el botón de crear tarea si el progreso no es 100%
+        if (progressValue !== 100) {
+            const createTaskButton = progressBar.closest('tr').querySelector('.new-task');
+            if (createTaskButton) {
+                createTaskButton.style.display = 'none';
+            }
+        }
     });
 });
+
+
 
 // Función para la barra de progreso dinámica
 function move() {
@@ -83,3 +96,11 @@ function move() {
     });
 }
 
+
+// Verificar si el modo oscuro está guardado en el almacenamiento local
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode === 'true') {
+    body.classList.add('dark');
+    modeSwitch.classList.add('active');
+    modeText.innerText = "Modo claro";
+}
