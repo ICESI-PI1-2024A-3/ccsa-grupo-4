@@ -21,6 +21,7 @@ import json
 import random
 
 
+@login_required
 def event_checklist(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, id=event_id)
@@ -36,8 +37,7 @@ def event_checklist(request, event_id):
             formset.save()
 
             subject = 'Actualización de lista de tareas'
-            message = f'Se ha actualizado la lista de tareas para el evento "{
-                event.name}".'
+            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
             from_email = 'your@example.com'
             recipient_list = ['recipient@example.com']
 
@@ -60,15 +60,13 @@ def event_checklist(request, event_id):
 
 def create_event(request):
     if request.method == 'GET':
-        users_event = User.objects.all(
-        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all(
-            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
@@ -76,6 +74,14 @@ def create_event(request):
                 if not request.user.is_superuser:
                     new_event.user = request.user
                 new_event.save()
+
+                # Envío de correo electrónico al usuario que está iniciando sesión
+                subject = 'Nuevo evento creado'
+                message = f'Se ha creado un nuevo evento: {new_event.name}'
+                from_email = 'your@example.com'  # Cambia esto por tu correo electrónico si es necesario
+                recipient_list = [request.user.email]  # Envía el correo al correo electrónico del usuario que está iniciando sesión
+                send_mail(subject, message, from_email, recipient_list)
+
                 return redirect("home")
             else:
                 return render(request, 'create_event.html', {'formForEvents': form})
@@ -84,6 +90,7 @@ def create_event(request):
                 "formForEvents": EventForm(),
                 'error': 'Por favor, digite valores válidos'
             })
+
 
 
 def edit_event(request, event_id):
