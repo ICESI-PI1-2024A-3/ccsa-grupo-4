@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from ..models import Task
 from django.forms import modelformset_factory
 from django.utils import timezone
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -21,10 +21,7 @@ import json
 import random
 
 
-
-
-
-def event_checklist(request, event_id): #Funciona
+def event_checklist(request, event_id):
     if request.user.is_superuser:
         event = get_object_or_404(Event, id=event_id)
     else:
@@ -63,15 +60,15 @@ def event_checklist(request, event_id): #Funciona
 
 def create_event(request):
     if request.method == 'GET':
-        
-        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        users_event = User.objects.all(
+        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
     elif request.method == 'POST':
         try:
-            
-            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all(
+            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
@@ -135,11 +132,10 @@ def complete_event(request, event_id):
         event.completed = timezone.now()
         event.save()
 
-        # Envía el correo electrónico de notificación al usuario que inició sesión
         subject = 'Evento completado'
         message = f'El evento "{event.name}" ha sido completado.'
-        from_email = settings.EMAIL_HOST_USER
-        recipient_list = [request.user.email]  # Envía al correo del usuario que inició sesión
+        from_email = 'your@example.com'
+        recipient_list = ['recipient@example.com']
 
         try:
             send_mail(subject, message, from_email, recipient_list)
