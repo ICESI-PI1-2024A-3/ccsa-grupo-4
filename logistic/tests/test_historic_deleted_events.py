@@ -39,4 +39,17 @@ class TestHistoricDeletedEvents(TestCase):
         # Check if the response status code is 302 (redirect to login)
         self.assertEqual(response.status_code, 302)
 
+    def test_historic_deleted_events_no_events(self):
+        # Log in the user
+        self.client.force_login(self.user)
+
+        # Access the view for historic deleted events
+        response = self.client.get(reverse('historic_deleted_events'))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if no historic events are present in the context
+        self.assertQuerysetEqual(response.context['historic_events'], [])
+
     
