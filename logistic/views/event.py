@@ -75,11 +75,11 @@ def create_event(request):
                     new_event.user = request.user
                 new_event.save()
 
-                # Envío de correo electrónico al usuario que está iniciando sesión
+               
                 subject = 'Nuevo evento creado'
                 message = f'Se ha creado un nuevo evento: {new_event.name}'
-                from_email = 'your@example.com'  # Cambia esto por tu correo electrónico si es necesario
-                recipient_list = [request.user.email]  # Envía el correo al correo electrónico del usuario que está iniciando sesión
+                from_email = 'your@example.com'
+                recipient_list = [request.user.email]
                 send_mail(subject, message, from_email, recipient_list)
 
                 return redirect("home")
@@ -114,11 +114,10 @@ def edit_event(request, event_id):
                 if form.is_valid():
                     updated_event = form.save()
                     
-                    # Envío de correo electrónico al usuario que está iniciando sesión
                     subject = 'Evento Actualizado'
                     message = f"Se ha actualizado el evento: {updated_event.name}"
-                    from_email = 'your@example.com'  # Cambia esto por tu correo electrónico si es necesario
-                    recipient_list = [request.user.email]  # Envía el correo al correo electrónico del usuario que está iniciando sesión
+                    from_email = 'your@example.com'
+                    recipient_list = [request.user.email]
                     send_mail(subject, message, from_email, recipient_list)
                     
                     return redirect('home')
@@ -144,9 +143,8 @@ def complete_event(request, event_id):
 
         subject = 'Evento completado'
         message = f'El evento "{event.name}" ha sido completado.'
-        from_email = 'your@example.com'
-        recipient_list = ['recipient@example.com']
-
+        from_email = 'your@example.com' 
+        recipient_list = [request.user.email] 
         try:
             send_mail(subject, message, from_email, recipient_list)
         except Exception as e:
@@ -156,6 +154,7 @@ def complete_event(request, event_id):
 
 
 def delete_event(request, event_id):
+    # Obtiene el evento a eliminar
     if request.user.is_superuser:
         event = get_object_or_404(Event, pk=event_id)
     else:
@@ -174,6 +173,18 @@ def delete_event(request, event_id):
             user=event.user
         )
         historic_event.save()
+
+        subject = 'Evento eliminado'
+        message = f'Se ha eliminado el evento "{event.name}".'
+        from_email = 'your@example.com'
+        recipient_list = [request.user.email]
+
+        try:
+            send_mail(subject, message, from_email, recipient_list)
+        except Exception as e:
+            print(f"Error al enviar correo electrónico: {e}")
+
+        # Elimina el evento
         event.delete()
 
         return redirect('home')
