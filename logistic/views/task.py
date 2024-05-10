@@ -10,13 +10,10 @@ from django.urls import reverse
 
 
 def create_task(request, event_id):
-    # Obtener el evento o devolver error 404 si no se encuentra
     event = get_object_or_404(Event, pk=event_id)
 
     if request.method == 'GET':
-        # Crear el formulario de tarea y establecer el evento predeterminado
         form = TaskForm(event_instance=event)
-        # Pasar tanto el formulario como el evento al contexto del template
         context = {'formForTask': form, 'event': event}
         return render(request, 'create_task.html', context)
     else:
@@ -26,17 +23,25 @@ def create_task(request, event_id):
             new_task.user = request.user
             new_task.event = event
             new_task.save()
-            # Redirigir a la checklist del evento
+
+            subject = 'Nueva tarea creada'
+            message = f'Se ha creado una nueva tarea: {new_task.name}'
+            from_email = 'your@example.com' 
+            recipient_list = [request.user.email]
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
             return redirect(reverse('event_checklist', args=[event_id]))
         else:
-            # Incluir el evento en el contexto para reconstruir correctamente la página con errores
             context = {
                 "formForTask": form,
                 'error': 'Por favor, digite valores válidos',
                 'event': event
             }
             return render(request, "create_task.html", context)
-
 
 
 def edit_task(request, task_id):
