@@ -102,5 +102,21 @@ class TestHistoricDeletedEvents(TestCase):
         # Check if only the default number of events are present in the context
         self.assertEqual(len(response.context['historic_events']), 10)
 
-   
+    def test_historic_deleted_events_superuser_access(self):
+        # Create a superuser
+        superuser = User.objects.create_superuser(username='superuser', password='12345')
+
+        # Log in the superuser
+        self.client.force_login(superuser)
+
+        # Access the view for historic deleted events
+        response = self.client.get(reverse('historic_deleted_events'))
+
+        # Check if the response status code is 200 (OK)
+        self.assertEqual(response.status_code, 200)
+
+        # Check if the view displays all historic deleted events for superuser
+        self.assertEqual(response.context['historic_events'].count(), HistoricDeletedEvents.objects.count())
+
+    
 
