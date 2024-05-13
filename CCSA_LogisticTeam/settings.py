@@ -101,7 +101,7 @@ DATABASES = {
         'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
         'HOST': 'salt.db.elephantsql.com',
         'PORT': '5432',
-        'TEST': {
+        "TEST": {
             "MIRROR": "default",
         },
     }

@@ -64,8 +64,18 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (progressValue >= 81 && progressValue <= 100) {
             progressBar.classList.add('complete');
         }
+
+        // Ocultar el botón de crear tarea si el progreso no es 100%
+        if (progressValue !== 100) {
+            const createTaskButton = progressBar.closest('tr').querySelector('.new-task');
+            if (createTaskButton) {
+                createTaskButton.style.display = 'none';
+            }
+        }
     });
 });
+
+
 
 // Función para la barra de progreso dinámica
 function move() {

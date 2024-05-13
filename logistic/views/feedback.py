@@ -4,11 +4,13 @@ from email.mime.text import MIMEText
 from django.shortcuts import render
 from django.core.mail import send_mail
 
+
 def send_email_to_client(request):
     if request.method == 'POST':
         cliente_email = request.POST.get('cliente_email')
-        formulario_google_url = 'https://forms.gle/MzHw5qdFXaML5nqz5'  # Reemplaza esto con la URL real de tu formulario Google
-        
+        # Reemplaza esto con la URL real de tu formulario Google
+        formulario_google_url = 'https://forms.gle/MzHw5qdFXaML5nqz5'
+
         mensaje = f"""
         Hola!,
 
@@ -29,6 +31,8 @@ def send_email_to_client(request):
             fail_silently=False,
         )
         msj_exito = "Correo enviado con éxito al cliente"
-        return render(request, 'feedback.html', {"msj_exito": msj_exito})  # Renderizar una página de éxito después de enviar el correo
+        # Renderizar una página de éxito después de enviar el correo
+        return render(request, 'feedback.html', {"msj_exito": msj_exito})
 
-    return render(request, 'feedback.html')  # Renderizar el formulario para capturar el correo del cliente
+    # Renderizar el formulario para capturar el correo del cliente
+    return render(request, 'feedback.html')
