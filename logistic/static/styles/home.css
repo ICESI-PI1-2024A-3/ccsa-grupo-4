@@ -23,7 +23,6 @@
     --tran-05: all 0.2s ease;
 }
 
-
 ::selection {
     background-color: var(--primary-color);
     color: var(--sidebar-color);

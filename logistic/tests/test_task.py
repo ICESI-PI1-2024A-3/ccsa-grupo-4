@@ -18,9 +18,11 @@ class TestTask(TestCase):
         - Then, we test that the creation was succesfull, which means that the code should be 302 (was redirected to home) 
         """
         self.client.force_login(self.user)
-        response = self.client.get(reverse('create_task'))
+        event_id = self.event.id
+        url = reverse('create_task', kwargs={'event_id': event_id})
+        response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        response = self.client.post(reverse('create_task'), {'name': 'New Task', 'event': self.event.id})
+        response = self.client.post(url, {'name': 'New Task', 'event': event_id})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Task.objects.filter(name='New Task').exists())
 
