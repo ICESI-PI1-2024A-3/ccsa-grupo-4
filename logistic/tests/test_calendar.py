@@ -57,7 +57,12 @@ class EventCalendarTest(TestCase):
         events_data = response.context['events_json']
         self.assertIn(self.event.name, events_data)
 
-
+    def test_event_data_in_calendar(self):
+        """
+        Verifies that the event data (such as name and place) is correctly displayed on the calendar page.
+        """
+        response = self.client.get(reverse('events_calendar'))
+        self.assertContains(response, self.event.name)
 
       
 
