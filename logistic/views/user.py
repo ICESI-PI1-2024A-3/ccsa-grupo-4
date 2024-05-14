@@ -46,7 +46,7 @@ def signup(request):
                     "signup.html",
                     {
                         "form": UserCreationForm,
-                        "error": "Email already exists",
+                        "error": "El correo ya existe",
                     },
                 )
             try:
@@ -62,7 +62,7 @@ def signup(request):
                     "signup.html",
                     {
                         "form": UserCreationForm,
-                        "error": "User already exists",
+                        "error": "El usuario ya existe",
                     },
                 )
         return render(
@@ -70,7 +70,7 @@ def signup(request):
             "signup.html",
             {
                 "form": UserCreationForm,
-                "error": "Password do not match",
+                "error": "La contraseña no coincide",
             },
         )
 
@@ -106,7 +106,7 @@ def signin(request):
                 "signin.html",
                 {
                     "form": AuthenticationForm,
-                    "error": "Username or password is incorrect",
+                    "error": "El usuario o la contraseña son incorrectos",
                 },
             )
         else:
