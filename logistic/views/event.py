@@ -37,7 +37,8 @@ def event_checklist(request, event_id):
             formset.save()
 
             subject = 'Actualización de lista de tareas'
-            message = f'Se ha actualizado la lista de tareas para el evento "{event.name}".'
+            message = f'Se ha actualizado la lista de tareas para el evento "{
+                event.name}".'
             from_email = 'your@example.com'
             recipient_list = ['recipient@example.com']
 
@@ -60,13 +61,15 @@ def event_checklist(request, event_id):
 
 def create_event(request):
     if request.method == 'GET':
-        users_event = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        users_event = User.objects.all(
+        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
         form = EventForm()
         form.fields['user'].queryset = users_event
         return render(request, 'create_event.html', {'formForEvents': form})
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all(
+            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST)
             form.fields['user'].queryset = user_events
             if form.is_valid():
@@ -75,7 +78,6 @@ def create_event(request):
                     new_event.user = request.user
                 new_event.save()
 
-               
                 subject = 'Nuevo evento creado'
                 message = f'Se ha creado un nuevo evento: {new_event.name}'
                 from_email = 'your@example.com'
@@ -92,42 +94,47 @@ def create_event(request):
             })
 
 
-
 def edit_event(request, event_id):
     event = get_object_or_404(Event, pk=event_id)
 
     if request.method == 'GET':
-        user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+        user_events = User.objects.all(
+        ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
         if request.user.is_superuser or event.user == request.user:
             form = EventForm(instance=event)
             form.fields['user'].queryset = user_events
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
         else:
-            messages.error(request, "No tiene permiso para editar este evento.")
+            messages.error(
+                request, "No tiene permiso para editar este evento.")
             return redirect('home')
     elif request.method == 'POST':
         try:
-            user_events = User.objects.all() if request.user.is_superuser else User.objects.filter(id=request.user.id)
+            user_events = User.objects.all(
+            ) if request.user.is_superuser else User.objects.filter(id=request.user.id)
             form = EventForm(request.POST, instance=event)
             form.fields['user'].queryset = user_events
             if request.user.is_superuser or event.user == request.user:
                 if form.is_valid():
                     updated_event = form.save()
-                    
+
                     subject = 'Evento Actualizado'
-                    message = f"Se ha actualizado el evento: {updated_event.name}"
+                    message = f"Se ha actualizado el evento: {
+                        updated_event.name}"
                     from_email = 'your@example.com'
                     recipient_list = [request.user.email]
                     send_mail(subject, message, from_email, recipient_list)
-                    
+
                     return redirect('home')
                 else:
                     return render(request, 'edit_event.html', {'eventId': event, 'form': form})
             else:
-                messages.error(request, "No tiene permiso para editar este evento.")
+                messages.error(
+                    request, "No tiene permiso para editar este evento.")
                 return redirect('home')
         except ValueError:
-            messages.error(request, "Error al intentar actualizar, intente de nuevo")
+            messages.error(
+                request, "Error al intentar actualizar, intente de nuevo")
             return render(request, "edit_event.html", {'eventId': event, 'form': form})
 
 
@@ -143,8 +150,8 @@ def complete_event(request, event_id):
 
         subject = 'Evento completado'
         message = f'El evento "{event.name}" ha sido completado.'
-        from_email = 'your@example.com' 
-        recipient_list = [request.user.email] 
+        from_email = 'your@example.com'
+        recipient_list = [request.user.email]
         try:
             send_mail(subject, message, from_email, recipient_list)
         except Exception as e:
@@ -197,6 +204,20 @@ def historic_deleted_events(request):
     else:
         historic_events = HistoricDeletedEvents.objects.filter(
             user=request.user)
+
+    historic_events = [
+        {
+            'name': event.name,
+            'executionDate': event.executionDate,
+            'place': event.place,
+            'progress': event.progress,
+            'finishDate': event.finishDate,
+            'important': 'si' if event.important else 'no',
+            'completed': 'no' if event.completed == None else event.completed,
+            'deleted': timezone.now().date(),
+            'user': event.user
+        } for event in historic_events
+    ]
 
     return render(request, 'historic_deleted_events.html', {'historic_events': historic_events})
 
