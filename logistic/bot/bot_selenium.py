@@ -21,7 +21,7 @@ class bot_selenium(unittest.TestCase):
         password.send_keys(const.PASSWORD)
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
-        text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
+        text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]') 
         self.assertEqual(text_expected.text, "Apoyo Logístico")
 
     def test_create_delete_event(self):
@@ -35,7 +35,7 @@ class bot_selenium(unittest.TestCase):
 
         #Assert del login
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
-        self.assertEqual(text_expected.text, "Apoyo Logistico")
+        self.assertEqual(text_expected.text, "Apoyo Logístico")
 
         #Creaamos el evento
         burguer = self.driver.find_element(By.XPATH, "/html/body/section/nav/header/img")
@@ -53,20 +53,20 @@ class bot_selenium(unittest.TestCase):
         delta_time_fin = self.driver.find_element(By.XPATH, "//*[@id='id_finishDate']")
         delta_time_fin.send_keys("30042024\t1200a")
         event_user = self.driver.find_element(By.XPATH, "//*[@id='id_user']")
-        event_user.send_keys("da")
-        save_button = self.driver.find_element(By.XPATH, "/html/body/div/div/form/div/button")
+        event_user.send_keys("Ca")
+        save_button = self.driver.find_element(By.XPATH, "/html/body/section/div/div/form/div/button") 
         save_button.click()
 
         #Borramos el evento
        
-        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/754/')]")
+        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/932/')]")
         event_edit.click()
-        delete_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div/button[2]")
+        delete_button = self.driver.find_element(By.XPATH, "/html/body/section/div/div/div/button[2]")
         delete_button.click()
 
         #Assert
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
-        self.assertEqual(text_expected.text, "Apoyo Logistico")
+        self.assertEqual(text_expected.text, "Apoyo Logístico")
 
 
     def test_delete_and_check(self):
@@ -78,12 +78,12 @@ class bot_selenium(unittest.TestCase):
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
-        self.assertEqual(text_expected.text, "Apoyo Logistico")
+        self.assertEqual(text_expected.text, "Apoyo Logístico")
 
         #Borramos el evento
-        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/30/')]")######
+        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/931/')]")
         event_edit.click()
-        delete_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div/button[2]")
+        delete_button = self.driver.find_element(By.XPATH, "/html/body/section/div/div/div/button[2]") 
         delete_button.click()
 
         #miramos el historial
@@ -105,7 +105,7 @@ class bot_selenium(unittest.TestCase):
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
         self.assertEqual(text_expected.text, "Apoyo Logístico")
 
-        event = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/checklist/17')]")
+        event = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/checklist/752')]")
         event.click()
         text_expected = self.driver.find_element(By.XPATH, "/html/body/section/div/div/h1")
         self.assertEqual(text_expected.text, "Detalles del Evento")
