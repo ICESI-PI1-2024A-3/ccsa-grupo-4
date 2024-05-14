@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-{% load static %}
 {% load i18n %}
-
+{% load static %}
 
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Evento</title>
-    <link rel="stylesheet" href="{% static 'styles/create_event.css' %}">
+    <title>Formulario de Correo Electrónico</title>
+    <link rel="stylesheet" href="{% static 'styles/feedback.css' %}">
 </head>
 
 <body>
+
     <header class="user-container">
         <div class="icesi aling-left">
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
@@ -24,7 +24,6 @@
 
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">
@@ -34,7 +33,9 @@
         </div>
     </header>
 
+
     <section class="main">
+
         <nav class="sidebar close">
 
             <header>
@@ -47,6 +48,7 @@
 
             <div class="menu-bar">
                 <div class="menu">
+
                     <ul>
                         <div class="menu-items">
                             <li>
@@ -84,6 +86,9 @@
                                     <span class="text nav-text">Historial</span>
                                 </a>
                             </li>
+
+
+
                     </ul>
                 </div>
 
@@ -111,24 +116,28 @@
             </div>
         </nav>
 
-        <div class="home">
-            <div class="container">
-                <h1 class="text">Crear Evento</h1>
-                {% if error %}
-                <p class="error">{{ error }}</p>
-                {% endif %}
-                <form action="" method="POST">
-                    {% csrf_token %}
-                    {{ formForEvents }}
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-save">Guardar</button>
-                        <a href="{% url 'home' %}" class="btn btn-cancel">Cancelar</a>
-                    </div>
-                </form>
+
+        <section class="home">
+            <h1>Enviar encuenta de satisfacción al cliente</h1>
+            <p>{{msj_exito}}</p>
+            <form id="formulario" method="POST" action="">
+                {% csrf_token %}
+                <label for="cliente_email">Correo electrónico del cliente:</label>
+                <input type="email" id="cliente_email" name="cliente_email" required>
+                <button type="submit">Enviar</button>
+            </form>
+
+            <br>
+            <br>
+
+            <div>
+                <h2>¿Qué han dicho los usuarios?</h2>
+                <p>Héchale un vistazo <a
+                        href="https://docs.google.com/spreadsheets/d/1n2hNg52P24tJhAgER3T5qi1fNJ0-d2b45h-75oTsSLA/edit?usp=sharing">aquí</a>.
+                </p>
             </div>
-        </div>
-    </section>
-    <script src="{% static 'js/home.js' %}"></script>
+        </section>
+        <script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>

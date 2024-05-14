@@ -6,51 +6,47 @@ from ..models import Event
 from ..models import Task
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.urls import reverse
 
-def create_task(request):
+
+def create_task(request, event_id):
+    event = get_object_or_404(Event, pk=event_id)
+
     if request.method == 'GET':
-        if request.user.is_superuser:
-            user_events = Event.objects.all()
+        form = TaskForm(event_instance=event)
+        context = {'formForTask': form, 'event': event}
+        return render(request, 'create_task.html', context)
+    else:
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.event = event
+            new_task.save()
+
+            subject = 'Nueva tarea creada'
+            message = f'Se ha creado una nueva tarea: {new_task.name}'
+            from_email = 'your@example.com' 
+            recipient_list = [request.user.email]
+
+            try:
+                send_mail(subject, message, from_email, recipient_list)
+            except Exception as e:
+                print(f"Error al enviar correo electrónico: {e}")
+
+            return redirect(reverse('event_checklist', args=[event_id]))
         else:
-            user_events = Event.objects.filter(user=request.user)
-        form = TaskForm()
-        form.fields['event'].queryset = user_events
-        return render(request, 'create_task.html', {'formForTask': form})
-    elif request.method == 'POST':
-        try:
-            if request.user.is_superuser:
-                user_events = Event.objects.all()
-            else:
-                user_events = Event.objects.filter(user=request.user)
-            form = TaskForm(request.POST)
-            form.fields['event'].queryset = user_events
-            if form.is_valid():
-                new_task = form.save(commit=False)
-                new_task.user = new_task.event.user
-                new_task.save()
+            context = {
+                "formForTask": form,
+                'error': 'Por favor, digite valores válidos',
+                'event': event
+            }
+            return render(request, "create_task.html", context)
 
-                subject = 'Nueva tarea creada'
-                message = f'Se ha creado una nueva tarea: {new_task.name}'
-                from_email = 'your@example.com'
-                recipient_list = ['recipient@example.com']
-
-                try:
-                    send_mail(subject, message, from_email, recipient_list)
-                except Exception as e:
-                    print(f"Error al enviar correo electrónico: {e}")
-
-                return redirect("home")
-            else:
-                return render(request, 'create_task.html', {'formForTask': form})
-        except ValueError:
-            return render(request, "create_task.html", {
-                "formForTask": TaskForm(),
-                'error': 'Por favor, digite valores válidos'
-            })
 
 def edit_task(request, task_id):
     task = get_object_or_404(Task, pk=task_id)
-    
+
     if request.method == 'GET':
         if request.user.is_superuser:
             form = TaskForm(instance=task)
@@ -88,17 +84,6 @@ def delete_task(request, task_id):
         task = get_object_or_404(Task, pk=task_id)
     else:
         task = get_object_or_404(Task, pk=task_id, user=request.user)
-    
     if request.method == 'POST':
-        subject = 'Tarea eliminada'
-        message = f'Se ha eliminado la tarea: {task.name}'
-        from_email = 'your@example.com'
-        recipient_list = ['recipient@example.com']
-
-        try:
-            send_mail(subject, message, from_email, recipient_list)
-        except Exception as e:
-            print(f"Error al enviar correo electrónico: {e}")
-
         task.delete()
         return redirect('event_checklist', event_id=task.event.id)
