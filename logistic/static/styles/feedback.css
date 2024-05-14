@@ -42,7 +42,7 @@ img:hover {
 body {
     min-height: 100vh;
     transition: var(--tran-05);
-    overflow: hidden;
+    overflow-y: hidden;
 }
 
 body.dark {
@@ -417,128 +417,120 @@ body.dark.progress-bar.complete {
     transition: var(--tran-04);
 }
 
+/* HOME SECTION */
 
 
-.container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 90%;
-    max-width: 600px;
+.home {
 
-    position: absolute;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-form {
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    padding: 15px;
-    margin-top: 20px;
-}
-
-.error,
-.errorlist {
-    color: #d9534f;
-    margin-bottom: 15px;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"],
-input[type="checkbox"],
-select {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.form-actions {
     display: flex;
-    justify-content: space-between;
-    /* Esto alineará los botones como en la imagen */
-    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+    background-color: var(--sidebar-color);
+    max-width: 500px;
+    /* Definir un ancho máximo */
+    margin: auto;
+    /* Centrar horizontalmente */
+
+    max-height: 500px;
+    /* Altura del 80% del viewport height */
+    border-radius: 15px;
+    top: 10%;
+    margin-top: 5%;
+    margin-left: 15%;
+    transform: translate(50%);
+    position: absolute;
 }
 
-.btn {
-    padding: 10px 15px;
+.home h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.home p {
     font-size: 16px;
-    border-radius: 4px;
-    text-decoration: none;
-    /* Remover el subrayado de los enlaces */
-    display: inline-block;
-    /* Para que los enlaces se comporten como botones */
+    margin-bottom: 20px;
 }
 
-.btn-save {
-    border: none;
-    background-color: #5cb85c;
-    color: white;
-    cursor: pointer;
-    margin-left: 10px;
+.home form {
+    margin-bottom: 20px;
 }
 
-.btn-save:hover {
-    background-color: #4cae4c;
+.home label {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.btn-cancel {
-    background-color: #f0f0f0;
+.hom .home h1 {
+    font-size: 32px;
+    font-weight: bold;
     color: #333;
-    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.home p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.home form {
+    margin-bottom: 20px;
+}
+
+.home label {
+    font-size: 18px;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.home input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
     border: 1px solid #ccc;
-    margin-right: 20px;
-    /* Se añade borde para que coincida con el estilo del botón 'Cancelar' */
+    border-radius: 25px;
+    /* Hacer los bordes más redondeados */
+    outline: none;
 }
 
-.btn-cancel:hover {
-    background-color: #e0e0e0;
+.home button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    /* Hacer los bordes más redondeados */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.errorlist li {
-    list-style-type: none;
+.home button[type="submit"]:hover {
+    background-color: #0056b3;
 }
 
-/* Clase para el campo de checkbox, para manejar el alineamiento de la etiqueta */
-.checkbox-label {
-    text-align: left;
-    /* Asegura que la etiqueta de checkbox esté alineada a la derecha */
+.home div {
+    margin-bottom: 20px;
 }
 
-/* No se necesita flexbox aquí ya que ahora todo se apilará verticalmente */
-input[type="checkbox"] {
-    width: auto;
-    /* Asegura que el checkbox no se estire */
-    margin-top: 5px;
-    /* Espacio adicional arriba del checkbox, si es necesario */
-    display: inline-block;
-    /* Para que el checkbox no tome el ancho completo de su contenedor */
+.home h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-@media only screen and (max-width: 768px) {
-    .user-info {
-        flex-direction: column;
-        /* Apila los elementos verticalmente en pantallas más pequeñas */
-        align-items: center;
-        /* Centra los elementos en pantallas más pequeñas */
-    }
+.home a {
+    color: #007bff;
+    text-decoration: none;
+}
 
-    .notification {
-        margin-top: 10px;
-        /* Añade espacio entre el nombre de usuario y el icono de notificación en pantallas más pequeñas */
-        margin-right: 0;
-        /* Elimina el margen derecho para que el icono de notificación esté alineado correctamente */
-    }
-
+.home a:hover {
+    text-decoration: underline;
 }

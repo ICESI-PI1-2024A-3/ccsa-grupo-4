@@ -43,14 +43,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'logistic'
+    'logistic',
 ]
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'sebasx266@gmail.com'
-EMAIL_HOST_PASSWORD = 'mutu uhez aahj hmmh'
+EMAIL_HOST_USER = 'apoyologisticoccsa@gmail.com'
+EMAIL_HOST_PASSWORD = 'cfrqhiskdcuxeill'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 # settings.py
 
@@ -101,10 +101,8 @@ DATABASES = {
         'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
         'HOST': 'salt.db.elephantsql.com',
         'PORT': '5432',
-        'TEST': {
-            'NAME': 'uipgzidh',
-            'USER': 'uipgzidh',
-            'PASSWORD': 'cqWxZQSoyOFh5fNkzq3urvDuvFCsWi8H',
+        "TEST": {
+            "MIRROR": "default",
         },
     }
 }

@@ -1,13 +1,14 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+{% load i18n %}
+{% load static %}
+
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historic Deleted Events</title>
-    <link rel="stylesheet" href="{% static 'styles/historic_deleted_events.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/buttons.css' %}">
+    <title>Formulario de Correo Electrónico</title>
+    <link rel="stylesheet" href="{% static 'styles/feedback.css' %}">
 </head>
 
 <body>
@@ -47,6 +48,7 @@
 
             <div class="menu-bar">
                 <div class="menu">
+
                     <ul>
                         <div class="menu-items">
                             <li>
@@ -84,6 +86,9 @@
                                     <span class="text nav-text">Historial</span>
                                 </a>
                             </li>
+
+
+
                     </ul>
                 </div>
 
@@ -111,46 +116,28 @@
             </div>
         </nav>
 
-    <div class="home">
-        <div class="container">
-            <h1 class="text">Historial De Eventos Eliminados</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Fecha de Ejecución</th>
-                        <th>Lugar</th>
-                        <th>Progreso</th>
-                        <th>Fecha de Finalización</th>
-                        <th>Importante</th>
-                        <th>Completado</th>
-                        <th>Borrado</th>
-                        <th>Usuario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for event in historic_events %}
-                    <tr>
-                        <td>{{ event.name }}</td>
-                        <td>{{ event.executionDate }}</td>
-                        <td>{{ event.place }}</td>
-                        <td>{{ event.progress }}</td>
-                        <td>{{ event.finishDate }}</td>
-                        <td>{{ event.important }}</td>
-                        <td>{{ event.completed }}</td>
-                        <td>{{ event.deleted }}</td>
-                        <td>{{ event.user }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <a href="{% url 'home' %}" class="btn-primary">Atras</a>
 
+        <section class="home">
+            <h1>Enviar encuenta de satisfacción al cliente</h1>
+            <p>{{msj_exito}}</p>
+            <form id="formulario" method="POST" action="">
+                {% csrf_token %}
+                <label for="cliente_email">Correo electrónico del cliente:</label>
+                <input type="email" id="cliente_email" name="cliente_email" required>
+                <button type="submit">Enviar</button>
+            </form>
 
+            <br>
+            <br>
+
+            <div>
+                <h2>¿Qué han dicho los usuarios?</h2>
+                <p>Héchale un vistazo <a
+                        href="https://docs.google.com/spreadsheets/d/1n2hNg52P24tJhAgER3T5qi1fNJ0-d2b45h-75oTsSLA/edit?usp=sharing">aquí</a>.
+                </p>
             </div>
-        </div>
-    </section>
-    <script src="{% static 'js/home.js' %}"></script>
+        </section>
+        <script src="{% static 'js/home.js' %}"></script>
 </body>
 
 </html>

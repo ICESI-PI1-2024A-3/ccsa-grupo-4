@@ -27,18 +27,15 @@ jobs:
         pipenv install --dev
         pip install -r requirements.txt
 
-    - name: Run makemigrations
-      run: |
-        python manage.py makemigrations
-        python manage.py migrate
+    
 
-   # - name: Run tests
-    #  run: |        
-     #   python manage.py test logistic.tests.test_checklist
-      #  python manage.py test logistic.tests.test_event
-       # python manage.py test logistic.tests.test_user
-        #python manage.py test logistic.tests.test_task
-       # python manage.py test logistic.test.forms_test
-       # python manage.py test logistic.test.models_test
-       # python manage.py test logistic.test.templates_test
-       # python manage.py test logistic.test.views_test      
+    - name: Run tests
+      run: |        
+        python manage.py test logistic.tests.test_checklist
+        python manage.py test logistic.tests.test_event
+        python manage.py test logistic.tests.test_user
+        python manage.py test logistic.tests.test_task
+        python manage.py test logistic.test.forms_test
+        python manage.py test logistic.test.models_test
+        python manage.py test logistic.test.templates_test
+        python manage.py test logistic.test.views_test      
