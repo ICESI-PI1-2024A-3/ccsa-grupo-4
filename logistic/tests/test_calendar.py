@@ -31,6 +31,17 @@ class EventCalendarTest(TestCase):
             user=self.user
         )
 
+    def test_calendar_access_for_superuser(self):
+        """
+        Tests that a superuser can access the calendar page.
+        """
+        # Create and log in as a superuser
+        User.objects.create_superuser('admin', 'admin@admin.com', 'adminpass')
+        self.client.login(username='admin', password='adminpass')
+        
+        response = self.client.get(reverse('events_calendar'))
+        self.assertEqual(response.status_code, 200)
+
 
 
       
