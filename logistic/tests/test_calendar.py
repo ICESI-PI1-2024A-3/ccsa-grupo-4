@@ -42,6 +42,13 @@ class EventCalendarTest(TestCase):
         response = self.client.get(reverse('events_calendar'))
         self.assertEqual(response.status_code, 200)
 
+    def test_calendar_access_for_regular_user(self):
+        """
+        Tests that a regular user can access the calendar page.
+        """
+        response = self.client.get(reverse('events_calendar'))
+        self.assertEqual(response.status_code, 200)
+
 
 
       
