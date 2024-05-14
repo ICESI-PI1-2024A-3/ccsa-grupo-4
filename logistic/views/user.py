@@ -14,6 +14,10 @@ from ..models import Event
 from ..models import User
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail
+from django.dispatch import receiver
+from django.contrib.auth.signals import user_logged_in
+
+
 
 
 def home(request):
@@ -70,6 +74,17 @@ def signup(request):
             },
         )
 
+@receiver(user_logged_in)
+def send_login_email(sender, request, user, **kwargs):
+    subject = 'Inicio de sesión exitoso'
+    message = f'Hola {user.username}, has iniciado sesión en nuestra aplicación.'
+    from_email = 'your@example.com'
+    recipient_list = [user.email]
+
+    try:
+        send_mail(subject, message, from_email, recipient_list)
+    except Exception as e:
+        print(f"Error al enviar correo electrónico de inicio de sesión: {e}")
 
 def signout(request):
     logout(request)
