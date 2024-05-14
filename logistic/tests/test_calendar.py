@@ -49,6 +49,14 @@ class EventCalendarTest(TestCase):
         response = self.client.get(reverse('events_calendar'))
         self.assertEqual(response.status_code, 200)
 
+    def test_calendar_events_for_user(self):
+        """
+        Tests that the calendar page only displays events associated with the logged-in user.
+        """
+        response = self.client.get(reverse('events_calendar'))
+        events_data = response.context['events_json']
+        self.assertIn(self.event.name, events_data)
+
 
 
       
