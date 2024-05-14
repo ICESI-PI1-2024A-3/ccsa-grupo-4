@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 import constants as const
 
-class create_delete_event(unittest.TestCase):
+class bot_selenium(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome()
         self.driver.get(const.BASE_URL)
@@ -15,9 +15,9 @@ class create_delete_event(unittest.TestCase):
 
     def test_login(self):
         user = self.driver.find_element(By.NAME, "username")
-        user.send_keys("daron")
+        user.send_keys(const.USER)
         password = self.driver.find_element(By.NAME, "password")
-        password.send_keys("daron12345")
+        password.send_keys(const.PASSWORD)
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
@@ -26,9 +26,9 @@ class create_delete_event(unittest.TestCase):
     def test_create_delete_event(self):
         #primero hacemos login
         user = self.driver.find_element(By.NAME, "username")
-        user.send_keys("daron")
+        user.send_keys(const.USER)
         password = self.driver.find_element(By.NAME, "password")
-        password.send_keys("daron123")
+        password.send_keys(const.PASSWORD)
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
 
@@ -55,7 +55,7 @@ class create_delete_event(unittest.TestCase):
         save_button.click()
 
         #Borramos el evento
-        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/31/')]")
+        event_edit = self.driver.find_element(By.XPATH, "//a[contains(@href, '/event/31/')]") #######
         event_edit.click()
         delete_button = self.driver.find_element(By.XPATH, "/html/body/div/div/div/button[2]")
         delete_button.click()
@@ -68,9 +68,9 @@ class create_delete_event(unittest.TestCase):
     def test_delete_and_check(self):
         #login
         user = self.driver.find_element(By.NAME, "username")
-        user.send_keys("daron")
+        user.send_keys(const.USER)
         password = self.driver.find_element(By.NAME, "password")
-        password.send_keys("daron123")
+        password.send_keys(const.PASSWORD)
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
@@ -91,9 +91,9 @@ class create_delete_event(unittest.TestCase):
     def test_checklist(self):
         #login
         user = self.driver.find_element(By.NAME, "username")
-        user.send_keys("daron")
+        user.send_keys(const.USER)
         password = self.driver.find_element(By.NAME, "password")
-        password.send_keys("daron12345")
+        password.send_keys(const.PASSWORD)
         loginButton = self.driver.find_element(By.CLASS_NAME, "btn-primary")
         loginButton.click()
         text_expected = self.driver.find_element(By.XPATH, '/html/body/section/div[1]')
@@ -104,6 +104,7 @@ class create_delete_event(unittest.TestCase):
         text_expected = self.driver.find_element(By.XPATH, "/html/body/section/div/div/h1")
         self.assertEqual(text_expected.text, "Detalles del Evento")
     
+
 
 if __name__ == "__main__":
     unittest.main()
