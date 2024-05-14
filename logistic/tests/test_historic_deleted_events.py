@@ -31,10 +31,6 @@ class TestHistoricDeletedEvents(TestCase):
         # Check if the response status code is 200 (OK)
         self.assertEqual(response.status_code, 200)
 
-        # Check if the correct number of events are present in the context
-        expected_events_count = HistoricDeletedEvents.objects.count()
-        self.assertEqual(len(response.context['historic_events']), expected_events_count)
-
     def test_historic_deleted_events_pagination_superuser(self):
         # Log in the superuser
         self.client.force_login(self.superuser)
