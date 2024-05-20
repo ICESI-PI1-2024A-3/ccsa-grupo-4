@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Users</title>
+    <title>Buscar usuarios</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles/users_search.css' %}">
 </head>
@@ -16,13 +16,18 @@
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
-        <div class="notification aling-right">
+        <div class="notification aling-right" onclick="mostrarAlerta()">
             <img src="/static/icons/campana.png">
         </div>
 
+        <script>
+            function mostrarAlerta() {
+                alert("Se ha creado un evento de forma correcta");
+            }
+        </script>
+
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">

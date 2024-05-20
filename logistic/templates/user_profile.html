@@ -16,17 +16,24 @@
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
-        <div class="notification aling-right">
+        <div class="notification aling-right" onclick="mostrarAlerta()">
             <img src="/static/icons/campana.png">
         </div>
 
+        <script>
+            function mostrarAlerta() {
+                alert("Se ha creado un evento de forma correcta");
+            }
+        </script>
+
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">
-            <img src="/static/images/profile.jpg">
+            <a href="{% url 'user_profile' %}">
+                <img src="/static/images/profile.jpg">
+            </a>
         </div>
     </header>
 
@@ -130,8 +137,6 @@
             </div>
         </div>
     </section>
-
-
     <script src="{% static 'js/home.js' %}"></script>
 </body>
 

@@ -23,7 +23,6 @@
     --tran-05: all 0.2s ease;
 }
 
-
 ::selection {
     background-color: var(--primary-color);
     color: var(--sidebar-color);
@@ -42,7 +41,7 @@ img:hover {
 body {
     min-height: 100vh;
     transition: var(--tran-05);
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body.dark {
@@ -58,6 +57,10 @@ body.dark * {
     background-color: var(--body-color);
 }
 
+body.dark {
+    background-color: var(--body-color);
+}
+
 body.dark.sidebar,
 body.dark.sidebar header,
 body.dark.sidebar li,
@@ -65,6 +68,16 @@ body.dark.sidebar a {
     background-color: var(--sidebar-color);
     color: var(--text-color);
 }
+
+body.dark .sidebar li a:hover {
+    background-color: transparent;
+}
+
+body.dark .sidebar li a:hover .icon,
+body.dark .sidebar li a:hover .text {
+    color: var(--sidebar-color);
+}
+
 
 body.dark.main.text {
     color: var(--text-color);
@@ -201,7 +214,7 @@ body.dark.progress-bar.complete {
     top: -35px;
     left: 0;
     height: calc(100vh - 50px);
-    width: 500px;
+    width: var(--sidebar-width);
     padding: 10px 10px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
@@ -210,8 +223,19 @@ body.dark.progress-bar.complete {
     margin-top: 100px;
 }
 
+
 .sidebar.close {
     width: 88px;
+    height: auto;
+    min-height: 60px;
+}
+
+.sidebar.close .menu-bar {
+    display: none;
+}
+
+.sidebar.close header {
+    height: 60px;
 }
 
 .sidebar.close~.home {
@@ -324,6 +348,14 @@ body.dark.progress-bar.complete {
 .menu-bar .mode .sun-moon {
     height: 50px;
     width: 60px;
+    min-width: 5px;
+    border-radius: 10px;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-right: -10px;
 }
 
 .menu-bar .bottom-content .toggle-switch {
@@ -406,6 +438,7 @@ body.dark.progress-bar.complete {
     transition: var(--tran-04);
 }
 
+
 .profile {
     background-color: #FFFFFF;
     border-radius: 8px;
@@ -430,7 +463,18 @@ body.dark.progress-bar.complete {
     font-weight: bold;
     color: var(--text-color);
     padding: 12px 60px;
+    margin-left: 20px;
+}
 
+.profile h1.text {
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--text-color);
+    padding: 12px 60px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile img {

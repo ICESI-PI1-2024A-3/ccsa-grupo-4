@@ -19,16 +19,15 @@
       <img src="{% static 'images/logo-icesi-azul.webp' %}">
     </div>
 
-    
     <div class="notification aling-right" onclick="mostrarAlerta()">
       <img src="/static/icons/campana.png">
-  </div>
-  
-  <script>
+    </div>
+
+    <script>
       function mostrarAlerta() {
-          alert("Se ha creado un evento de forma correcta");
+        alert("Se ha creado un evento de forma correcta");
       }
-  </script>
+    </script>
 
     <div class="user-info">
       <p>{{ request.user.username }}</p>
@@ -110,10 +109,10 @@
 
           <li class="mode">
             <div class="sun-moon">
-              <img src="{% static 'icons/luna.png' %}" class="moon">
-              <img src="{% static 'icons/sol.png' %}" class="sun">
+              <img src="{% static 'icons/sol.png' %}" class="moon">
+              <img src="{% static 'icons/luna.png' %}" class="sun">
             </div>
-            <span class="mode-text text">Modo Oscuro</span>
+            <span class="mode-text text">Modo</span>
             <div class="toggle-switch">
               <span class="switch"></span>
             </div>
@@ -199,7 +198,7 @@
   <script src="{% static 'js/home.js' %}"></script>
 
 
-  
+
 </body>
 
 </html>

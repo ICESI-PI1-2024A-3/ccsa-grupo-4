@@ -18,9 +18,15 @@
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
-        <div class="notification aling-right">
+        <div class="notification aling-right" onclick="mostrarAlerta()">
             <img src="/static/icons/campana.png">
         </div>
+
+        <script>
+            function mostrarAlerta() {
+                alert("Se ha creado un evento de forma correcta");
+            }
+        </script>
 
         <div class="user-info">
             <p>{{ request.user.username }}</p>
@@ -118,7 +124,7 @@
 
 
         <section class="home">
-            <h1>Enviar encuenta de satisfacción al cliente</h1>
+            <h2>Encuenta de satisfacción</h2>
             <p>{{msj_exito}}</p>
             <form id="formulario" method="POST" action="">
                 {% csrf_token %}

@@ -18,13 +18,18 @@
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
-        <div class="notification aling-right">
+        <div class="notification aling-right" onclick="mostrarAlerta()">
             <img src="/static/icons/campana.png">
         </div>
 
+        <script>
+            function mostrarAlerta() {
+                alert("Se ha creado un evento de forma correcta");
+            }
+        </script>
+
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">
@@ -122,7 +127,7 @@
                         </p>
                         <p><strong>Lugar:</strong> <span id="place">{{event.place}}</span></p>
                     </div>
-                    
+
                     <div>
                         <a href="{% url 'create_task' event_id=event.id %}" class="new-task">
                             <img src="{% static 'icons/tarea.png' %}" class="nueva-tarea">
@@ -140,7 +145,8 @@
                                 <li>
                                     {{ form.id }}
                                     {{ form.done }}
-                                    <a href="{% url 'edit_task' form.instance.id %}" class="task-link">{{ form.instance.name }}</a>
+                                    <a href="{% url 'edit_task' form.instance.id %}" class="task-link">{{
+                                        form.instance.name }}</a>
                                     {% if form.done.errors %} <!-- Errores de validación si existen -->
                                     <div class="errors">{{ form.done.errors }}</div>
                                     {% endif %}
