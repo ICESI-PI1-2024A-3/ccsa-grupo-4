@@ -14,11 +14,27 @@ modeSwitch.addEventListener("click", () => {
     body.classList.toggle("dark");
     modeSwitch.classList.toggle("active");
     if (body.classList.contains("dark")) {
-        modeText.innerText = "Light mode"
+        modeText.innerText = "Modo oscuro";
+        localStorage.setItem('darkMode', 'true');
     } else {
-        modeText.innerText = "Dark mode"
+        modeText.innerText = "Modo claro";
+        localStorage.setItem('darkMode', 'false');
     }
-})
+});
+
+const darkMode = localStorage.getItem('darkMode');
+
+if (darkMode === 'true') {
+    body.classList.add('dark');
+    modeSwitch.classList.add("active");
+    modeText.innerText = "Modo Oscuro";
+} else {
+    body.classList.remove('dark');
+    modeSwitch.classList.remove("active");
+    modeText.innerText = "Modo claro";
+}
+
+
 
 
 const searchInput = document.querySelector('#search-input');
@@ -94,13 +110,4 @@ function move() {
             }
         }
     });
-}
-
-
-// Verificar si el modo oscuro está guardado en el almacenamiento local
-const darkMode = localStorage.getItem('darkMode');
-if (darkMode === 'true') {
-    body.classList.add('dark');
-    modeSwitch.classList.add('active');
-    modeText.innerText = "Modo claro";
 }

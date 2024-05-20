@@ -5,7 +5,7 @@
 <html lang="es">
 
 <head>
-    <title></title>
+    <title>Calendario</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'styles/events_calendar.css' %}">
@@ -18,13 +18,18 @@
             <img src="{% static 'images/logo-icesi-azul.webp' %}">
         </div>
 
-        <div class="notification aling-right">
+        <div class="notification aling-right" onclick="mostrarAlerta()">
             <img src="/static/icons/campana.png">
         </div>
 
+        <script>
+            function mostrarAlerta() {
+                alert("Se ha creado un evento de forma correcta");
+            }
+        </script>
+
         <div class="user-info">
             <p>{{ request.user.username }}</p>
-
         </div>
 
         <div class="user-image">
@@ -33,6 +38,7 @@
             </a>
         </div>
     </header>
+
 
     <section class="main">
 
@@ -115,9 +121,6 @@
         <div id="calendar" class="container"></div>
 
     </section>
-
-
-
 
 
     <script src="{% static 'js/home.js' %}"></script>
